@@ -35,12 +35,12 @@ export default function CVModal({ open, onClose }) {
             <div className="cv-modal-head">
               <span className="cv-modal-title">Tania Olarte — CV</span>
               <div className="cv-modal-actions">
-                <a className="cv-modal-btn" href="/Tania_Olarte_CV.pdf" download>Download PDF</a>
+                <a className="cv-modal-btn" href={`${import.meta.env.BASE_URL}Tania_Olarte_CV.pdf`} download>Download PDF</a>
                 <button className="cv-modal-close" onClick={onClose} aria-label="Close">×</button>
               </div>
             </div>
             <iframe
-              src="/Tania_Olarte_CV.pdf#toolbar=0&navpanes=0"
+              src={`${import.meta.env.BASE_URL}Tania_Olarte_CV.pdf#toolbar=0&navpanes=0`}
               title="Tania Olarte CV"
               className="cv-modal-frame"
             />
