@@ -4,16 +4,33 @@ import { socialIcons, MailIcon } from './Icons.jsx'
 import MagicWord from './MagicWord.jsx'
 
 export default function Contact() {
-  const [sent, setSent] = useState(false)
+  // 'idle' | 'sending' | 'sent' | 'error'
+  const [status, setStatus] = useState('idle')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
-    setTimeout(() => {
-      setSent(false)
-      e.target.reset()
-    }, 3000)
+    if (status === 'sending') return
+    const form = e.target
+    setStatus('sending')
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/taniaolarte@yahoo.com', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      })
+      if (!res.ok) throw new Error('bad response')
+      setStatus('sent')
+      form.reset()
+      setTimeout(() => setStatus('idle'), 5000)
+    } catch (err) {
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 5000)
+    }
   }
+
+  const sent = status === 'sent'
+  const sending = status === 'sending'
+  const errored = status === 'error'
 
   return (
     <section id="contact">
@@ -49,26 +66,40 @@ export default function Contact() {
         </div>
 
         <Reveal as="form" className="contact-form" onSubmit={handleSubmit} delay={0.1}>
+          {/* Formsubmit config — disables captcha, sets a friendlier email subject,
+              honeypot bot trap, no redirect (we handle UI via fetch). */}
+          <input type="hidden" name="_subject" value="New portfolio message" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+
           <div className="form-row">
             <div className="form-group">
               <label className="form-label">Name</label>
-              <input className="form-input" type="text" placeholder="Your name" required />
+              <input className="form-input" type="text" name="name" placeholder="Your name" required />
             </div>
             <div className="form-group">
               <label className="form-label">Email</label>
-              <input className="form-input" type="email" placeholder="your@email.com" required />
+              <input className="form-input" type="email" name="email" placeholder="your@email.com" required />
             </div>
           </div>
           <div className="form-group">
             <label className="form-label">Subject</label>
-            <input className="form-input" type="text" placeholder="What's this about?" />
+            <input className="form-input" type="text" name="subject" placeholder="What's this about?" />
           </div>
           <div className="form-group">
             <label className="form-label">Message</label>
-            <textarea className="form-textarea" placeholder="Tell me about your project…" required />
+            <textarea className="form-textarea" name="message" placeholder="Tell me about your project…" required />
           </div>
-          <button type="submit" className={`form-submit${sent ? ' sent' : ''}`}>
-            {sent ? '✓ Message sent!' : 'Send Message →'}
+          <button
+            type="submit"
+            className={`form-submit${sent ? ' sent' : ''}${errored ? ' error' : ''}`}
+            disabled={sending}
+          >
+            {sending && 'Sending…'}
+            {sent && '✓ Message sent!'}
+            {errored && '✗ Failed — email me instead'}
+            {status === 'idle' && 'Send Message →'}
           </button>
         </Reveal>
       </div>

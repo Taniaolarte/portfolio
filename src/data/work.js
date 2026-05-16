@@ -292,11 +292,12 @@ const bloomingCase = {
   cta: 'View Case Study',
   meta: 'TOUCHDESIGNER · SENSORS',
   duration: '03:00',
-  bgImage: '/portfolio/assets/work/blooming.jpg',
+  bgImage: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
   overlay: 'default',
   theme: 'light',
   caseStudy: {
-    reelUrl: '/portfolio/assets/case-studies/blooming/reel.mp4',
+    coverImage: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
+    reelUrl: '/portfolio/assets/case-studies/blooming/blooming-final.mp4',
     client: 'Museum Exhibition',
     year: '2024',
     role: 'Interactive Designer · Creative Technologist',
@@ -329,6 +330,11 @@ const bloomingCase = {
         title: 'Sensors + TouchDesigner',
         body:
           "Visitor motion is read via custom IR/ultrasonic sensors and pushed to TouchDesigner. A generative particle system grows or recedes based on density and average movement speed.",
+        media: [
+          { src: '/portfolio/assets/case-studies/blooming/blooming-x.mp4', caption: 'Early prototype loop' },
+          { src: '/portfolio/assets/case-studies/blooming/play-force.mp4', caption: 'Holographic flower variant' },
+          { src: '/portfolio/assets/case-studies/blooming/reel.mp4', caption: 'Installation in the room' },
+        ],
       },
       {
         eyebrow: 'Outcome',
@@ -646,7 +652,7 @@ export const work = {
     gallery: [
       // First 3 visible
       { name: 'NAIBU',                       caseStudyId: 'naibu',   kind: 'creative', tag: 'GAME DESIGN',  tagColor: 'rgba(156,77,255,.9)', img: '/portfolio/assets/case-studies/naibu/hero.jpg' },
-      { name: 'Break',                                                kind: 'creative', tag: 'VIDEOGAME',    tagColor: 'rgba(0,194,212,.9)',  video: '/portfolio/assets/case-studies/break-game/reel.mp4', itchUrl: 'https://taniaolarte.itch.io/break' },
+      { name: 'Break',                                                kind: 'creative', tag: 'VIDEOGAME',    tagColor: 'rgba(0,194,212,.9)',  img: '/portfolio/assets/case-studies/break-game/cover.gif', itchUrl: 'https://taniaolarte.itch.io/break' },
       { name: 'Chasqui',                                              kind: 'creative', tag: 'GAME JAM',     tagColor: 'rgba(255,46,107,.9)', video: '/portfolio/assets/case-studies/chasqui/reel.mp4', poster: '/portfolio/assets/case-studies/chasqui/poster.jpg', itchUrl: 'https://taniaolarte.itch.io/chasqui' },
       // Hidden behind "See more"
       { name: 'Library of Emotions',                                  kind: 'creative', tag: 'PHD PROJECT',  tagColor: 'rgba(173,70,255,.9)', img: '/portfolio/assets/work/library-of-emotions.jpg' },

@@ -115,12 +115,19 @@ export default function CaseStudyModalLight({ hero, onClose }) {
               {ch.body && <p className="csl-body">{ch.body}</p>}
               {ch.media?.length > 0 && (
                 <div className={`csl-media-grid csl-media-grid--${Math.min(ch.media.length, 4)}`}>
-                  {ch.media.map((m, j) => (
-                    <figure key={j} className="csl-media-item">
-                      <img src={m.src} alt={m.alt || ''} />
-                      {m.caption && <figcaption>{m.caption}</figcaption>}
-                    </figure>
-                  ))}
+                  {ch.media.map((m, j) => {
+                    const isVideo = /\.(mp4|webm|mov)$/i.test(m.src)
+                    return (
+                      <figure key={j} className="csl-media-item">
+                        {isVideo ? (
+                          <video src={m.src} controls muted playsInline preload="metadata" poster={m.poster} />
+                        ) : (
+                          <img src={m.src} alt={m.alt || ''} />
+                        )}
+                        {m.caption && <figcaption>{m.caption}</figcaption>}
+                      </figure>
+                    )
+                  })}
                 </div>
               )}
             </section>
