@@ -116,10 +116,20 @@ export default function CaseStudyModalLight({ hero, onClose }) {
               {ch.media?.length > 0 && (
                 <div className={`csl-media-grid csl-media-grid--${Math.min(ch.media.length, 4)}`}>
                   {ch.media.map((m, j) => {
-                    const isVideo = /\.(mp4|webm|mov)$/i.test(m.src)
+                    const ytId = m.youtubeId || m.src?.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/)?.[1]
+                    const isVideo = !ytId && m.src && /\.(mp4|webm|mov)$/i.test(m.src)
                     return (
                       <figure key={j} className="csl-media-item">
-                        {isVideo ? (
+                        {ytId ? (
+                          <div className="csl-media-yt">
+                            <iframe
+                              src={`https://www.youtube-nocookie.com/embed/${ytId}?modestbranding=1&rel=0&playsinline=1`}
+                              title={m.caption || `media ${j + 1}`}
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            />
+                          </div>
+                        ) : isVideo ? (
                           <video src={m.src} controls muted playsInline preload="metadata" poster={m.poster} />
                         ) : (
                           <img src={m.src} alt={m.alt || ''} />

@@ -34,7 +34,16 @@ export default function Lightbox({ card, onClose }) {
           transition={{ duration: 0.3, ease: 'easeOut' }}
         >
           <div className="lightbox-media">
-            {card.video ? (
+            {card.youtubeId ? (
+              <div className="lightbox-yt">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${card.youtubeId}?autoplay=1&modestbranding=1&rel=0&playsinline=1`}
+                  title={card.name}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ) : card.video ? (
               <video src={card.video} poster={card.poster} controls autoPlay playsInline loop />
             ) : card.img ? (
               <img src={card.img} alt={card.name} />

@@ -223,7 +223,7 @@ const naibuCase = {
   theme: 'light',
   caseStudy: {
     coverImage: '/portfolio/assets/case-studies/naibu/hero.jpg',
-    reelUrl: '/portfolio/assets/case-studies/naibu/reel.mp4',
+    youtubeUrl: 'https://youtu.be/oJUyfrc1kpc',
     client: 'Bachelor Thesis · La Sabana University',
     year: '2020',
     role: 'Game Designer · Animator · Programmer',
@@ -297,7 +297,7 @@ const bloomingCase = {
   theme: 'light',
   caseStudy: {
     coverImage: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
-    reelUrl: '/portfolio/assets/case-studies/blooming/blooming-final.mp4',
+    youtubeUrl: 'https://youtu.be/4vzbM2uL0tM',
     client: 'Museum Exhibition',
     year: '2024',
     role: 'Interactive Designer · Creative Technologist',
@@ -331,9 +331,11 @@ const bloomingCase = {
         body:
           "Visitor motion is read via custom IR/ultrasonic sensors and pushed to TouchDesigner. A generative particle system grows or recedes based on density and average movement speed.",
         media: [
-          { src: '/portfolio/assets/case-studies/blooming/blooming-x.mp4', caption: 'Early prototype loop' },
-          { src: '/portfolio/assets/case-studies/blooming/play-force.mp4', caption: 'Holographic flower variant' },
-          { src: '/portfolio/assets/case-studies/blooming/reel.mp4', caption: 'Installation in the room' },
+          { youtubeId: '_g0DEJCG2_I', caption: 'Exhibition · live installation' },
+          { youtubeId: '0wnKdia3uAY', caption: 'Visitor interaction loop' },
+          { youtubeId: '31dI0qT9Zqw', caption: 'Holographic flower variant' },
+          { youtubeId: '9sQEo4_PVIs', caption: 'Sensor + particle response' },
+          { youtubeId: '8WF7ioPVu08', caption: 'Generative wilt cycle' },
         ],
       },
       {
@@ -586,7 +588,7 @@ const pubflightHero = {
   bgImage: '/portfolio/assets/work/pubflift-ad.jpg',
   overlay: 'dark',
   hideCaseButton: true,
-  caseStudy: { reelUrl: '/portfolio/assets/case-studies/pubflift-ad/reel.mp4' },
+  caseStudy: { youtubeUrl: 'https://youtu.be/ZlDXYpzYDKQ' },
 }
 
 const mywayHero = {
@@ -626,6 +628,7 @@ export const work = {
       { name: 'Hype Educational Animations',                                 kind: 'creative',  tag: 'ANIMATION',     tagColor: 'rgba(0,194,212,.9)',  img: '/portfolio/assets/work/hype-edu-anim.jpg' },
       { name: 'Video Edition',                                               kind: 'corporate', tag: 'VIDEO EDIT',    tagColor: 'rgba(156,77,255,.9)', img: '/portfolio/assets/work/lucid-construction.jpg' },
       { name: 'Social Media Videos',                                         kind: 'corporate', tag: 'VIDEO EDIT',    tagColor: 'rgba(255,46,107,.9)', video: '/portfolio/assets/case-studies/victor-mourad/reel2.mp4' },
+      { name: 'Documentary Animation',                                       kind: 'creative',  tag: 'ANIMATION',     tagColor: 'rgba(0,194,212,.9)',  img: 'https://i.ytimg.com/vi/rou_9x4KpxU/maxresdefault.jpg', youtubeId: 'rou_9x4KpxU' },
     ],
   },
 
@@ -658,6 +661,7 @@ export const work = {
       { name: 'Library of Emotions',                                  kind: 'creative', tag: 'PHD PROJECT',  tagColor: 'rgba(173,70,255,.9)', img: '/portfolio/assets/work/library-of-emotions.jpg' },
       { name: 'AR Filters',                                           kind: 'creative', tag: 'AR / FILTERS', tagColor: 'rgba(255,217,61,.9)', tagText: '#222', img: '/portfolio/assets/work/tiktok-ar.jpg' },
       { name: 'Interactive Web Poem',                                 kind: 'creative', tag: 'INTERACTIVE',  tagColor: 'rgba(0,194,212,.9)',  img: '/portfolio/assets/work/interactive-poem.jpg' },
+      { name: 'Nocturno · Projection Mapping',                        kind: 'creative', tag: 'INSTALLATION', tagColor: 'rgba(173,70,255,.9)', img: 'https://i.ytimg.com/vi/ruqGxBoCyb0/maxresdefault.jpg', youtubeId: 'ruqGxBoCyb0' },
     ],
   },
 }

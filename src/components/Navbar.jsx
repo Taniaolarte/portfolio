@@ -21,7 +21,7 @@ export default function Navbar() {
     <nav>
       <a href="#" className="nav-logo" onClick={(e) => e.preventDefault()}>
         TANIA OLARTE<span>.</span>
-        <span className="version-badge">v1.3.58</span>
+        <span className="version-badge">v1.3.68</span>
       </a>
 
       <div className={`nav-links${open ? ' open' : ''}`}>
