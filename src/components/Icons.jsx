@@ -83,10 +83,10 @@ export function FileIcon(props) {
 }
 
 // Sourced from Tania's CV (linkedin.com/in/tania-olarte, upwork.com/fl/taniaolarte,
-// behance.net/taniaolarte, email taniaolarte@yahoo.com).
+// behance.net/taniaolarte, email taniaolarteavila@gmail.com).
 export const socialIcons = [
   { Icon: LinkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/tania-olarte-avila/?locale=en-US' },
   { Icon: BehanceIcon,  label: 'Behance',  href: 'https://behance.net/taniaolarte' },
   { Icon: UpworkIcon,   label: 'Upwork',   href: 'https://upwork.com/fl/taniaolarte' },
-  { Icon: MailIcon,     label: 'Email',    href: 'mailto:taniaolarte@yahoo.com' },
+  { Icon: MailIcon,     label: 'Email',    href: 'mailto:taniaolarteavila@gmail.com' },
 ]

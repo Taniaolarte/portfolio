@@ -13,12 +13,13 @@ export default function Contact() {
     const form = e.target
     setStatus('sending')
     try {
-      const res = await fetch('https://formsubmit.co/ajax/taniaolarte@yahoo.com', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: new FormData(form),
       })
-      if (!res.ok) throw new Error('bad response')
+      const data = await res.json()
+      if (!data.success) throw new Error(data.message || 'submit failed')
       setStatus('sent')
       form.reset()
       setTimeout(() => setStatus('idle'), 5000)
@@ -43,9 +44,9 @@ export default function Contact() {
           <Reveal as="p" className="contact-desc" delay={0.1}>
             Open to freelance projects, collaborations, and full-time opportunities in animation, interactive design, and <MagicWord>creative technology</MagicWord>.
           </Reveal>
-          <Reveal as="a" className="contact-email-link" href="mailto:taniaolarte@yahoo.com" delay={0.15}>
+          <Reveal as="a" className="contact-email-link" href="mailto:taniaolarteavila@gmail.com" delay={0.15}>
             <MailIcon />
-            taniaolarte@yahoo.com
+            taniaolarteavila@gmail.com
           </Reveal>
           <Reveal className="contact-social-row" delay={0.2}>
             {socialIcons.map(({ Icon, label, href }) => {
@@ -66,12 +67,13 @@ export default function Contact() {
         </div>
 
         <Reveal as="form" className="contact-form" onSubmit={handleSubmit} delay={0.1}>
-          {/* Formsubmit config — disables captcha, sets a friendlier email subject,
-              honeypot bot trap, no redirect (we handle UI via fetch). */}
-          <input type="hidden" name="_subject" value="New portfolio message" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+          {/* Web3Forms — routes the submission to your email. The access_key is
+              a public routing ID (NOT a secret), safe to commit. Get one at
+              https://web3forms.com → enter your email → instant key in your inbox. */}
+          <input type="hidden" name="access_key" value="ce297b1d-0b01-440a-a60c-f9cfcc008ebc" />
+          <input type="hidden" name="from_name" value="Tania Olarte Portfolio" />
+          {/* Honeypot bot trap — invisible to humans. */}
+          <input type="checkbox" name="botcheck" style={{ display: 'none' }} tabIndex={-1} />
 
           <div className="form-row">
             <div className="form-group">
