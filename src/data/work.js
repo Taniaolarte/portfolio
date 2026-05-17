@@ -65,6 +65,10 @@ const escapeRoomCase = {
         title: 'Shape rigs + sprite loops',
         body:
           "Storyboarded the opening, animated each character pose in After Effects with shape-layer rigs, then exported lightweight WebM loops for the game's display screens. Final pass scrubbed every loop for sub-frame seams.",
+        media: [
+          { src: '/portfolio/assets/case-studies/escape-room-anim/box-01.jpg', caption: 'Game box · physical product' },
+          { src: '/portfolio/assets/case-studies/escape-room-anim/card-01.jpg', caption: 'Card art · in-game prompts' },
+        ],
       },
       {
         eyebrow: 'Outcome',
