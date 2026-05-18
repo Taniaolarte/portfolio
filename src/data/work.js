@@ -101,7 +101,7 @@ const extraCheckpointCase = {
   metaTop: 'YEAR : 2021',
   metaSub: 'Brand project',
   bgImage: '/portfolio/assets/case-studies/extra-checkpoint/hero.jpg',
-  theme: 'light',
+  theme: 'xtracheckpoint',
   mockups: [
     { class: 'ph1', label: 'Logo Mark',   img: '/portfolio/assets/case-studies/extra-checkpoint/01.jpg' },
     { class: 'ph2', label: 'App Icon',    img: '/portfolio/assets/case-studies/extra-checkpoint/02.jpg' },
@@ -110,53 +110,119 @@ const extraCheckpointCase = {
     { class: 'pt',  label: 'Pattern',     img: '/portfolio/assets/case-studies/extra-checkpoint/05.jpg' },
   ],
   caseStudy: {
-    coverImage: '/portfolio/assets/case-studies/extra-checkpoint/hero.jpg',
+    coverImage: '/portfolio/assets/case-studies/extra-checkpoint/cover.jpg',
+    heroGif:    '/portfolio/assets/case-studies/extra-checkpoint/intro.gif',
+    behanceUrl: 'https://www.behance.net/gallery/131654567/XtraCheckpointCreacion-de-Marca',
     behanceProjectId: '131654567',
-    gallery: [
-      '/portfolio/assets/case-studies/extra-checkpoint/01.jpg',
-      '/portfolio/assets/case-studies/extra-checkpoint/02.jpg',
-      '/portfolio/assets/case-studies/extra-checkpoint/03.jpg',
-      '/portfolio/assets/case-studies/extra-checkpoint/04.jpg',
-      '/portfolio/assets/case-studies/extra-checkpoint/05.jpg',
+
+    // HERO
+    eyebrow: 'BRAND IDENTITY · 2021',
+    title:   'XtraCheckpoint',
+    tagline: 'HELLO GAMER!',
+    intro:
+      "An illustrated gaming-journalism brand. XtraCheckpoint serves easy-to-digest news, investigations, and features for gamers — translated visually through a custom illustration system that turns every article into a moment of play.",
+
+    // TEAM — the "Tripulantes" crew from the brand book
+    team: [
+      { name: 'Frank Reyes',       role: 'Social Communicator & Journalist', bio: '3 years of experience in videogame and digital journalism.' },
+      { name: 'Tania Olarte',      role: 'Multimedia Communicator',          bio: 'Focus on interactive products, diploma in entrepreneurship and innovation in digital businesses.' },
+      { name: 'Estefania Castaño', role: 'Professional Illustrator',         bio: 'Illustrated for UN Women GameJam, ExpoGame Chile and Bogotá Siggraph.' },
     ],
-    client: 'XtraCheckpoint',
-    year: '2021',
-    role: 'Brand Designer · Illustrator',
-    tools: ['Illustrator', 'Photoshop', 'After Effects', 'Procreate'],
-    tags: ['Logo', 'Branding', 'Illustration', 'Videogames'],
-    overview:
-      "A brand identity built around videogame culture: a custom logo mark, a flexible illustration system, and motion-friendly animated assets. The whole system was designed to scale from social posts to event signage.",
+
+    // BRAND PILLARS
+    pillars: [
+      { num: '01', label: 'INFORMATIVE', body: 'Journalism that earns the reader\'s trust — research first, then make it readable.' },
+      { num: '02', label: 'PLAYFUL',     body: 'Every article looks like the games it covers — bold, illustrated, alive.' },
+      { num: '03', label: 'COMMUNITY',   body: 'Built for a Spanish-speaking gaming audience that wants to belong somewhere.' },
+      { num: '04', label: 'ILLUSTRATED', body: 'Custom illustrations carry the message where words can\'t.' },
+    ],
+
+    // LOGO SYSTEM
+    logo: {
+      title: 'Imagotype',
+      body:
+        "A pixel-grid mark inspired by save points and energy bars — three rows of three squares, the centre column lit in the brand purple. The wordmark sits below in a hand-drawn display weight, keeping the system warm even at small sizes.",
+      image: '/portfolio/assets/case-studies/extra-checkpoint/logo.jpg',
+      rules: [
+        { label: 'Clear space',   note: 'One full grid-square padding on every side.' },
+        { label: 'Minimum size',  note: 'Imagotype: 100 px wide. Below that, drop the wordmark and keep the grid mark only.' },
+        { label: 'Backgrounds',   note: 'Works on dark (default), light, and over photography with the white-stroke variant.' },
+      ],
+      variations: [
+        { label: 'Primary · purple on dark',  swatch: '#623A9F' },
+        { label: 'Inverted · black on light', swatch: '#04031F' },
+        { label: 'Mono · cyan accent',        swatch: '#1A6A8F' },
+        { label: 'Outline · clear-space study', swatch: 'transparent' },
+      ],
+    },
+
+    // PALETTE
+    palette: {
+      primary: [
+        { hex: '#04031F', name: 'Deep Space',   note: 'Default background.' },
+        { hex: '#050A30', name: 'Cosmic Navy',  note: 'Surface · panels.' },
+        { hex: '#FAF2E9', name: 'Page Cream',   note: 'Long-form text background.' },
+        { hex: '#623A9F', name: 'Brand Purple', note: 'Primary brand colour.' },
+      ],
+      complementary: [
+        { hex: '#CB6CE6', name: 'Light Purple', note: 'Highlights · CTAs.' },
+        { hex: '#ED5949', name: 'Coral',         note: 'Accent · alert states.' },
+        { hex: '#1A6A8F', name: 'Deep Teal',     note: 'Editorial · secondary.' },
+        { hex: '#FFD968', name: 'Game Yellow',   note: 'Stickers · pings.' },
+      ],
+    },
+
+    // TYPOGRAPHY
+    typography: [
+      { family: 'Gagalin',           role: 'Display · headlines',     sample: 'HOLA GAMER!', weights: 'Regular' },
+      { family: 'Palaquin Bold',     role: 'Subheads · category tags', sample: 'XTRACHECKPOINT', weights: 'Bold' },
+      { family: 'Palaquin Regular',  role: 'Body · articles',          sample: 'A medium for gamers, by gamers.', weights: 'Thin · Regular · Semibold · Extralight' },
+    ],
+
+    // APPLICATIONS / BRAND IN USE
+    applications: [
+      { title: 'Tags & merch',     body: 'Pin badges, hang tags, and stamp — the mark survives at any scale.', image: '/portfolio/assets/case-studies/extra-checkpoint/01.jpg' },
+      { title: 'Packaging',         body: 'Cosmic packaging system for limited-run drops.',                      image: '/portfolio/assets/case-studies/extra-checkpoint/02.jpg' },
+      { title: 'Editorial content', body: 'The newsletter — illustrated stories, structured for short attention.', image: '/portfolio/assets/case-studies/extra-checkpoint/03.jpg' },
+      { title: 'Social channels',   body: 'A consistent grid across Instagram, Twitter, Discord and Facebook.',   image: '/portfolio/assets/case-studies/extra-checkpoint/social.jpg' },
+      { title: 'Brand sheet',       body: 'Full system reference for partners.',                                  image: '/portfolio/assets/case-studies/extra-checkpoint/brand-system.jpg' },
+    ],
+
+    // MOODBOARD — illustration directions that informed the system
+    moodboard: {
+      body: 'Bold female-led illustration, retro-arcade panel composition, and onomatopoeia — the visual world we wanted the journalism to live inside.',
+      directions: [
+        'Bold character illustration · flat colour, strong outlines',
+        'Onomatopoeia · POW! ZAP! ITATATATA!',
+        'Retro-arcade panels · vertical poster compositions',
+        'Cosmic backdrops · stars, planets, deep purples',
+        'Editorial dignity · enough whitespace to read 800 words',
+      ],
+    },
+
+    // PROCESS
+    process: [
+      { num: '01', eyebrow: 'DISCOVERY',  title: 'Reading the audience',      body: "Mapped what Spanish-speaking gamers actually consume — short-form video, illustrated articles, podcasts. Listed what the existing publications got wrong (walls of text, no personality)." },
+      { num: '02', eyebrow: 'STRATEGY',   title: 'Positioning',                body: 'Defined four pillars: informative, playful, community, illustrated. Wrote a tone-of-voice doc that staff illustrators could check copy against.' },
+      { num: '03', eyebrow: 'LOGO',       title: 'The grid mark',              body: 'Iterated on the 3×3 pixel grid until the central column read as a save-point glyph at any scale. Paired with a hand-drawn wordmark to soften the geometry.' },
+      { num: '04', eyebrow: 'SYSTEM',     title: 'Colour + type',              body: 'Picked four primary colours that hold up on screen and four complementary colours for accent moments. Two typefaces — Gagalin for display, Palaquin for everything else.' },
+      { num: '05', eyebrow: 'APPLICATIONS', title: 'Rollout templates',         body: 'Built Instagram grids, Facebook covers, newsletter templates, podcast cover art, and a stamp/merch pack. Every surface was templated for a non-designer to operate.' },
+      { num: '06', eyebrow: 'HANDOFF',    title: 'Brand book + behance',       body: 'Delivered a complete brand book with logo rules, palette specs, typography hierarchy, and asset library. Project featured on Behance.' },
+    ],
+
+    // OUTCOME
+    awards: [
+      { name: 'Featured on Behance',                      year: '2021' },
+      { name: 'In active rotation across content channels', year: '2021–present' },
+      { name: 'Complete brand book delivered',            year: '2021' },
+    ],
+
     credits: [
       { label: 'Year',   value: '2021' },
       { label: 'Client', value: 'XtraCheckpoint' },
       { label: 'Role',   value: 'Brand Designer · Illustrator' },
-      { label: 'Tools',  value: 'Illustrator · Photoshop · AE · Procreate' },
-      { label: 'Output', value: 'Logo · Patterns · Illustration · Animation' },
-    ],
-    awards: [
-      { name: 'Behance · Featured Project', year: '2021' },
-    ],
-    body:
-      "The illustration system is the heart of the identity — characters, props, and screen elements all share a vocabulary derived from the logo's pixel geometry. Animated cuts, streaming overlays, and social templates were built on top so the visual rhythm stays consistent everywhere the brand appears.",
-    chapters: [
-      {
-        eyebrow: 'Discovery',
-        title: 'A graphic language for gameplay',
-        body:
-          "Started from a moodboard built around competitive-play vocabulary — checkpoints, savepoints, energy bars — and translated those into a graphic language of hard edges softened by warm colour.",
-      },
-      {
-        eyebrow: 'System',
-        title: 'Logo + illustration DNA',
-        body:
-          "Primary mark + secondary lockup + monogram. A custom illustration library extends the visuals into characters and props that all share one visual DNA, anchored in the logo geometry.",
-      },
-      {
-        eyebrow: 'Outcome',
-        title: 'Active across every channel',
-        body:
-          "Featured on Behance and used across social, streaming overlays, and event collateral. The illustration set remains in active rotation across the brand's content channels.",
-      },
+      { label: 'Tools',  value: 'Illustrator · Photoshop · After Effects · Procreate' },
+      { label: 'Output', value: 'Logo · Brand book · Illustration set · Social templates · Merch · Newsletter' },
     ],
   },
 }
@@ -905,7 +971,7 @@ export const work = {
     shortCards: true,
     gallery: [
       // First 3 visible
-      { name: 'XtraCheckpoint',              caseStudyId: 'extra-checkpoint', kind: 'corporate', tag: 'BRAND DESIGN', tagColor: 'rgba(255,46,107,.9)', img: '/portfolio/assets/work/extra-checkpoint.jpg' },
+      { name: 'XtraCheckpoint',              caseStudyId: 'extra-checkpoint', kind: 'corporate', tag: 'BRAND DESIGN', tagColor: 'rgba(255,46,107,.9)', img: '/portfolio/assets/case-studies/extra-checkpoint/thumbnail.gif' },
       { name: 'SupaFresh Market',                                             kind: 'corporate', tag: 'WEB DESIGN',   tagColor: 'rgba(0,194,212,.9)',  img: '/portfolio/assets/case-studies/suprafresh/hero.jpg', liveUrl: 'https://supafreshmarket.com.au/' },
       { name: 'Amazonicas Logo',                                              kind: 'corporate', tag: 'LOGO',         tagColor: 'rgba(255,217,61,.9)', tagText: '#222', img: '/portfolio/assets/work/amazonicas-logo.jpg' },
       // Hidden behind "See more"
