@@ -4,6 +4,9 @@ import { categories, types, work, caseStudyIndex } from '../data/work.js'
 import HeroCarousel from './HeroCarousel.jsx'
 import CaseStudyModal from './CaseStudyModal.jsx'
 import CaseStudyModalLight from './CaseStudyModalLight.jsx'
+import CaseStudyModalTabletop from './CaseStudyModalTabletop.jsx'
+import CaseStudyModalNaibu from './CaseStudyModalNaibu.jsx'
+import CaseStudyModalBlooming from './CaseStudyModalBlooming.jsx'
 import Lightbox from './Lightbox.jsx'
 import FairyTrail from './FairyTrail.jsx'
 
@@ -231,9 +234,17 @@ export default function Work() {
       </div>
 
       <AnimatePresence>
-        {openCase && (openCase.theme === 'light'
-          ? <CaseStudyModalLight hero={openCase} onClose={() => setOpenCase(null)} />
-          : <CaseStudyModal hero={openCase} onClose={() => setOpenCase(null)} />)}
+        {openCase && (
+          openCase.theme === 'tabletop'
+            ? <CaseStudyModalTabletop hero={openCase} onClose={() => setOpenCase(null)} />
+            : openCase.theme === 'naibu'
+              ? <CaseStudyModalNaibu hero={openCase} onClose={() => setOpenCase(null)} />
+              : openCase.theme === 'blooming'
+                ? <CaseStudyModalBlooming hero={openCase} onClose={() => setOpenCase(null)} />
+                : openCase.theme === 'light'
+                  ? <CaseStudyModalLight hero={openCase} onClose={() => setOpenCase(null)} />
+                  : <CaseStudyModal hero={openCase} onClose={() => setOpenCase(null)} />
+        )}
       </AnimatePresence>
 
       <AnimatePresence>

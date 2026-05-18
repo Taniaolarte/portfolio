@@ -33,7 +33,7 @@ const escapeRoomCase = {
   bgImage: '/portfolio/assets/case-studies/escape-room-anim/poster.jpg',
   bgGradient: 'linear-gradient(135deg,#1a0f3d 0%,#5a4fcf 45%,#382466 100%)',
   overlay: 'dark',
-  theme: 'light',
+  theme: 'tabletop',
   caseStudy: {
     youtubeUrl: 'https://www.youtube.com/watch?v=gYNbrxm_ZBU&t=3s',
     youtubeStart: 3,
@@ -224,7 +224,7 @@ const naibuCase = {
   duration: '01:47',
   bgImage: '/portfolio/assets/case-studies/naibu/hero.jpg',
   overlay: 'warm',
-  theme: 'light',
+  theme: 'naibu',
   caseStudy: {
     coverImage: '/portfolio/assets/case-studies/naibu/hero.jpg',
     youtubeUrl: 'https://youtu.be/oJUyfrc1kpc',
@@ -248,6 +248,158 @@ const naibuCase = {
       { name: 'MAGI Expo · Selected',             year: '2024' },
       { name: 'Future Forte · Art Showcase',      year: '2025' },
       { name: 'Bunjil Place · Exhibition',        year: '2025' },
+    ],
+    // Production-plan-driven structure — each phase mirrors a category from
+    // the original 6-month cronogram (concept → narrative → research → design
+    // → art → animation → documentation → programming → delivery).
+    phases: [
+      {
+        id: 'concept',
+        num: '01',
+        category: 'CONCEPT',
+        title: 'Idea, folklore, identity',
+        body:
+          "The seed: a 2D platformer about reconciling with hidden parts of the self. Initial research mined Andean and Mapuche folklore for figures that could carry psychological weight — the Wendigo and Fobos emerged as the antagonist set, each embodying a stage of internal conflict.",
+        items: [
+          'Concept research · folklore & mythology',
+          'Rule-set for the world (gravity, time, self)',
+          'Character selection · protagonist + antagonists',
+          'Visual style direction · pixel art + warm/cool duality',
+        ],
+        media: { src: '/portfolio/assets/case-studies/naibu/portada.png', caption: 'Naibu · title artwork' },
+      },
+      {
+        id: 'narrative',
+        num: '02',
+        category: 'NARRATIVE',
+        title: 'Uhri, antagonists, and the thread',
+        body:
+          "Uhri — a child protagonist whose silhouette shifts with the emotional state of each level. The narrative method is environmental: no dialogue, only mechanics, palette, and music. Each antagonist (Fobos, Wendigo) marks a chapter on the inner thread.",
+        items: [
+          'Narrative method · environmental storytelling',
+          'Protagonist (Uhri) · arc + visual evolution',
+          'Antagonists (Fobos, Wendigo) · meaning + behaviour',
+          'World rules · how memory and emotion shape space',
+          'Beats · the points where mechanics shift',
+        ],
+        media: [
+          { src: '/portfolio/assets/case-studies/naibu/uhri-character.png', caption: 'Uhri · character reference' },
+          { src: '/portfolio/assets/case-studies/naibu/fobos.png',          caption: 'Fobos · antagonist' },
+          { src: '/portfolio/assets/case-studies/naibu/wendigo.png',        caption: 'Wendigo · antagonist' },
+        ],
+      },
+      {
+        id: 'research',
+        num: '03',
+        category: 'RESEARCH & REFERENCES',
+        title: 'What the genre had already solved',
+        body:
+          "Studied INSIDE, LIMBO, Gris and Celeste for how mood, motion, and mechanics co-author meaning. Catalogued enemy archetypes, traversal vocabularies, and pacing strategies — and decided what to deliberately not borrow.",
+        items: [
+          'Videogame references · mood + mechanics',
+          'Character & antagonist reference boards',
+          'Universe / setting reference',
+          'Mechanics study · what the genre allows',
+          'Strategy · how to differentiate',
+        ],
+        media: { src: '/portfolio/assets/case-studies/naibu/levels.png', caption: 'Level palettes derived from research' },
+      },
+      {
+        id: 'design',
+        num: '04',
+        category: 'DESIGN',
+        title: 'Characters, levels, interface',
+        body:
+          "Designed the protagonist's pose set, then the antagonists, then the universe — each constrained to the level's 6-colour palette. Levels were paper-prototyped first to validate the puzzle-emotion mapping before any pixel went down. UI kept minimal so the world stays foregrounded.",
+        items: [
+          'Protagonist design · poses + silhouette',
+          'Antagonist design · readability at small scale',
+          'Universe design · biomes per emotional state',
+          'Level design · puzzle ↔ emotion mapping',
+          'UI design · minimal HUD',
+        ],
+        media: [
+          { src: '/portfolio/assets/case-studies/naibu/uhri-poses.png',         caption: 'Uhri · pose studies' },
+          { src: '/portfolio/assets/case-studies/naibu/interactive-assets.png', caption: 'Interactive props · lamps + collectibles' },
+          { src: '/portfolio/assets/case-studies/naibu/icon.png',               caption: 'In-game icon' },
+        ],
+      },
+      {
+        id: 'art',
+        num: '05',
+        category: 'ART',
+        title: 'Pixel work + asset pipeline',
+        body:
+          "Hand-pixelled in Aseprite at native resolution, no upscaling. Each level uses a constrained 6-colour palette that shifts with the emotional state — cool blues for denial, fiery oranges for anger, soft pinks for acceptance.",
+        items: [
+          'Protagonist sprite art',
+          'Antagonist sprite art',
+          'Environment art · per biome',
+          'UI art',
+          'Level 1 finished art pass',
+          'Props · lamps, collectibles, set dressing',
+        ],
+        media: { src: '/portfolio/assets/case-studies/naibu/uhri-spritesheet.png', caption: 'Uhri animation sprite sheet' },
+      },
+      {
+        id: 'animation',
+        num: '06',
+        category: 'ANIMATION',
+        title: 'Motion as emotion',
+        body:
+          "12+ hand-animated cycles, each tuned to the level's emotional weight — Uhri's walk slows under grief, the antagonists' reveals were storyboarded frame by frame so each appearance lands.",
+        items: [
+          'Protagonist · idle / walk / jump / interact',
+          'Antagonist · attack + reveal cycles',
+          'Enemy variants · 2 patterns',
+          'Prop animation · ambient world motion',
+          'UI animation · transitions + feedback',
+        ],
+        media: { src: '/portfolio/assets/case-studies/naibu/fobos-storyboard.png', caption: 'Fobos · appearance storyboard' },
+      },
+      {
+        id: 'documentation',
+        num: '07',
+        category: 'DOCUMENTATION & APPROVALS',
+        title: 'The thesis behind the game',
+        body:
+          "A 168-page thesis grounding the design in psychology, narrative theory, and game-feel research. Each design decision had to be defensible against the framework. The document went through three approval rounds with the university committee.",
+        items: [
+          'Contextual research',
+          'Theoretical framework',
+          'Project purpose & objectives',
+          'Detailed project description',
+          'Committee approvals · 3 rounds',
+        ],
+      },
+      {
+        id: 'programming',
+        num: '08',
+        category: 'PROGRAMMING (UNITY)',
+        title: 'Mechanics in C#',
+        body:
+          "Built in Unity from scratch — sprite-based state machines for character motion, custom puzzle controllers, palette-shift transitions between levels. Sound was layered last, scoring transitions rather than continuous BGM, so silence carries meaning too.",
+        items: [
+          'Unity implementation · scenes + scripts',
+          'Mechanic programming · movement, puzzles',
+          'UI implementation',
+          'Sound design · score the transitions, not the rooms',
+        ],
+      },
+      {
+        id: 'delivery',
+        num: '09',
+        category: 'DELIVERABLES & ITERATION',
+        title: 'Vertical slice, defence, exhibition',
+        body:
+          "Shipped a vertical slice covering 3 emotional stages (denial → anger → acceptance). Defended the thesis with a live playthrough, earned a Meritorious distinction (4.8/5.0). Since then re-shown at MAGI Expo (2024), Future Forte (2025), and Bunjil Place (2025).",
+        items: [
+          'General structuring · build packaging',
+          'Deliverables · build + thesis + presentation',
+          'Iteration rounds · playtests + refinements',
+        ],
+        media: { src: '/portfolio/assets/case-studies/naibu/cronogram.png', caption: 'The original 6-month cronogram' },
+      },
     ],
     chapters: [
       {
@@ -289,66 +441,176 @@ const bloomingCase = {
   layout: 'cinema',
   kind: 'creative',
   badges: ['INTERACTIVE INSTALLATION', 'CASE STUDY'],
-  title: 'Blooming',
-  subtitle: 'Interactive Installation · Museum Exhibition',
+  title: 'Second Blooming',
+  subtitle: 'Interactive Installation · Bunjil Place',
   description:
-    "An interactive flower installation that responds to viewer proximity and motion — exhibited in a museum setting as part of an art showcase.",
+    "A meditation on the digital afterlife of organic forms — a physical flower meets its reactive holographic twin, breathing in response to your presence.",
   cta: 'View Case Study',
-  meta: 'TOUCHDESIGNER · SENSORS',
+  meta: 'TOUCHDESIGNER · BIOTRON · HOLOGRAPHIC DOME',
   duration: '03:00',
   bgImage: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
   overlay: 'default',
-  theme: 'light',
+  theme: 'blooming',
   caseStudy: {
     coverImage: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
     youtubeUrl: 'https://youtu.be/4vzbM2uL0tM',
-    client: 'Museum Exhibition',
-    year: '2024',
-    role: 'Interactive Designer · Creative Technologist',
-    tools: ['TouchDesigner', 'Arduino', 'Custom Sensors'],
-    tags: ['Interactive Art', 'Generative', 'Installation', 'Real-time'],
-    overview:
-      "Blooming is a responsive installation: a field of generative flowers blooms or wilts depending on how visitors move through the room. The piece explores attention, care, and presence as a shared experience.",
-    credits: [
-      { label: 'Year',     value: '2024' },
-      { label: 'Client',   value: 'Museum Exhibition' },
-      { label: 'Role',     value: 'Interactive Designer · Creative Technologist' },
-      { label: 'Tools',    value: 'TouchDesigner · Arduino · Custom Sensors' },
-      { label: 'Duration', value: '1 month installation' },
-    ],
-    awards: [
-      { name: 'Museum Exhibition · Featured Installation', year: '2024' },
-      { name: 'Above-average dwell time for the quarter',  year: '2024' },
-    ],
-    body:
-      "The piece sits at the intersection of generative design and physical sensing. Visitors don't have to do anything explicit — the room reads their proximity and motion, and the flowers respond at the speed of breath.",
+    heroVideo: '/portfolio/assets/case-studies/blooming/blooming-final.mp4',
+    heroPoster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
+    eyebrow: 'INTERACTIVE INSTALLATION',
+    placeLine: 'EXHIBITED AT BUNJIL PLACE',
+    intro: {
+      pull: 'tangible',
+      pullAlt: 'ephemeral',
+      body:
+        "Second Blooming is a meditation on the digital afterlife of organic forms. By capturing the essence of a physical flower and translating it into a reactive particle system, we create a dialogue between the tangible and the ephemeral.",
+    },
+    // Three alternating chapters — text + looping muted video as the "gif" visual.
     chapters: [
       {
-        eyebrow: 'Concept',
-        title: 'Art that needs you',
+        nav: 'ABOUT',
+        eyebrow: 'THE VISION',
+        title: 'Physical Soul, Digital Spirit',
         body:
-          "What happens to art when no one is looking? Blooming flips that question — the work needs the audience to come alive, but rewards stillness rather than crowding.",
+          "Second Blooming is an interactive installation that explores the bridge between organic life and digital existence. A single flower stands as the anchor for a narrative digital twin, rendered in thousands of reactive neon particles.",
+        media: { video: '/portfolio/assets/case-studies/blooming/blooming-x.mp4', poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg' },
+        flip: false,
       },
       {
-        eyebrow: 'Build',
-        title: 'Sensors + TouchDesigner',
+        nav: 'DIGITAL TWIN',
+        eyebrow: 'THE TWIN',
+        title: 'A Window Into the Void',
         body:
-          "Visitor motion is read via custom IR/ultrasonic sensors and pushed to TouchDesigner. A generative particle system grows or recedes based on density and average movement speed.",
-        media: [
-          { youtubeId: '_g0DEJCG2_I', caption: 'Exhibition · live installation' },
-          { youtubeId: '0wnKdia3uAY', caption: 'Visitor interaction loop' },
-          { youtubeId: '31dI0qT9Zqw', caption: 'Holographic flower variant' },
-          { youtubeId: '9sQEo4_PVIs', caption: 'Sensor + particle response' },
-          { youtubeId: '8WF7ioPVu08', caption: 'Generative wilt cycle' },
-        ],
+          "Encased within a custom-designed dome, the digital vein appears as a floating hologram. This dome acts as the medium where light and mathematics converge to recreate the flower's geometry in a shimmering, ethereal form.",
+        media: { video: '/portfolio/assets/case-studies/blooming/play-force.mp4', poster: '/portfolio/assets/case-studies/blooming/interactive-trailer-poster.jpg' },
+        flip: true,
       },
       {
-        eyebrow: 'Outcome',
-        title: 'Quiet attention',
+        nav: 'INTERACTION',
+        eyebrow: 'INTERACTION + PRESENCE',
+        title: 'The Dissolving Presence',
         body:
-          "Exhibited for a month in a museum setting. Average dwell time was significantly above the gallery average for that quarter.",
+          "The installation challenges the audience's proximity. As you get closer to the physical flower, its digital twin begins to dissolve. This reactive behaviour symbolises the fragile balance between observing and disrupting a natural state.",
+        media: { video: '/portfolio/assets/case-studies/blooming/blooming-final.mp4', poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg' },
+        flip: false,
       },
     ],
+    features: [
+      { label: 'PARTICLE ENGINE',   body: "Built in TouchDesigner — thousands of reactive particles emitted from the 3D-scanned flower geometry, rendered in real time." },
+      { label: 'BIOSIGNAL SENSING', body: "The Playtronica Biotron reads touch, light, water, and conductivity from the physical flower, streaming MIDI into the system." },
+      { label: 'HOLOGRAPHIC DOME',  body: "A holographic dome paired with an iPad creates the floating digital twin — light and geometry converging into an ethereal form." },
+      { label: 'REACTIVE SYNC',     body: "Every biosignal channel maps to a particle parameter — density, dispersion, glow, decay — so the physical flower drives its digital counterpart, frame by frame." },
+    ],
+    // Step-by-step process — how the bloom went from idea to installed.
+    process: [
+      {
+        num: '01',
+        eyebrow: 'CONCEPT',
+        title: 'A real flower meets its twin',
+        body:
+          "We started with a single question: what would it look like if a flower had a digital ghost — something that could breathe, dissolve, and respond? The brief came from RMIT MAGI's Floribunda response: respond to the exhibition with a poetic interactive piece.",
+      },
+      {
+        num: '02',
+        eyebrow: 'SCAN',
+        title: 'Photogrammetry & 3D capture',
+        body:
+          "Multi-angle photogrammetry passes turned a physical bloom into a high-density point cloud — the seed dataset for every digital twin. We tested fresh flowers, dried flowers, and partially-wilted flowers to see how decay translated to particles.",
+      },
+      {
+        num: '03',
+        eyebrow: 'SIGNAL',
+        title: 'Playtronica Biotron biosignal mapping',
+        body:
+          "The Playtronica Biotron reads natural inputs — touch, light, water, electrical conductivity — and emits them as MIDI. Each input channel was assigned a parameter in TouchDesigner: density, dispersion, glow, decay.",
+      },
+      {
+        num: '04',
+        eyebrow: 'SYSTEM',
+        title: 'TouchDesigner particle pipeline',
+        body:
+          "Built the reactive system in TouchDesigner: 3D-scan geometry → particle emitters → biosignal modulators → render. Every frame, audience proximity rewrites the modulators, which feed the emitters, which redraw the flower.",
+      },
+      {
+        num: '05',
+        eyebrow: 'DISPLAY',
+        title: 'Holographic dome → iPad → projection',
+        body:
+          "Prototyped on a small holographic pyramid, then scaled to an iPad-fed dome, then onto the Bunjil Place outdoor screen. Each medium needed different particle counts and gamma curves.",
+      },
+      {
+        num: '06',
+        eyebrow: 'SOUND',
+        title: 'Santino\'s reactive score',
+        body:
+          "Santino Castagna composed a score that listens to the particle state — when the bloom dissolves, the score thins; when it re-forms, harmonics return. The audio is layered, not continuous, so silence remains part of the piece.",
+      },
+    ],
+    // Exploration sketches / R&D — the messier middle of the project.
+    exploration: {
+      eyebrow: 'EXPLORATION',
+      title: 'Failed bloom, useful bloom',
+      body:
+        "Not every iteration made the cut. We tested abstract glyph-flowers, audio-driven blooms, and a version where the flower only revealed when you stood still. The version we kept is the one where the flower needs you — but rewards stillness over crowding.",
+      items: [
+        { label: 'Glyph variation',  note: 'Replaced organic geometry with abstract glyphs — felt cold, dropped.' },
+        { label: 'Audio-driven',     note: 'Bloom reacted to room volume — too noisy in a gallery, dropped.' },
+        { label: 'Stillness-only',   note: 'Bloom revealed only after 8s of stillness — kept the spirit, softened the threshold.' },
+        { label: '2D scan blend',    note: 'Doris layered 2D scans over the 3D point cloud — kept, became signature.' },
+        { label: 'Touch-direct',     note: 'Direct touch on the physical flower → strong response — kept for live demos.' },
+      ],
+    },
+    // Tool stack — what's actually under the hood.
+    tools: [
+      { name: 'TouchDesigner',     role: 'Particle system + reactive render. Where the digital twin lives.', group: 'Software' },
+      { name: 'Playtronica Biotron', role: 'Biosignal sensor — touch, light, water, conductivity. MIDI out.', group: 'Hardware', url: 'https://shop.playtronica.com/products/biotron' },
+      { name: 'Photogrammetry',    role: 'Multi-angle flower scans → particle source geometry.',             group: 'Pipeline' },
+      { name: 'Holographic Dome / iPad', role: 'Physical display — prototype dome, then iPad-fed install.',  group: 'Output' },
+    ],
+    // Gallery grid — the rest of the videos shown as looping muted "gifs".
+    gallery: [
+      { video: '/portfolio/assets/case-studies/blooming/reel.mp4',          poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',                 caption: 'Full reel · final cut' },
+      { video: '/portfolio/assets/case-studies/blooming/blooming-x.mp4',    poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',                 caption: 'Particle response · approach state' },
+      { video: '/portfolio/assets/case-studies/blooming/play-force.mp4',    poster: '/portfolio/assets/case-studies/blooming/interactive-trailer-poster.jpg', caption: 'Play + forces study' },
+      { video: '/portfolio/assets/case-studies/blooming/blooming-final.mp4',poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',                 caption: 'Final dome composition' },
+    ],
+    // Big call-out video at the bottom.
+    experience: {
+      youtubeId: '4vzbM2uL0tM',
+      label: 'EXPERIENCE THE BLOOM',
+      sub: 'WATCH FULL EXHIBITION FILM',
+    },
+    credits: [
+      { label: 'Year',     value: '2024' },
+      { label: 'Concept & Direction', value: 'Doris Huang × Tania Olarte' },
+      { label: 'Sound',    value: 'Santino Castagna' },
+      { label: 'Role',     value: 'Interactive Designer · Creative Technologist' },
+      { label: 'Tools',    value: 'TouchDesigner · Biotron · Playtronica · iPad' },
+      { label: 'Exhibited',value: 'Bunjil Place Outdoor Screen · Jul 1–31' },
+    ],
+    awards: [
+      { name: 'RMIT MAGI · Floribunda Response', year: '2024' },
+      { name: 'Bunjil Place · Featured Installation', year: '2024' },
+    ],
+    closing: {
+      title: 'SECOND BLOOMING',
+      tagline: 'A dialogue between the ephemeral nature of life and the infinite persistence of digital code.',
+    },
+    exhibition: {
+      title: 'MAGI Floral Animations',
+      meta: 'Bunjil Place Outdoor Screen · 2 Patrick Northeast Drive, Narre Warren · Jul 1–31 · 3pm & 7pm daily',
+      blurb:
+        "Student animators from RMIT University's Master of Animation, Games and Interactivity responding to the Floribunda exhibition. Second Blooming shows alongside Flare by Cao Xuefan.",
+      url: 'https://www.bunjilplace.com.au/magi-floral-animations',
+      runs: [
+        { venue: 'Bunjil Place · Outdoor Screen',   city: 'Narre Warren, AU', date: 'Jul 2024',  status: 'Featured' },
+        { venue: 'RMIT MAGI Expo',                  city: 'Melbourne, AU',     date: 'Nov 2024',  status: 'Selected' },
+        { venue: 'Floribunda Response · Group Show',city: 'Melbourne, AU',     date: 'Aug 2024',  status: 'Group show' },
+      ],
+      press: [
+        { source: 'Bunjil Place',     quote: 'A meditative interactive piece that earns its quiet.', author: 'Programming notes' },
+        { source: 'RMIT MAGI',        quote: 'A standout response to the Floribunda brief.',         author: 'Faculty review' },
+      ],
+    },
   },
 }
 
@@ -658,7 +920,8 @@ export const work = {
     shortCards: true,
     gallery: [
       // First 3 visible
-      { name: 'NAIBU',                       caseStudyId: 'naibu',   kind: 'creative', tag: 'GAME DESIGN',  tagColor: 'rgba(156,77,255,.9)', img: '/portfolio/assets/case-studies/naibu/hero.jpg' },
+      { name: 'NAIBU',                       caseStudyId: 'naibu',    kind: 'creative', tag: 'GAME DESIGN',          tagColor: 'rgba(156,77,255,.9)', img: '/portfolio/assets/case-studies/naibu/hero.jpg' },
+      { name: 'Second Blooming',             caseStudyId: 'blooming', kind: 'creative', tag: 'INTERACTIVE',          tagColor: 'rgba(255,46,118,.9)', video: '/portfolio/assets/case-studies/blooming/blooming-final.mp4', poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg' },
       { name: 'Break',                                                kind: 'creative', tag: 'VIDEOGAME',    tagColor: 'rgba(0,194,212,.9)',  img: '/portfolio/assets/case-studies/break-game/cover.gif', itchUrl: 'https://taniaolarte.itch.io/break' },
       { name: 'Chasqui',                                              kind: 'creative', tag: 'GAME JAM',     tagColor: 'rgba(255,46,107,.9)', video: '/portfolio/assets/case-studies/chasqui/reel.mp4', poster: '/portfolio/assets/case-studies/chasqui/poster.jpg', itchUrl: 'https://taniaolarte.itch.io/chasqui' },
       // Hidden behind "See more"

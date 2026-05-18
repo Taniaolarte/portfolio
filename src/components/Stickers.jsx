@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import useStickerDrag from './useStickerDrag.js'
 
@@ -196,7 +197,14 @@ const stickers = [
   { id: 'hero-aster2', top: 760, right: '12%', anim: twinkle, node: <TinyAsterisk size={18} color="#22d3ee" />, hideOnMobile: true },
 
   // Around About (900–1953) — pointing at polaroid + skills
-  { id: 'about-thats-me', top: 990,  left: '11%', anim: sway,    node: <ArrowLabel text="that's me!" arrowDir="down" rotate={-6} color="#ffd166" />, hideOnMobile: true },
+  // "that's me!" is anchored to the polaroid so it tracks regardless of viewport / page-height changes.
+  {
+    id: 'about-thats-me',
+    anchor: { selector: '[data-polaroid-target]', from: 'left', offsetX: -110, offsetY: -70 },
+    anim: sway,
+    node: <ArrowLabel text="that's me!" arrowDir="down" rotate={-6} color="#ffd166" />,
+    hideOnMobile: true,
+  },
   { id: 'about-squig',    top: 1280, left: '46%', anim: wobble,  node: <Squiggle color="#c084fc" width={100} />, rotate: -8, hideOnMobile: true },
   { id: 'about-aster',    top: 1500, right: '4%', anim: twinkle, node: <TinyAsterisk size={20} color="#22d3ee" /> },
   { id: 'about-circle',   top: 1700, right: '3%', anim: spinSlow, node: <DoodleCircle size={90} color="#a3e635" />, opacity: 0.45, hideOnMobile: true },
@@ -207,7 +215,15 @@ const stickers = [
   { id: 'skills-star',  top: 2650, left: '4%',  anim: twinkle, node: <ScribbleStar size={24} color="#a3e635" />, rotate: -10, hideOnMobile: true },
 
   // Around Work (3208–7555) — pointing at case studies
-  { id: 'work-label',  top: 3720, right: '6%', anim: sway,    node: <ArrowLabel text="case studies ↓" arrowDir="down" rotate={3} color="#22d3ee" />, hideOnMobile: true },
+  // Anchored to the FIRST .hero-carousel (the 3D & Motion / Animation hero), so it sticks even when
+  // page height shifts between breakpoints.
+  {
+    id: 'work-label',
+    anchor: { selector: '.hero-carousel', from: 'right', offsetX: 20, offsetY: -56 },
+    anim: sway,
+    node: <ArrowLabel text="case studies ↓" arrowDir="down" rotate={3} color="#22d3ee" />,
+    hideOnMobile: true,
+  },
   { id: 'work-star-1', top: 4400, left: '4%',  anim: twinkle, node: <ScribbleStar size={28} color="#ffd166" />, rotate: 18 },
   { id: 'work-aster',  top: 5100, right: '6%', anim: twinkle, node: <TinyAsterisk size={18} color="#ff5470" /> },
   { id: 'work-under',  top: 5500, left: '3%',  anim: wobble,  node: <Underline color="#22d3ee" width={110} />, rotate: -6, hideOnMobile: true },
@@ -222,18 +238,59 @@ const stickers = [
   { id: 'contact-squig', bottom: 130, left: '8%',  anim: wobble,  node: <Squiggle color="#ff5470" width={70} />, rotate: 12, hideOnMobile: true },
 ]
 
+// Computes a document-absolute position for a sticker anchored to another DOM
+// element. Re-measures on resize, scroll-driven layout shifts (via ResizeObserver
+// on the target + body), and a couple of delayed ticks to catch late image loads.
+function useAnchoredPosition(anchor) {
+  const [pos, setPos] = useState(null)
+  useEffect(() => {
+    if (!anchor) return undefined
+    let ro
+    const measure = () => {
+      const target = document.querySelector(anchor.selector)
+      if (!target) { setPos(null); return }
+      const rect = target.getBoundingClientRect()
+      const top = rect.top + window.scrollY + (anchor.offsetY || 0)
+      if (anchor.from === 'right') {
+        const right = window.innerWidth - rect.right + (anchor.offsetX || 0)
+        setPos({ top, right })
+      } else {
+        const left = rect.left + window.scrollX + (anchor.offsetX || 0)
+        setPos({ top, left })
+      }
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    const target = document.querySelector(anchor.selector)
+    if (target && 'ResizeObserver' in window) {
+      ro = new ResizeObserver(measure)
+      ro.observe(target)
+      ro.observe(document.body)
+    }
+    const t1 = setTimeout(measure, 200)
+    const t2 = setTimeout(measure, 1200)
+    return () => {
+      window.removeEventListener('resize', measure)
+      if (ro) ro.disconnect()
+      clearTimeout(t1); clearTimeout(t2)
+    }
+  }, [anchor])
+  return pos
+}
+
 function DraggableSticker({ s }) {
   const px = (v) => (typeof v === 'number' ? `${v}px` : v)
   const { ref, motionProps } = useStickerDrag()
+  const anchored = useAnchoredPosition(s.anchor)
+  const base = s.anchor
+    ? (anchored || { visibility: 'hidden' })
+    : { top: px(s.top), left: px(s.left), right: px(s.right), bottom: px(s.bottom) }
   return (
     <motion.div
       ref={ref}
       className={`sticker${s.hideOnMobile ? ' sticker-hide-mobile' : ''}`}
       style={{
-        top: px(s.top),
-        left: px(s.left),
-        right: px(s.right),
-        bottom: px(s.bottom),
+        ...base,
         opacity: s.opacity,
         ...motionProps.style,
       }}
