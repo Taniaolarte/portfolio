@@ -1,5 +1,77 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+
+// "Blooming" word — letters dissolve into pink particles on hover, re-form
+// on mouseleave. Each letter is a span with a staggered animation, plus a
+// short-lived particle burst spawns from the title's bounds.
+function BloomingDissolve({ text = 'Blooming' }) {
+  const wrapRef = useRef(null)
+  const burstRef = useRef(null)
+  const intervalRef = useRef(null)
+
+  const spawnOne = () => {
+    const wrap = wrapRef.current
+    const host = burstRef.current
+    if (!wrap || !host) return
+    const rect = wrap.getBoundingClientRect()
+    const p = document.createElement('span')
+    p.className = 'csb-title-particle'
+    const x = Math.random() * rect.width
+    const y = rect.height * (0.25 + Math.random() * 0.6)
+    const dx = (Math.random() - 0.5) * 90
+    const dy = -30 - Math.random() * 90
+    const size = 1.5 + Math.random() * 3.5
+    const hue = Math.random() > 0.5 ? '#ff2e76' : '#ff8fb6'
+    p.style.left = `${x}px`
+    p.style.top = `${y}px`
+    p.style.width = `${size}px`
+    p.style.height = `${size}px`
+    p.style.background = hue
+    p.style.boxShadow = `0 0 ${size * 3}px ${hue}`
+    p.style.setProperty('--dx', `${dx}px`)
+    p.style.setProperty('--dy', `${dy}px`)
+    host.appendChild(p)
+    setTimeout(() => p.remove(), 1800)
+  }
+
+  const startStream = () => {
+    if (intervalRef.current) return
+    for (let i = 0; i < 18; i++) setTimeout(spawnOne, i * 18)
+    intervalRef.current = setInterval(() => {
+      spawnOne(); spawnOne(); spawnOne()
+    }, 50)
+  }
+
+  const stopStream = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+      intervalRef.current = null
+    }
+  }
+
+  useEffect(() => () => stopStream(), [])
+
+  return (
+    <span
+      ref={wrapRef}
+      className="csb-title-2 csb-title-dissolve"
+      onMouseEnter={startStream}
+      onMouseLeave={stopStream}
+    >
+      {text.split('').map((ch, i) => (
+        <span
+          key={i}
+          className="csb-title-letter"
+          style={{ '--li': i, '--ln': text.length }}
+          aria-hidden={ch === ' '}
+        >
+          {ch === ' ' ? ' ' : ch}
+        </span>
+      ))}
+      <span ref={burstRef} className="csb-title-burst" aria-hidden="true" />
+    </span>
+  )
+}
 
 // Pre-generated pink-particle field for the modal background. Deterministic
 // (no random seeding) so each render places the same set of pinpoints.
@@ -51,6 +123,17 @@ function ParticleField({ count = 60 }) {
 // "Second Blooming" — dark, poetic, neon-magenta layout for the holographic
 // flower installation. Doris Huang × Tania Olarte, sound by Santino Castagna.
 // Looping muted videos are used as lightweight "gifs" throughout.
+// Hand-picked tilts + offsets so the polaroid wall reads as scattered, not
+// fanned. Index → { rotation deg, x offset px, y offset px }.
+const INSTAX_TILTS = [
+  { r: -8.5, x: -6,  y: 10 },
+  { r:  6,   x:  8,  y: -4 },
+  { r: -3.5, x:  4,  y: 14 },
+  { r: 11,   x: -10, y: 2 },
+  { r: -12,  x:  6,  y: -8 },
+  { r:  4.5, x: -4,  y:  6 },
+]
+
 export default function CaseStudyModalBlooming({ hero, onClose }) {
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose() }
@@ -90,10 +173,9 @@ export default function CaseStudyModalBlooming({ hero, onClose }) {
           <header className="csb-topbar">
             <span className="csb-brand">STUDIO | SECOND BLOOMING</span>
             <nav className="csb-nav">
-              {cs.chapters?.map((ch) => (
-                <a key={ch.nav} href={`#csb-${ch.nav.toLowerCase()}`}>{ch.nav}</a>
-              ))}
-              <a href="#csb-exhibition">EXHIBITION</a>
+              <a href="#csb-process">PROCESS</a>
+              <a href="#csb-flowers">FLOWERS</a>
+              <a href="#csb-outcome">OUTCOME</a>
             </nav>
           </header>
 
@@ -107,11 +189,11 @@ export default function CaseStudyModalBlooming({ hero, onClose }) {
             <span className="csb-pill">{cs.eyebrow}</span>
             <h1 className="csb-title">
               <span className="csb-title-1">Second</span>{' '}
-              <span className="csb-title-2">Blooming</span>
+              <BloomingDissolve text="Blooming" />
             </h1>
             <p className="csb-place">{cs.placeLine}</p>
 
-            {/* Hero video */}
+            {/* Hero video — wide */}
             {cs.heroVideo && (
               <div className="csb-hero-reel">
                 <video
@@ -122,65 +204,112 @@ export default function CaseStudyModalBlooming({ hero, onClose }) {
               </div>
             )}
 
-            {/* Pull-quote intro */}
+            {/* Intro — process-led, with a small flower divider above */}
             <div className="csb-intro">
-              <span className="csb-quote-glyph" aria-hidden="true">"</span>
-              <p>
-                Second Blooming is a meditation on the digital afterlife of organic forms.
-                By capturing the essence of a physical flower and translating it into a reactive
-                particle system, we create a dialogue between the{' '}
-                <span className="csb-pink">tangible</span> and the{' '}
-                <span className="csb-pink-soft">ephemeral</span>.
-              </p>
+              <svg
+                className="csb-quote-flower"
+                viewBox="0 0 40 40"
+                aria-hidden="true"
+                width="34" height="34"
+              >
+                <g fill="#ff2e76">
+                  <ellipse cx="20" cy="9"  rx="4" ry="6.5" />
+                  <ellipse cx="20" cy="31" rx="4" ry="6.5" />
+                  <ellipse cx="9"  cy="20" rx="6.5" ry="4" />
+                  <ellipse cx="31" cy="20" rx="6.5" ry="4" />
+                  <ellipse cx="12" cy="12" rx="4.5" ry="4.5" transform="rotate(-45 12 12)" />
+                  <ellipse cx="28" cy="12" rx="4.5" ry="4.5" transform="rotate(45 28 12)" />
+                  <ellipse cx="12" cy="28" rx="4.5" ry="4.5" transform="rotate(45 12 28)" />
+                  <ellipse cx="28" cy="28" rx="4.5" ry="4.5" transform="rotate(-45 28 28)" />
+                </g>
+                <circle cx="20" cy="20" r="3" fill="#ffd9e6" />
+              </svg>
+              <p>{cs.intro?.body}</p>
             </div>
           </section>
 
-          {/* Three alternating chapters */}
-          {cs.chapters?.map((ch, i) => (
-            <section
-              id={`csb-${ch.nav.toLowerCase()}`}
-              key={ch.nav}
-              className={`csb-chapter${ch.flip ? ' csb-chapter-flip' : ''}`}
-            >
-              <div className="csb-chapter-inner">
-                <div className="csb-chapter-text">
-                  <span className="csb-step">{ch.eyebrow}</span>
-                  <h2 className="csb-h2">{ch.title}</h2>
-                  <p className="csb-p">{ch.body}</p>
-                </div>
-                <div className="csb-chapter-media">
-                  <video
-                    src={ch.media.video}
-                    poster={ch.media.poster}
-                    autoPlay muted loop playsInline
-                  />
-                  <div className="csb-media-glow" aria-hidden="true" />
-                </div>
-              </div>
-            </section>
-          ))}
-
-          {/* PROCESS — step-by-step */}
+          {/* PROCESS — step-by-step, with the engine + stack folded in */}
           {cs.process?.length > 0 && (
-            <section className="csb-section csb-process-section">
+            <section id="csb-process" className="csb-section csb-process-section">
               <div className="csb-section-inner">
                 <div className="csb-section-head">
                   <span className="csb-step">PROCESS</span>
-                  <h2 className="csb-h2 csb-h2-left">From scan to dome</h2>
-                  <p className="csb-section-lede">Six stages took the bloom from a real flower to a reactive twin breathing on the Bunjil Place outdoor screen.</p>
+                  <h2 className="csb-h2 csb-h2-left">From scan to dome to outdoor screen</h2>
+                  <p className="csb-section-lede">Eight stages took the bloom from a real flower to a reactive twin breathing on the Bunjil Place outdoor screen.</p>
                 </div>
                 <ol className="csb-process">
                   {cs.process.map((p) => (
-                    <li className="csb-process-step" key={p.num}>
+                    <li className={`csb-process-step${p.media ? ' csb-process-step-media' : ''}`} key={p.num}>
                       <div className="csb-process-num">{p.num}</div>
                       <div className="csb-process-body">
                         <span className="csb-process-eyebrow">{p.eyebrow}</span>
                         <h3 className="csb-process-title">{p.title}</h3>
                         <p className="csb-process-text">{p.body}</p>
+                        {p.media && (
+                          <figure className="csb-process-media">
+                            <video
+                              src={p.media.video}
+                              poster={p.media.poster}
+                              autoPlay muted loop playsInline
+                            />
+                            {p.media.caption && (
+                              <figcaption>{p.media.caption}</figcaption>
+                            )}
+                          </figure>
+                        )}
                       </div>
                     </li>
                   ))}
                 </ol>
+
+                {/* Inside the engine — Particle Engine etc., folded into process */}
+                {cs.features?.length > 0 && (
+                  <div className="csb-process-sub">
+                    <div className="csb-section-head csb-section-head-sub">
+                      <span className="csb-step">INSIDE THE ENGINE</span>
+                      <h3 className="csb-h2 csb-h2-left csb-h2-sub">What's running on every frame</h3>
+                    </div>
+                    <div className="csb-features">
+                      {cs.features.map((f) => (
+                        <div className="csb-feature" key={f.label}>
+                          <div className="csb-feature-icon" aria-hidden="true">
+                            <span />
+                          </div>
+                          <h4 className="csb-feature-label">{f.label}</h4>
+                          <p className="csb-feature-body">{f.body}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* The stack under the bloom — tools, folded into process */}
+                {cs.tools?.length > 0 && (
+                  <div className="csb-process-sub">
+                    <div className="csb-section-head csb-section-head-sub">
+                      <span className="csb-step">TOOLS</span>
+                      <h3 className="csb-h2 csb-h2-left csb-h2-sub">The stack under the bloom</h3>
+                    </div>
+                    <div className="csb-tools">
+                      {cs.tools.map((t) => {
+                        const Tag = t.url ? 'a' : 'div'
+                        const linkProps = t.url
+                          ? { href: t.url, target: '_blank', rel: 'noopener noreferrer' }
+                          : {}
+                        return (
+                          <Tag className={`csb-tool${t.url ? ' csb-tool-link' : ''}`} key={t.name} {...linkProps}>
+                            <span className="csb-tool-group">{t.group}</span>
+                            <h4 className="csb-tool-name">
+                              {t.name}
+                              {t.url && <span className="csb-tool-arrow" aria-hidden="true"> ↗</span>}
+                            </h4>
+                            <p className="csb-tool-role">{t.role}</p>
+                          </Tag>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
             </section>
           )}
@@ -206,70 +335,53 @@ export default function CaseStudyModalBlooming({ hero, onClose }) {
             </section>
           )}
 
-          {/* Feature grid */}
-          <section className="csb-features-section">
-            <div className="csb-features">
-              {cs.features?.map((f) => (
-                <div className="csb-feature" key={f.label}>
-                  <div className="csb-feature-icon" aria-hidden="true">
-                    <span />
-                  </div>
-                  <h4 className="csb-feature-label">{f.label}</h4>
-                  <p className="csb-feature-body">{f.body}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Installation gallery */}
-          <section className="csb-section">
-            <div className="csb-section-inner">
-              <div className="csb-gallery-head">
-                <h2 className="csb-h2 csb-h2-left">The Installation</h2>
-                <p className="csb-gallery-cap">
-                  Captured moments of the interactive journey where physical reality meets digital abstraction.
-                </p>
-              </div>
-              <div className="csb-gallery">
-                {cs.gallery?.map((g, i) => (
-                  <figure className="csb-gif" key={i}>
-                    <video
-                      src={g.video}
-                      poster={g.poster}
-                      autoPlay muted loop playsInline
-                    />
-                    {g.caption && <figcaption>{g.caption}</figcaption>}
-                  </figure>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* TOOLS — stack table */}
-          {cs.tools?.length > 0 && (
-            <section className="csb-section csb-tools-section">
+          {/* Installation gallery — only rendered when there are items */}
+          {cs.gallery?.length > 0 && (
+            <section className="csb-section">
               <div className="csb-section-inner">
-                <div className="csb-section-head">
-                  <span className="csb-step">TOOLS</span>
-                  <h2 className="csb-h2 csb-h2-left">The stack under the bloom</h2>
+                <div className="csb-gallery-head">
+                  <h2 className="csb-h2 csb-h2-left">The Installation</h2>
+                  <p className="csb-gallery-cap">
+                    Captured moments of the interactive journey where physical reality meets digital abstraction.
+                  </p>
                 </div>
-                <div className="csb-tools">
-                  {cs.tools.map((t) => {
-                    const Tag = t.url ? 'a' : 'div'
-                    const linkProps = t.url
-                      ? { href: t.url, target: '_blank', rel: 'noopener noreferrer' }
-                      : {}
-                    return (
-                      <Tag className={`csb-tool${t.url ? ' csb-tool-link' : ''}`} key={t.name} {...linkProps}>
-                        <span className="csb-tool-group">{t.group}</span>
-                        <h4 className="csb-tool-name">
-                          {t.name}
-                          {t.url && <span className="csb-tool-arrow" aria-hidden="true"> ↗</span>}
-                        </h4>
-                        <p className="csb-tool-role">{t.role}</p>
-                      </Tag>
-                    )
-                  })}
+                <div className="csb-gallery">
+                  {cs.gallery.map((g, i) => (
+                    <figure className="csb-gif" key={i}>
+                      <video
+                        src={g.video}
+                        poster={g.poster}
+                        autoPlay muted loop playsInline
+                      />
+                      {g.caption && <figcaption>{g.caption}</figcaption>}
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* The flowers — four blooms from the linear cut, side by side */}
+          {cs.flowers?.length > 0 && (
+            <section id="csb-flowers" className="csb-section">
+              <div className="csb-section-inner">
+                <div className="csb-gallery-head">
+                  <h2 className="csb-h2 csb-h2-left">{cs.flowersHead?.title || 'The flowers'}</h2>
+                  {cs.flowersHead?.caption && (
+                    <p className="csb-gallery-cap">{cs.flowersHead.caption}</p>
+                  )}
+                </div>
+                <div className="csb-gallery csb-flowers-grid">
+                  {cs.flowers.map((f, i) => (
+                    <figure className="csb-gif csb-flower-tile" key={i}>
+                      <video
+                        src={f.video}
+                        poster={f.poster}
+                        autoPlay muted loop playsInline
+                      />
+                      {f.caption && <figcaption>{f.caption}</figcaption>}
+                    </figure>
+                  ))}
                 </div>
               </div>
             </section>
@@ -305,12 +417,61 @@ export default function CaseStudyModalBlooming({ hero, onClose }) {
             </div>
           </section>
 
-          {/* Exhibition card */}
+          {/* Outcome — vision realised + Bunjil exhibition + upcoming SIGGRAPH Asia */}
           {cs.exhibition && (
-            <section id="csb-exhibition" className="csb-exh-section">
+            <section id="csb-outcome" className="csb-exh-section">
+              {(cs.exhibition.outcomeTitle || cs.exhibition.vision) && (
+                <div className="csb-section-head">
+                  <span className="csb-step">{cs.exhibition.outcomeEyebrow || 'OUTCOME'}</span>
+                  {cs.exhibition.outcomeTitle && (
+                    <h2 className="csb-h2 csb-h2-left">{cs.exhibition.outcomeTitle}</h2>
+                  )}
+                  {cs.exhibition.vision && (
+                    <p className="csb-section-lede">{cs.exhibition.vision}</p>
+                  )}
+                </div>
+              )}
+
+              {cs.exhibition.outcomeVideo && (
+                <div className="csb-outcome-reel">
+                  <video
+                    src={cs.exhibition.outcomeVideo}
+                    poster={cs.exhibition.outcomePoster}
+                    autoPlay muted loop playsInline
+                  />
+                  <div className="csb-media-glow" aria-hidden="true" />
+                </div>
+              )}
+
+              {cs.exhibition.instax?.length > 0 && (
+                <div className="csb-instax-wall" aria-label="Opening night polaroids">
+                  {cs.exhibition.instax.map((shot, i) => {
+                    const t = INSTAX_TILTS[i % INSTAX_TILTS.length]
+                    return (
+                      <figure
+                        className="csb-instax"
+                        key={i}
+                        style={{
+                          '--rot': `${t.r}deg`,
+                          '--tx': `${t.x}px`,
+                          '--ty': `${t.y}px`,
+                        }}
+                      >
+                        <div className="csb-instax-photo">
+                          <img src={shot.src} alt={shot.caption || ''} loading="lazy" />
+                        </div>
+                        {shot.caption && (
+                          <figcaption className="csb-instax-cap">{shot.caption}</figcaption>
+                        )}
+                      </figure>
+                    )
+                  })}
+                </div>
+              )}
+
               <div className="csb-exh">
-                <div className="csb-exh-tag">Now Showing</div>
-                <h2 className="csb-h2 csb-h2-left">{cs.exhibition.title}</h2>
+                <div className="csb-exh-tag">{cs.exhibition.tag || 'Featured'}</div>
+                <h3 className="csb-h2 csb-h2-left">{cs.exhibition.title}</h3>
                 <p className="csb-exh-meta">{cs.exhibition.meta}</p>
                 <p className="csb-exh-blurb">{cs.exhibition.blurb}</p>
                 <a
@@ -340,15 +501,20 @@ export default function CaseStudyModalBlooming({ hero, onClose }) {
                 </div>
               )}
 
-              {/* Press */}
-              {cs.exhibition.press?.length > 0 && (
-                <div className="csb-press">
-                  {cs.exhibition.press.map((q, i) => (
-                    <blockquote className="csb-press-quote" key={i}>
-                      <p>“{q.quote}”</p>
-                      <cite>— {q.source}, {q.author}</cite>
-                    </blockquote>
-                  ))}
+              {/* Upcoming / in process */}
+              {cs.exhibition.upcoming?.length > 0 && (
+                <div className="csb-runs csb-runs-upcoming">
+                  <h4 className="csb-runs-title">Upcoming · in process</h4>
+                  <ul>
+                    {cs.exhibition.upcoming.map((r, i) => (
+                      <li key={i}>
+                        <span className="csb-run-date">{r.date}</span>
+                        <span className="csb-run-venue">{r.venue}</span>
+                        <span className="csb-run-city">{r.city}</span>
+                        <span className="csb-run-status">{r.status}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </section>

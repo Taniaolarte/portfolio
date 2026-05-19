@@ -520,46 +520,15 @@ const bloomingCase = {
   caseStudy: {
     coverImage: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
     youtubeUrl: 'https://youtu.be/4vzbM2uL0tM',
-    heroVideo: '/portfolio/assets/case-studies/blooming/blooming-final.mp4',
+    heroVideo: '/portfolio/assets/case-studies/blooming/BloomingInteractionMain.mp4',
     heroPoster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
-    eyebrow: 'INTERACTIVE INSTALLATION',
-    placeLine: 'EXHIBITED AT BUNJIL PLACE',
+    eyebrow: 'INTERACTIVE INSTALLATION · CASE STUDY',
+    placeLine: 'SCAN → BIOTRON → TOUCHDESIGNER → DOME → BUNJIL PLACE',
     intro: {
-      pull: 'tangible',
-      pullAlt: 'ephemeral',
       body:
-        "Second Blooming is a meditation on the digital afterlife of organic forms. By capturing the essence of a physical flower and translating it into a reactive particle system, we create a dialogue between the tangible and the ephemeral.",
+        "A six-stage build: 3D-scan a real flower, plug it into a Playtronica Biotron, drive a TouchDesigner particle system off the biosignal stream, render the twin through a holographic dome, score it with Santino Castagna, and ship the whole thing to an outdoor screen. This is the working log of how it came together.",
     },
-    // Three alternating chapters — text + looping muted video as the "gif" visual.
-    chapters: [
-      {
-        nav: 'ABOUT',
-        eyebrow: 'THE VISION',
-        title: 'Physical Soul, Digital Spirit',
-        body:
-          "Second Blooming is an interactive installation that explores the bridge between organic life and digital existence. A single flower stands as the anchor for a narrative digital twin, rendered in thousands of reactive neon particles.",
-        media: { video: '/portfolio/assets/case-studies/blooming/blooming-x.mp4', poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg' },
-        flip: false,
-      },
-      {
-        nav: 'DIGITAL TWIN',
-        eyebrow: 'THE TWIN',
-        title: 'A Window Into the Void',
-        body:
-          "Encased within a custom-designed dome, the digital vein appears as a floating hologram. This dome acts as the medium where light and mathematics converge to recreate the flower's geometry in a shimmering, ethereal form.",
-        media: { video: '/portfolio/assets/case-studies/blooming/play-force.mp4', poster: '/portfolio/assets/case-studies/blooming/interactive-trailer-poster.jpg' },
-        flip: true,
-      },
-      {
-        nav: 'INTERACTION',
-        eyebrow: 'INTERACTION + PRESENCE',
-        title: 'The Dissolving Presence',
-        body:
-          "The installation challenges the audience's proximity. As you get closer to the physical flower, its digital twin begins to dissolve. This reactive behaviour symbolises the fragile balance between observing and disrupting a natural state.",
-        media: { video: '/portfolio/assets/case-studies/blooming/blooming-final.mp4', poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg' },
-        flip: false,
-      },
-    ],
+    chapters: [],
     features: [
       { label: 'PARTICLE ENGINE',   body: "Built in TouchDesigner — thousands of reactive particles emitted from the 3D-scanned flower geometry, rendered in real time." },
       { label: 'BIOSIGNAL SENSING', body: "The Playtronica Biotron reads touch, light, water, and conductivity from the physical flower, streaming MIDI into the system." },
@@ -595,6 +564,11 @@ const bloomingCase = {
         title: 'TouchDesigner particle pipeline',
         body:
           "Built the reactive system in TouchDesigner: 3D-scan geometry → particle emitters → biosignal modulators → render. Every frame, audience proximity rewrites the modulators, which feed the emitters, which redraw the flower.",
+        media: {
+          video: '/portfolio/assets/case-studies/blooming/Play_Force_Experiments_web.mp4',
+          poster: '/portfolio/assets/case-studies/blooming/interactive-trailer-poster.jpg',
+          caption: 'Play + force experiments · R&D session',
+        },
       },
       {
         num: '05',
@@ -609,6 +583,25 @@ const bloomingCase = {
         title: 'Santino\'s reactive score',
         body:
           "Santino Castagna composed a score that listens to the particle state — when the bloom dissolves, the score thins; when it re-forms, harmonics return. The audio is layered, not continuous, so silence remains part of the piece.",
+      },
+      {
+        num: '07',
+        eyebrow: 'TUNING',
+        title: 'Proximity falloff & dissolve curves',
+        body:
+          "Tuned the dissolve so the bloom rewarded slow approach and punished crowding. Dozens of in-room walkthroughs to find the falloff that read as breath, not glitch — and to make stillness, not movement, the trigger that re-forms the flower.",
+      },
+      {
+        num: '08',
+        eyebrow: 'INSTALL',
+        title: 'Outdoor screen deployment',
+        body:
+          "Re-graded the patch for Bunjil Place's outdoor screen against ambient daylight, scaled the particle counts for the bigger canvas, and locked the loop to a 3-minute cycle so it could slot into the 3pm and 7pm daily screenings.",
+        media: {
+          video: '/portfolio/assets/case-studies/blooming/reel.mp4',
+          poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
+          caption: 'Trailer · full reel',
+        },
       },
     ],
     // Exploration sketches / R&D — the messier middle of the project.
@@ -632,12 +625,20 @@ const bloomingCase = {
       { name: 'Photogrammetry',    role: 'Multi-angle flower scans → particle source geometry.',             group: 'Pipeline' },
       { name: 'Holographic Dome / iPad', role: 'Physical display — prototype dome, then iPad-fed install.',  group: 'Output' },
     ],
-    // Gallery grid — the rest of the videos shown as looping muted "gifs".
-    gallery: [
-      { video: '/portfolio/assets/case-studies/blooming/reel.mp4',          poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',                 caption: 'Full reel · final cut' },
-      { video: '/portfolio/assets/case-studies/blooming/blooming-x.mp4',    poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',                 caption: 'Particle response · approach state' },
-      { video: '/portfolio/assets/case-studies/blooming/play-force.mp4',    poster: '/portfolio/assets/case-studies/blooming/interactive-trailer-poster.jpg', caption: 'Play + forces study' },
-      { video: '/portfolio/assets/case-studies/blooming/blooming-final.mp4',poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',                 caption: 'Final dome composition' },
+    // Gallery moved into the process steps; section hidden when empty.
+    gallery: [],
+    // The flowers — four blooms from the linear cut. Flower 01 is the final
+    // dome composition (animation version); 02–04 are extracted from the
+    // YouTube source at the timestamps the artist called out.
+    flowersHead: {
+      title: 'The flowers',
+      caption: "Four blooms ran through the linear cut — same engine, different geometry, different decay.",
+    },
+    flowers: [
+      { video: '/portfolio/assets/case-studies/blooming/blooming-final.mp4', poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 01 · animation version · final dome composition' },
+      { video: '/portfolio/assets/case-studies/blooming/flower-02.mp4',     poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 02 · 0:07 → 0:50' },
+      { video: '/portfolio/assets/case-studies/blooming/flower-03.mp4',     poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 03 · 0:56 → 1:15' },
+      { video: '/portfolio/assets/case-studies/blooming/flower-04.mp4',     poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 04 · 1:19 → 1:50' },
     ],
     // Big call-out video at the bottom.
     experience: {
@@ -662,19 +663,30 @@ const bloomingCase = {
       tagline: 'A dialogue between the ephemeral nature of life and the infinite persistence of digital code.',
     },
     exhibition: {
-      title: 'MAGI Floral Animations',
-      meta: 'Bunjil Place Outdoor Screen · 2 Patrick Northeast Drive, Narre Warren · Jul 1–31 · 3pm & 7pm daily',
+      outcomeEyebrow: 'OUTCOME',
+      outcomeTitle: 'From scan to outdoor screen',
+      vision:
+        "The original ask was poetic: a flower with a digital ghost, something that could breathe and dissolve and respond. The outcome was concrete — Second Blooming was selected for the MAGI Floral Animations response to Bunjil Place's Floribunda exhibition and played daily on the outdoor screen for the run.",
+      outcomeVideo: '/portfolio/assets/case-studies/blooming/blooming-x.mp4',
+      outcomePoster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
+      // Instax-style polaroid wall from opening night at Bunjil Place.
+      instax: [
+        { src: '/portfolio/assets/case-studies/blooming/1752551433716.jpeg', caption: 'Bunjil · opening night' },
+        { src: '/portfolio/assets/case-studies/blooming/1752551434746.jpeg', caption: 'Audience · 7pm screening' },
+        { src: '/portfolio/assets/case-studies/blooming/1752551435933.jpeg', caption: 'Bloom on the big screen' },
+        { src: '/portfolio/assets/case-studies/blooming/1752551434626.jpeg', caption: 'Outdoor screen · dusk' },
+      ],
+      tag: 'Featured · Bunjil Place',
+      title: 'MAGI Floral Animations · Bunjil Place',
+      meta: 'Bunjil Place Outdoor Screen · 2 Patrick Northeast Drive, Narre Warren · Jul 1–31, 2024 · 3pm & 7pm daily',
       blurb:
-        "Student animators from RMIT University's Master of Animation, Games and Interactivity responding to the Floribunda exhibition. Second Blooming shows alongside Flare by Cao Xuefan.",
+        "Student animators from RMIT University's Master of Animation, Games and Interactivity responding to the Floribunda exhibition. Second Blooming showed alongside Flare by Cao Xuefan.",
       url: 'https://www.bunjilplace.com.au/magi-floral-animations',
       runs: [
-        { venue: 'Bunjil Place · Outdoor Screen',   city: 'Narre Warren, AU', date: 'Jul 2024',  status: 'Featured' },
-        { venue: 'RMIT MAGI Expo',                  city: 'Melbourne, AU',     date: 'Nov 2024',  status: 'Selected' },
-        { venue: 'Floribunda Response · Group Show',city: 'Melbourne, AU',     date: 'Aug 2024',  status: 'Group show' },
+        { venue: 'Bunjil Place · Outdoor Screen', city: 'Narre Warren, AU', date: 'Jul 2024', status: 'Featured' },
       ],
-      press: [
-        { source: 'Bunjil Place',     quote: 'A meditative interactive piece that earns its quiet.', author: 'Programming notes' },
-        { source: 'RMIT MAGI',        quote: 'A standout response to the Floribunda brief.',         author: 'Faculty review' },
+      upcoming: [
+        { venue: 'SIGGRAPH Asia · Art Gallery', city: 'TBA', date: '2026', status: 'In submission' },
       ],
     },
   },

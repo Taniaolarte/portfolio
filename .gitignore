@@ -4,3 +4,7 @@ dist-ssr
 .DS_Store
 *.local
 .vite
+
+# Uncompressed source video (over GitHub's 100MB limit) — keep the
+# Play_Force_Experiments_web.mp4 build instead.
+public/assets/case-studies/blooming/Play_Force_Experiments.mp4
