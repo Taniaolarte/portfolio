@@ -11,8 +11,8 @@ const skills = [
   { name: 'After Effects', pct: 92 },
   { name: 'Illustrator / Figma', pct: 88 },
   { name: 'Premiere Pro', pct: 85 },
-  { name: 'Cinema 4D', pct: 78 },
-  { name: 'DaVinci Resolve', pct: 72 },
+  { name: 'Unity', pct: 78 },
+  { name: 'UI/UX Design', pct: 72 },
 ]
 
 const stats = [

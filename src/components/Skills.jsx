@@ -87,8 +87,8 @@ const services = [
 // Unicolor (accent purple) badges — clean & unified.
 const tools = [
   { name: 'After Effects', abbr: 'Ae'  },
-  { name: 'Cinema 4D',     abbr: 'C4D' },
-  { name: 'Blender',       abbr: 'Bl'  },
+  { name: 'Canva',         abbr: 'Cv'  },
+  { name: 'HTML',          abbr: 'H'   },
   { name: 'Premiere Pro',  abbr: 'Pr'  },
   { name: 'Photoshop',     abbr: 'Ps'  },
   { name: 'Illustrator',   abbr: 'Ai'  },
