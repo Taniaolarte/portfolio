@@ -1261,6 +1261,14 @@ nav {
   #hero { padding:96px 20px 64px; min-height:90vh; }
   .hero-tag { font-size:10px; padding:5px 16px; letter-spacing:2.5px; }
   .hero-name { font-size:clamp(72px,17vw,112px); letter-spacing:-3px; }
+  /* Mobile: lift the sketched "Portfolio" so it centres vertically on the name.
+     Desktop sketch sits at top:6px with 30px padding — on mobile the smaller
+     display name leaves the sketch hanging low; pull it up & shrink the padding. */
+  .hero-name-sketch {
+    top:-24px;
+    padding:18px 0;
+    font-size:clamp(68px, 16vw, 104px) !important;
+  }
   .hero-title { font-size:clamp(18px,5vw,24px); }
   .hero-desc { font-size:15px; margin-bottom:36px; }
   .hero-btns { flex-direction:column; gap:12px; width:100%; }
@@ -3685,3 +3693,473 @@ a.csb-tool-link:hover .csb-tool-arrow { transform:translate(3px,-3px); }
   .cse-logo-vars { grid-template-columns:1fr; }
   .cse-credits { grid-template-columns:1fr; }
 }
+
+/* ════════════════════════════════════════════════════════
+   THE VAULT · escape-room eye animation case study
+   ════════════════════════════════════════════════════════ */
+.csv-overlay {
+  position:fixed; inset:0;
+  background:rgba(8,6,2,0.86);
+  backdrop-filter:blur(6px);
+  z-index:1000;
+  overflow-y:auto;
+  display:flex; justify-content:center;
+  padding:24px 0;
+}
+.csv-modal {
+  position:relative;
+  width:min(960px, 96vw);
+  margin:auto;
+  background:
+    radial-gradient(80% 60% at 50% -10%, rgba(212,175,55,0.18), transparent 60%),
+    linear-gradient(180deg, #0e0a04 0%, #15100a 50%, #0a0805 100%);
+  color:#e6dcc1;
+  border:1px solid rgba(212,175,55,0.35);
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(212,175,55,0.08),
+    inset 0 1px 0 rgba(255,235,170,0.06);
+  font-family:'Inter', system-ui, sans-serif;
+}
+
+.csv-close {
+  position:absolute; top:14px; right:14px;
+  width:36px; height:36px;
+  background:rgba(212,175,55,0.12);
+  border:1px solid rgba(212,175,55,0.4);
+  color:#d4af37;
+  font-size:22px; line-height:1;
+  border-radius:50%;
+  cursor:pointer; z-index:5;
+  transition:background 0.2s, transform 0.2s;
+}
+.csv-close:hover { background:rgba(212,175,55,0.25); transform:rotate(90deg); }
+
+.csv-scanlines {
+  position:absolute; inset:0;
+  background:repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 3px,
+    rgba(0,0,0,0.18) 3px,
+    rgba(0,0,0,0.18) 4px
+  );
+  pointer-events:none;
+  z-index:3;
+  mix-blend-mode:multiply;
+  opacity:0.45;
+}
+.csv-grain {
+  position:absolute; inset:0;
+  background-image:radial-gradient(rgba(255,235,170,0.04) 1px, transparent 1px);
+  background-size:3px 3px;
+  pointer-events:none; z-index:2;
+  opacity:0.5;
+}
+
+/* Hero */
+.csv-hero {
+  position:relative; z-index:4;
+  padding:64px 32px 36px;
+  text-align:center;
+}
+.csv-stencil {
+  display:inline-block;
+  font-family:'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size:10px; letter-spacing:0.42em;
+  color:#d4af37;
+  border:1px solid rgba(212,175,55,0.45);
+  padding:6px 14px;
+  margin-bottom:28px;
+  text-transform:uppercase;
+}
+.csv-eye-stage {
+  position:relative;
+  width:min(420px, 80%);
+  margin:0 auto 18px;
+  aspect-ratio:240/120;
+}
+.csv-eye-stage .csv-eye-svg {
+  width:100%; height:100%;
+  display:block;
+  filter:drop-shadow(0 6px 24px rgba(212,175,55,0.35));
+}
+.csv-eye-glow {
+  position:absolute; inset:-30% -10% -30%;
+  background:radial-gradient(closest-side, rgba(212,175,55,0.35), transparent 70%);
+  z-index:-1;
+  filter:blur(20px);
+  animation:csv-glow-pulse 4s ease-in-out infinite;
+}
+@keyframes csv-glow-pulse {
+  0%, 100% { opacity:0.55; }
+  50%      { opacity:0.9;  }
+}
+
+/* Iris pupil dilation + slow look-around */
+.csv-eye-iris {
+  transform-origin:120px 60px;
+  animation:csv-iris-scan 7s ease-in-out infinite;
+}
+@keyframes csv-iris-scan {
+  0%    { transform:translate(0, 0); }
+  18%   { transform:translate(-14px, -4px); }
+  36%   { transform:translate(10px, -3px); }
+  55%   { transform:translate(8px, 5px); }
+  72%   { transform:translate(-8px, 4px); }
+  100%  { transform:translate(0, 0); }
+}
+
+/* Eyelid blink — closes briefly */
+.csv-eyelid {
+  transform-origin:50% 60px;
+  animation:csv-blink 5.2s ease-in-out infinite;
+}
+@keyframes csv-blink {
+  0%, 92%, 100% { transform:scaleY(1); }
+  94%           { transform:scaleY(48); }
+  96%           { transform:scaleY(1); }
+}
+
+.csv-title {
+  font-family:'Playfair Display', 'Inter', serif;
+  font-weight:900;
+  font-size:clamp(48px, 9vw, 110px);
+  letter-spacing:0.04em;
+  line-height:1;
+  margin:8px 0 4px;
+  color:#f3e2a7;
+  text-shadow:
+    0 2px 0 rgba(0,0,0,0.4),
+    0 0 30px rgba(212,175,55,0.25);
+}
+.csv-subtitle {
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px; letter-spacing:0.42em;
+  color:rgba(230,220,193,0.6);
+  text-transform:uppercase;
+  margin:0;
+}
+.csv-rule {
+  width:60%; max-width:340px;
+  height:1px;
+  margin:22px auto 14px;
+  background:linear-gradient(90deg, transparent, rgba(212,175,55,0.55), transparent);
+}
+.csv-meta {
+  display:flex; justify-content:center; gap:10px;
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px; letter-spacing:0.28em;
+  color:rgba(230,220,193,0.55);
+  flex-wrap:wrap;
+}
+
+/* Sections */
+.csv-section {
+  position:relative; z-index:4;
+  padding:36px 32px;
+  border-top:1px solid rgba(212,175,55,0.12);
+}
+.csv-section-head { margin-bottom:24px; }
+.csv-step {
+  display:inline-block;
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px; letter-spacing:0.4em;
+  color:#d4af37;
+  text-transform:uppercase;
+  margin-bottom:10px;
+  padding:4px 10px;
+  border:1px solid rgba(212,175,55,0.35);
+  border-radius:2px;
+}
+.csv-h2 {
+  font-family:'Playfair Display', 'Inter', serif;
+  font-weight:700;
+  font-size:clamp(28px, 4vw, 42px);
+  letter-spacing:0.02em;
+  margin:0 0 12px;
+  color:#f3e2a7;
+}
+.csv-h2-left { text-align:left; }
+.csv-section-lede {
+  color:rgba(230,220,193,0.72);
+  font-size:15px;
+  line-height:1.6;
+  max-width:62ch;
+  margin:0;
+}
+
+/* Eye reel */
+.csv-eye-reel {
+  margin:0 auto;
+  max-width:760px;
+  border:1px solid rgba(212,175,55,0.35);
+  border-radius:4px;
+  overflow:hidden;
+  background:#000;
+  box-shadow:
+    0 0 0 4px rgba(212,175,55,0.06),
+    0 20px 60px rgba(0,0,0,0.5);
+}
+.csv-eye-reel video {
+  width:100%; display:block;
+  aspect-ratio:16/9;
+  object-fit:cover;
+}
+.csv-eye-reel figcaption {
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px; letter-spacing:0.3em;
+  color:rgba(230,220,193,0.55);
+  text-align:center;
+  padding:10px 12px;
+  border-top:1px solid rgba(212,175,55,0.18);
+  background:rgba(0,0,0,0.4);
+}
+
+/* Brief */
+.csv-brief {
+  max-width:720px;
+  margin:0 auto;
+  text-align:center;
+  padding:16px 0;
+}
+.csv-brief .csv-h2-left { text-align:center; }
+.csv-brief-body {
+  color:rgba(230,220,193,0.85);
+  font-size:16px;
+  line-height:1.7;
+  margin:0 auto;
+  max-width:60ch;
+}
+
+/* Venue / same-creators block */
+.csv-venue-section {
+  background:linear-gradient(180deg, transparent 0%, rgba(212,175,55,0.04) 100%);
+}
+.csv-venue {
+  max-width:720px;
+  margin:0 auto;
+  text-align:center;
+}
+.csv-venue .csv-h2-left { text-align:center; }
+.csv-venue-links {
+  display:flex; justify-content:center; gap:14px;
+  flex-wrap:wrap; margin-top:16px;
+}
+.csv-venue-link {
+  display:inline-block;
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px; letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:#d4af37;
+  border:1px solid rgba(212,175,55,0.45);
+  padding:10px 16px;
+  border-radius:2px;
+  text-decoration:none;
+  transition:background 0.2s, color 0.2s, transform 0.2s;
+}
+.csv-venue-link:hover {
+  background:#d4af37;
+  color:#0a0805;
+  transform:translateY(-2px);
+}
+
+/* Process */
+.csv-process {
+  list-style:none;
+  padding:0; margin:0;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:18px;
+}
+.csv-process li {
+  background:rgba(255,235,170,0.03);
+  border:1px solid rgba(212,175,55,0.2);
+  border-radius:4px;
+  padding:22px 18px;
+}
+.csv-process-num {
+  display:inline-block;
+  font-family:'Playfair Display', serif;
+  font-size:28px;
+  color:#d4af37;
+  font-weight:700;
+}
+.csv-process-label {
+  display:block;
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px; letter-spacing:0.4em;
+  color:rgba(230,220,193,0.65);
+  margin:6px 0 10px;
+}
+.csv-process-text {
+  font-size:14px; line-height:1.6;
+  color:rgba(230,220,193,0.82);
+  margin:0;
+}
+
+/* Polaroid wall */
+.csv-polaroid-wall {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));
+  gap:24px;
+  padding:24px 8px 12px;
+  background:
+    radial-gradient(60% 40% at 50% 0%, rgba(212,175,55,0.06), transparent 70%);
+}
+.csv-polaroid {
+  background:#f5ecd9;
+  padding:10px 10px 38px;
+  box-shadow:
+    0 18px 30px rgba(0,0,0,0.55),
+    0 2px 0 rgba(0,0,0,0.2);
+  transform:rotate(var(--rot, 0deg)) translate(var(--tx, 0px), var(--ty, 0px));
+  transition:transform 0.4s cubic-bezier(.2,.7,.2,1.2), box-shadow 0.3s;
+  border-radius:2px;
+  margin:0;
+}
+.csv-polaroid:hover {
+  transform:rotate(0deg) translate(0,0) scale(1.05);
+  box-shadow:
+    0 24px 40px rgba(0,0,0,0.65),
+    0 0 0 1px rgba(212,175,55,0.3);
+  z-index:2;
+}
+.csv-polaroid-photo {
+  position:relative;
+  aspect-ratio:1/1;
+  background:linear-gradient(135deg, #1a1208 0%, #2a1d0a 100%);
+  overflow:hidden;
+  border-radius:1px;
+}
+.csv-polaroid-photo::before {
+  content:'no image yet';
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono', monospace;
+  font-size:9px; letter-spacing:0.3em;
+  color:rgba(212,175,55,0.45);
+  text-transform:uppercase;
+}
+.csv-polaroid-photo img {
+  position:relative;
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+}
+.csv-polaroid-cap {
+  position:absolute;
+  bottom:8px; left:10px; right:10px;
+  font-family:'Caveat', 'Bradley Hand', cursive;
+  font-size:16px;
+  color:#3a2c10;
+  text-align:center;
+}
+
+/* Credits */
+.csv-credits {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+  gap:18px;
+  border-top:1px solid rgba(212,175,55,0.18);
+  border-bottom:1px solid rgba(212,175,55,0.18);
+  padding:24px 0;
+}
+.csv-credit { display:flex; flex-direction:column; gap:4px; }
+.csv-credit-lbl {
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px; letter-spacing:0.34em;
+  color:rgba(212,175,55,0.7);
+  text-transform:uppercase;
+}
+.csv-credit-val {
+  font-size:14px;
+  color:#e6dcc1;
+}
+
+/* Bigger project callout */
+.csv-bigger-section {
+  background:
+    radial-gradient(60% 70% at 50% 50%, rgba(212,175,55,0.1), transparent 70%);
+}
+.csv-bigger {
+  max-width:680px;
+  margin:0 auto;
+  text-align:center;
+  padding:24px 12px;
+  border:1px dashed rgba(212,175,55,0.4);
+  border-radius:4px;
+  background:rgba(0,0,0,0.25);
+}
+.csv-bigger .csv-h2-left { text-align:center; }
+.csv-bigger-body {
+  color:rgba(230,220,193,0.82);
+  font-size:15px;
+  line-height:1.65;
+  max-width:54ch;
+  margin:0 auto 22px;
+}
+.csv-bigger-cta {
+  display:inline-block;
+  font-family:'JetBrains Mono', monospace;
+  font-size:12px; letter-spacing:0.32em;
+  text-transform:uppercase;
+  background:#d4af37;
+  color:#0a0805;
+  border:none;
+  padding:14px 26px;
+  border-radius:2px;
+  cursor:pointer;
+  transition:transform 0.2s, box-shadow 0.2s, background 0.2s;
+  font-weight:700;
+}
+.csv-bigger-cta:hover {
+  background:#e8c558;
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(212,175,55,0.3);
+}
+
+/* Footer */
+.csv-foot {
+  text-align:center;
+  padding:34px 24px 38px;
+  border-top:1px solid rgba(212,175,55,0.18);
+  position:relative; z-index:4;
+}
+.csv-back {
+  background:transparent;
+  border:1px solid rgba(212,175,55,0.5);
+  color:#d4af37;
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px; letter-spacing:0.32em;
+  text-transform:uppercase;
+  padding:12px 22px;
+  border-radius:2px;
+  cursor:pointer;
+  transition:background 0.2s, color 0.2s;
+}
+.csv-back:hover { background:#d4af37; color:#0a0805; }
+.csv-foot-copy {
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px; letter-spacing:0.28em;
+  color:rgba(230,220,193,0.35);
+  margin:16px 0 0;
+  text-transform:uppercase;
+}
+
+@media (max-width: 700px) {
+  .csv-process { grid-template-columns:1fr; }
+  .csv-hero { padding:48px 20px 28px; }
+  .csv-section { padding:30px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .csv-eye-iris, .csv-eyelid, .csv-eye-glow { animation:none; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   FIX · Blooming title 'g' descender getting clipped at rest
+   ────────────────────────────────────────────────────────── */
+.csb-title { padding-bottom:0.12em; }
+.csb-title-letter { padding-bottom:0.08em; }

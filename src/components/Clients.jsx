@@ -12,6 +12,8 @@ const clients = [
   { name: 'Travel Associates',              logo: '/portfolio/assets/clients/travel-associates.png' },
   { name: 'Business Birds',                 logo: '/portfolio/assets/clients/business-birds.png' },
   { name: 'Wondershare',                    logo: '/portfolio/assets/clients/wondershare.png' },
+  { name: 'Escape Rooms Canberra',          logo: '/portfolio/assets/clients/escape-rooms-canberra.png' },
+  { name: 'The Good Car Co',                logo: '/portfolio/assets/clients/the-good-car.png' },
 ]
 
 export default function Clients() {

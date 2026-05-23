@@ -8,6 +8,7 @@ import CaseStudyModalTabletop from './CaseStudyModalTabletop.jsx'
 import CaseStudyModalNaibu from './CaseStudyModalNaibu.jsx'
 import CaseStudyModalBlooming from './CaseStudyModalBlooming.jsx'
 import CaseStudyModalXtraCheckpoint from './CaseStudyModalXtraCheckpoint.jsx'
+import CaseStudyModalTheVault from './CaseStudyModalTheVault.jsx'
 import Lightbox from './Lightbox.jsx'
 import FairyTrail from './FairyTrail.jsx'
 
@@ -244,9 +245,11 @@ export default function Work() {
                 ? <CaseStudyModalBlooming hero={openCase} onClose={() => setOpenCase(null)} />
                 : openCase.theme === 'xtracheckpoint'
                   ? <CaseStudyModalXtraCheckpoint hero={openCase} onClose={() => setOpenCase(null)} />
-                  : openCase.theme === 'light'
-                    ? <CaseStudyModalLight hero={openCase} onClose={() => setOpenCase(null)} />
-                    : <CaseStudyModal hero={openCase} onClose={() => setOpenCase(null)} />
+                  : openCase.theme === 'vault'
+                    ? <CaseStudyModalTheVault hero={openCase} onClose={() => setOpenCase(null)} onOpenCase={setOpenCase} />
+                    : openCase.theme === 'light'
+                      ? <CaseStudyModalLight hero={openCase} onClose={() => setOpenCase(null)} />
+                      : <CaseStudyModal hero={openCase} onClose={() => setOpenCase(null)} />
         )}
       </AnimatePresence>
 

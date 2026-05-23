@@ -80,6 +80,81 @@ const escapeRoomCase = {
   },
 }
 
+// ──────────────────────────────────────────────────────────
+//   THE VAULT — escape room eye animation (small case study)
+// ──────────────────────────────────────────────────────────
+const vaultEyeCase = {
+  id: 'the-vault-eye',
+  layout: 'cinema',
+  kind: 'corporate',
+  badges: ['ANIMATION', 'ESCAPE ROOM'],
+  title: 'THE VAULT · Eye Animation',
+  subtitle: 'Escape Room Loop · The Vault Canberra',
+  description:
+    "A looping eye animation made for The Vault | Escape Rooms Canberra — a short, unblinking watcher built to live inside one of the rooms.",
+  cta: 'Open the Vault',
+  meta: 'AE · LOOP',
+  duration: '00:12',
+  bgImage: '/portfolio/assets/case-studies/tiktok-ar/01.jpg',
+  overlay: 'dark',
+  theme: 'vault',
+  caseStudy: {
+    eyeVideo: '/portfolio/assets/case-studies/tiktok-ar/Eye.mp4',
+    client: 'The Vault | Escape Rooms · Canberra',
+    year: '2024',
+    role: 'Animator',
+    tools: ['After Effects', 'Illustrator'],
+    tags: ['Animation', 'Loop', 'Escape Room'],
+    brief: {
+      eyebrow: 'THE BRIEF',
+      title: 'A watcher for the room',
+      body:
+        "The Vault wanted a short looping animation to live on a screen inside one of their escape rooms — something silent, slightly off, that players would notice but couldn't quite read. The answer was an eye: open, blinking, scanning. Looping seamlessly so it never gives the trick away.",
+    },
+    venue: {
+      eyebrow: 'THE CLIENT',
+      label: 'Escape Rooms Canberra',
+      body:
+        "The Vault is one of three rooms run by Escape Rooms Canberra — the same creators I later partnered with on the WHAT ON EARTH! tabletop game animation.",
+      links: [
+        { label: 'The Vault · room page',    url: 'https://www.escaperoomscanberra.com/the-vault' },
+        { label: 'Escape Rooms Canberra',    url: 'https://www.escaperoomscanberra.com' },
+      ],
+    },
+    process: [
+      { num: '01', label: 'STUDY',  text: "Reference: surveillance lenses, antique porcelain dolls, anatomy plates. Wanted the eye to feel both mechanical and uncomfortably alive." },
+      { num: '02', label: 'BUILD',  text: "Layered shape rigs in After Effects — iris, sclera, lid, lashes — each on its own controller so the blink and scan could be timed independently." },
+      { num: '03', label: 'LOOP',   text: "Scrubbed the cycle frame-by-frame so the seam disappears. Players walk past it for an hour and it never visibly repeats." },
+    ],
+    polaroidsHead: {
+      title: 'In the room',
+      caption: "Polaroids from inside The Vault — the eye on the wall, players in front of it.",
+    },
+    // Drop photos into /assets/case-studies/the-vault/ to populate.
+    polaroids: [
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-01.jpg', caption: 'The Vault · Canberra' },
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-02.jpg', caption: 'In-room screen' },
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-03.jpg', caption: 'With the eye' },
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-04.jpg', caption: 'Opening night' },
+    ],
+    bigger: {
+      eyebrow: 'AFTER THE VAULT',
+      title: 'I later worked on a bigger project',
+      body:
+        "This eye loop opened the door to a full animated brief — a tabletop game with 120+ redesigned assets and 24 looping sequences, animated in a Cuphead-meets-Fallout retro style.",
+      cta: 'See the Tabletop case study →',
+      linkCaseId: 'escape-room-anim',
+    },
+    credits: [
+      { label: 'Year',   value: '2024' },
+      { label: 'Client', value: 'The Vault | Escape Rooms Canberra' },
+      { label: 'Role',   value: 'Animator' },
+      { label: 'Tools',  value: 'After Effects · Illustrator' },
+      { label: 'Format', value: 'Looping in-room screen' },
+    ],
+  },
+}
+
 const extraCheckpointCase = {
   id: 'extra-checkpoint',
   layout: 'collage',
@@ -960,11 +1035,12 @@ export const work = {
   // ── 3D & Motion ──────────────────────────────
   'cat-motion': {
     header: { label: '3D + Motion Design', title: 'Animation & VFX' },
-    heroes: [escapeRoomCase, pubflightHero, mywayHero],
+    heroes: [escapeRoomCase, vaultEyeCase, pubflightHero, mywayHero],
     shortCards: true,
     gallery: [
       // First 3 visible by default
       { name: 'Tabletop Game Animation',    caseStudyId: 'escape-room-anim', kind: 'corporate', tag: 'ANIMATION',     tagColor: 'rgba(156,77,255,.9)', img: '/portfolio/assets/case-studies/escape-room-anim/poster.jpg' },
+      { name: 'THE VAULT · Eye',            caseStudyId: 'the-vault-eye',    kind: 'corporate', tag: 'ESCAPE ROOM',   tagColor: 'rgba(212,175,55,.9)', tagText: '#0a0a0a', video: '/portfolio/assets/case-studies/tiktok-ar/Eye.mp4' },
       { name: 'Pubflift · Ad Tech',                                          kind: 'corporate', tag: 'AD ANIMATION',  tagColor: 'rgba(0,194,212,.9)',  video: '/portfolio/assets/case-studies/pubflift-ad/reel.mp4' },
       { name: 'MyWay · Kinetic Typography',                                  kind: 'creative',  tag: 'VIDEO EDIT',    tagColor: 'rgba(255,46,107,.9)', video: '/portfolio/assets/case-studies/myway/reel.mp4' },
       // Hidden behind "See more"
