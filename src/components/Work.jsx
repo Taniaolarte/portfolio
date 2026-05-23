@@ -176,14 +176,20 @@ const CategorySection = forwardRef(function CategorySection({ id, typeFilter, on
 
 export default function Work() {
   const [type, setType] = useState('all')
-  const [activeCat, setActiveCat] = useState('all')
   const [openCase, setOpenCase] = useState(null)
   const [openLightbox, setOpenLightbox] = useState(null)
 
-  const visibleCategories = useMemo(
-    () => (activeCat === 'all' ? categories : categories.filter((c) => c.id === activeCat)),
-    [activeCat]
-  )
+  // Category pills are scroll anchors — they jump to the matching section
+  // rather than filtering. The TYPE filter (ALL/CREATIVE/CORPORATE) still
+  // narrows what's visible.
+  const scrollToCategory = (id) => {
+    const target = id === 'all'
+      ? document.querySelector('#work')
+      : document.querySelector(`#${id}`)
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const visibleCategories = categories
 
   return (
     <section id="work">
@@ -205,16 +211,16 @@ export default function Work() {
 
       <div className="work-cat-pills">
         <button
-          className={`work-cat-pill${activeCat === 'all' ? ' active' : ''}`}
-          onClick={() => setActiveCat('all')}
+          className="work-cat-pill"
+          onClick={() => scrollToCategory('all')}
         >
           ALL CATEGORIES
         </button>
         {categories.map((c) => (
           <button
             key={c.id}
-            className={`work-cat-pill${activeCat === c.id ? ' active' : ''}`}
-            onClick={() => setActiveCat(c.id)}
+            className="work-cat-pill"
+            onClick={() => scrollToCategory(c.id)}
           >
             {c.label}
           </button>

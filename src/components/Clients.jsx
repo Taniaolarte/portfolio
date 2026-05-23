@@ -7,13 +7,13 @@ const clients = [
   { name: 'City Language Centre',           logo: '/portfolio/assets/clients/clc.png' },
   { name: 'Calxa',                          logo: '/portfolio/assets/clients/calxa.png' },
   { name: 'Duologue',                       logo: '/portfolio/assets/clients/duologue.svg' },
-  { name: 'Emma McQueen',                   logo: '/portfolio/assets/clients/emma-mcqueen.svg' },
+  { name: 'Emma McQueen',                   logo: '/portfolio/assets/clients/emma-mcqueen.svg', scale: 3 },
   { name: 'Tenaxiti',                       logo: '/portfolio/assets/clients/tenaxiti.png' },
   { name: 'Travel Associates',              logo: '/portfolio/assets/clients/travel-associates.png' },
   { name: 'Business Birds',                 logo: '/portfolio/assets/clients/business-birds.png' },
-  { name: 'Wondershare',                    logo: '/portfolio/assets/clients/wondershare.png' },
-  { name: 'Escape Rooms Canberra',          logo: '/portfolio/assets/clients/escape-rooms-canberra.png' },
-  { name: 'The Good Car Co',                logo: '/portfolio/assets/clients/the-good-car.png' },
+  { name: 'Wondershare',                    logo: '/portfolio/assets/clients/wondershare.png', scale: 2 },
+  { name: 'Escape Rooms Canberra',          logo: '/portfolio/assets/clients/escape-rooms-canberra.png', scale: 2 },
+  { name: 'The Good Car Co',                logo: '/portfolio/assets/clients/the-good-car.png', scale: 2 },
 ]
 
 export default function Clients() {
@@ -25,7 +25,12 @@ export default function Clients() {
         <div className="marquee-track">
           {doubled.map((c, i) => (
             <span key={i} className="marquee-item marquee-item--logo">
-              <img src={c.logo} alt={c.name} title={c.name} />
+              <img
+                src={c.logo}
+                alt={c.name}
+                title={c.name}
+                style={c.scale ? { height: `${36 * c.scale}px`, maxWidth: `${160 * c.scale}px` } : undefined}
+              />
             </span>
           ))}
         </div>

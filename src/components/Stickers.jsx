@@ -214,14 +214,13 @@ const stickers = [
   { id: 'skills-aster', top: 2200, right: '4%', anim: twinkle, node: <TinyAsterisk size={18} color="#ffd166" />, hideOnMobile: true },
   { id: 'skills-star',  top: 2650, left: '4%',  anim: twinkle, node: <ScribbleStar size={24} color="#a3e635" />, rotate: -10, hideOnMobile: true },
 
-  // Around Work (3208–7555) — pointing at case studies
-  // Anchored to the FIRST .hero-carousel (the 3D & Motion / Animation hero), so it sticks even when
-  // page height shifts between breakpoints.
+  // Around Work — anchored to the FIRST case-study card (the ✦ marker), so it
+  // always points at a real case study even when the work order shifts.
   {
     id: 'work-label',
-    anchor: { selector: '.hero-carousel', from: 'right', offsetX: 20, offsetY: -56 },
+    anchor: { selector: '.project-card.is-case', from: 'left', offsetX: -200, offsetY: -8 },
     anim: sway,
-    node: <ArrowLabel text="case studies ↓" arrowDir="down" rotate={3} color="#22d3ee" />,
+    node: <ArrowLabel text="projects with ✦ are case studies" arrowDir="right" rotate={-4} color="#22d3ee" />,
     hideOnMobile: true,
   },
   { id: 'work-star-1', top: 4400, left: '4%',  anim: twinkle, node: <ScribbleStar size={28} color="#ffd166" />, rotate: 18 },

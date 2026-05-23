@@ -53,7 +53,15 @@
 }
 html { scroll-behavior: smooth; }
 body { background:var(--bg); color:var(--text); font-family:var(--font-text); overflow-x:hidden; font-weight:400; }
-.app-root { position:relative; }
+.app-root {
+  position:relative;
+  /* Decorative stickers/blobs are absolute and have hard-coded top: values
+     that can sit past the actual content (causing dead space at the bottom).
+     `overflow: clip` prevents those from extending the document height while
+     still leaving room for fixed modals (which escape clipping). */
+  overflow-x:clip;
+  overflow-y:clip;
+}
 
 /* Global film-grain overlay — fixed to viewport so it covers everything
    without scrolling. SVG fractalNoise = no extra HTTP request. Low opacity +
@@ -3798,11 +3806,16 @@ a.csb-tool-link:hover .csb-tool-arrow { transform:translate(3px,-3px); }
   50%      { opacity:0.9;  }
 }
 
-/* Iris pupil dilation + slow look-around */
+/* Iris auto-scan — used as ambient idle motion before the cursor enters.
+   Once JS adds .csv-eye-iris-manual the keyframe animation is dropped and the
+   iris follows the cursor via inline transform. */
 .csv-eye-iris {
   transform-origin:120px 60px;
   animation:csv-iris-scan 7s ease-in-out infinite;
+  transition:transform 0.25s ease;
+  will-change:transform;
 }
+.csv-eye-iris-manual { animation:none; transition:none; }
 @keyframes csv-iris-scan {
   0%    { transform:translate(0, 0); }
   18%   { transform:translate(-14px, -4px); }

@@ -133,9 +133,9 @@ const vaultEyeCase = {
     // Drop photos into /assets/case-studies/the-vault/ to populate.
     polaroids: [
       { src: '/portfolio/assets/case-studies/the-vault/polaroid-01.jpg', caption: 'The Vault · Canberra' },
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-02.jpg', caption: 'In-room screen' },
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-03.jpg', caption: 'With the eye' },
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-04.jpg', caption: 'Opening night' },
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-02.png', caption: 'In-room screen', objectPosition: '50% 0%' },
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-03.png', caption: 'With the eye' },
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-05.png', caption: 'The room' },
     ],
     bigger: {
       eyebrow: 'AFTER THE VAULT',

@@ -1,11 +1,80 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { caseStudyIndex } from '../data/work.js'
 
-// Animated SVG eye — pupil tracks slowly, lid blinks on a loop, gold iris glow.
+// Animated SVG eye — iris tracks the cursor, lid blinks on a loop, gold glow.
+// When the cursor leaves the modal the iris recentres and the auto-scan
+// fallback resumes (CSS animation kicks back in).
 function AnimatedEye() {
+  const svgRef = useRef(null)
+  const irisRef = useRef(null)
+
+  useEffect(() => {
+    const svg = svgRef.current
+    const iris = irisRef.current
+    if (!svg || !iris) return
+
+    let raf = 0
+    let target = { x: 0, y: 0 }
+    let current = { x: 0, y: 0 }
+    let active = false
+
+    // Iris travel limits — pushed close to where the pupil meets the sclera
+    // so the eye reads as actively chasing the cursor, not glancing.
+    const MAX_X = 24
+    const MAX_Y = 10
+
+    const onMove = (e) => {
+      const r = svg.getBoundingClientRect()
+      const cx = r.left + r.width / 2
+      const cy = r.top  + r.height / 2
+      // Smaller radius → cursor reaches max travel much sooner.
+      const radius = Math.max(window.innerWidth, window.innerHeight) * 0.28
+      const nx = Math.max(-1, Math.min(1, (e.clientX - cx) / radius))
+      const ny = Math.max(-1, Math.min(1, (e.clientY - cy) / radius))
+      target.x = nx * MAX_X
+      target.y = ny * MAX_Y
+      if (!active) {
+        active = true
+        iris.classList.add('csv-eye-iris-manual')
+      }
+    }
+    const onLeave = () => {
+      target.x = 0; target.y = 0
+      // Wait until the iris has recentred before handing back to CSS scan.
+      setTimeout(() => {
+        if (Math.abs(current.x) < 0.5 && Math.abs(current.y) < 0.5) {
+          active = false
+          iris.classList.remove('csv-eye-iris-manual')
+        }
+      }, 600)
+    }
+
+    const tick = () => {
+      // Critically-damped follow.
+      current.x += (target.x - current.x) * 0.18
+      current.y += (target.y - current.y) * 0.18
+      if (active) {
+        iris.style.transform = `translate(${current.x.toFixed(2)}px, ${current.y.toFixed(2)}px)`
+      } else {
+        iris.style.transform = ''
+      }
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+
+    window.addEventListener('pointermove', onMove)
+    window.addEventListener('pointerleave', onLeave)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerleave', onLeave)
+    }
+  }, [])
+
   return (
     <svg
+      ref={svgRef}
       className="csv-eye-svg"
       viewBox="0 0 240 120"
       aria-hidden="true"
@@ -32,8 +101,8 @@ function AnimatedEye() {
       <g clipPath="url(#csv-eye-clip)">
         <ellipse cx="120" cy="60" rx="115" ry="50" fill="url(#csv-sclera)" />
 
-        {/* Iris — tracks via CSS */}
-        <g className="csv-eye-iris">
+        {/* Iris — tracks the cursor (rAF), falls back to CSS scan when idle */}
+        <g ref={irisRef} className="csv-eye-iris">
           <circle cx="120" cy="60" r="34" fill="url(#csv-iris)" />
           {/* iris fibres */}
           {Array.from({ length: 24 }).map((_, i) => {
@@ -251,7 +320,12 @@ export default function CaseStudyModalTheVault({ hero, onClose, onOpenCase }) {
                       }}
                     >
                       <div className="csv-polaroid-photo">
-                        <img src={shot.src} alt={shot.caption || ''} loading="lazy" />
+                        <img
+                          src={shot.src}
+                          alt={shot.caption || ''}
+                          loading="lazy"
+                          style={shot.objectPosition ? { objectPosition: shot.objectPosition } : undefined}
+                        />
                       </div>
                       {shot.caption && (
                         <figcaption className="csv-polaroid-cap">{shot.caption}</figcaption>
