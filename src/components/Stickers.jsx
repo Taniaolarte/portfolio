@@ -139,6 +139,12 @@ const ArrowLabel = ({ text, color = '#e9d5ff', arrowDir = 'right', rotate = 0 })
       <path d="M 68 10 L 76 16 L 66 22" {...stroke(color)} />
     </svg>
   )
+  const downRightArrow = (
+    <svg viewBox="0 0 60 60" width={48} height={48} style={{ display: 'block' }}>
+      <path d="M 6 6 Q 28 14, 38 32 T 52 54" {...stroke(color)} />
+      <path d="M 42 46 L 52 54 L 54 42" {...stroke(color)} />
+    </svg>
+  )
   const isVertical = arrowDir === 'down'
   return (
     <div
@@ -147,14 +153,15 @@ const ArrowLabel = ({ text, color = '#e9d5ff', arrowDir = 'right', rotate = 0 })
         color,
         transform: `rotate(${rotate}deg)`,
         flexDirection: isVertical ? 'column' : 'row',
-        alignItems: isVertical ? 'flex-start' : 'center',
-        gap: isVertical ? 2 : 2,
+        alignItems: arrowDir === 'down-right' ? 'flex-end' : (isVertical ? 'flex-start' : 'center'),
+        gap: isVertical ? 2 : 6,
       }}
     >
       {arrowDir === 'left' && leftArrow}
-      <span className="sticker-arrow-text">{text}</span>
+      <span className="sticker-arrow-text" style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>{text}</span>
       {arrowDir === 'right' && rightArrow}
       {arrowDir === 'down'  && downArrow}
+      {arrowDir === 'down-right' && downRightArrow}
     </div>
   )
 }
@@ -218,9 +225,9 @@ const stickers = [
   // always points at a real case study even when the work order shifts.
   {
     id: 'work-label',
-    anchor: { selector: '.project-card.is-case', from: 'left', offsetX: -200, offsetY: -8 },
+    anchor: { selector: '.project-card.is-case', from: 'right', offsetX: 8, offsetY: -38 },
     anim: sway,
-    node: <ArrowLabel text="projects with ✦ are case studies" arrowDir="right" rotate={-4} color="#22d3ee" />,
+    node: <ArrowLabel text={"projects with ✦\nare case studies"} arrowDir="down-right" rotate={-3} color="#22d3ee" />,
     hideOnMobile: true,
   },
   { id: 'work-star-1', top: 4400, left: '4%',  anim: twinkle, node: <ScribbleStar size={28} color="#ffd166" />, rotate: 18 },

@@ -4174,5 +4174,14 @@ a.csb-tool-link:hover .csb-tool-arrow { transform:translate(3px,-3px); }
 /* ──────────────────────────────────────────────────────────
    FIX · Blooming title 'g' descender getting clipped at rest
    ────────────────────────────────────────────────────────── */
-.csb-title { padding-bottom:0.12em; }
-.csb-title-letter { padding-bottom:0.08em; }
+.csb-title {
+  line-height:1.05;
+  padding-bottom:0.22em;
+  overflow:visible;
+}
+.csb-title-letter {
+  line-height:1.05;
+  padding-bottom:0.18em;
+  overflow:visible;
+}
+.csb-title-dissolve { overflow:visible; }

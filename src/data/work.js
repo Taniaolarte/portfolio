@@ -95,7 +95,7 @@ const vaultEyeCase = {
   cta: 'Open the Vault',
   meta: 'AE · LOOP',
   duration: '00:12',
-  bgImage: '/portfolio/assets/case-studies/tiktok-ar/01.jpg',
+  bgImage: '/portfolio/assets/case-studies/the-vault/polaroid-03.png',
   overlay: 'dark',
   theme: 'vault',
   caseStudy: {
@@ -132,10 +132,10 @@ const vaultEyeCase = {
     },
     // Drop photos into /assets/case-studies/the-vault/ to populate.
     polaroids: [
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-01.jpg', caption: 'The Vault · Canberra' },
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-02.png', caption: 'In-room screen', objectPosition: '50% 0%' },
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-03.png', caption: 'With the eye' },
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-05.png', caption: 'The room' },
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-01.jpg', caption: 'The Vault Bar · Canberra' },
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-02.png', caption: 'Escape room puzzle', objectPosition: '50% 0%' },
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-03.png', caption: 'Me with my animation' },
+      { src: '/portfolio/assets/case-studies/the-vault/polaroid-05.png', caption: 'The Vault' },
     ],
     bigger: {
       eyebrow: 'AFTER THE VAULT',
@@ -539,7 +539,6 @@ const naibuCase = {
           'Deliverables · build + thesis + presentation',
           'Iteration rounds · playtests + refinements',
         ],
-        media: { src: '/portfolio/assets/case-studies/naibu/cronogram.png', caption: 'The original 6-month cronogram' },
       },
     ],
     chapters: [
