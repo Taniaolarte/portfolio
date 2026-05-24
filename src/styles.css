@@ -4172,6 +4172,88 @@ a.csb-tool-link:hover .csb-tool-arrow { transform:translate(3px,-3px); }
 }
 
 /* ──────────────────────────────────────────────────────────
+   NAIBU · interactive Uhri sprite (sheet = 510×528, 6×6 frames)
+   Each frame = 85×88. Idle-bobs by default, walks across plate
+   on hover. Stage is rendered at 3× so pixels stay crisp.
+   ────────────────────────────────────────────────────────── */
+.csn-uhri-sprite {
+  --frame-w: 85px;
+  --frame-h: 88px;
+  --scale: 3;
+  --stage-w: 460px;
+  --stage-h: calc(var(--frame-h) * var(--scale) + 24px);
+  position:relative;
+  width:100%; max-width:var(--stage-w);
+  height:var(--stage-h);
+  margin:0 auto;
+  border-radius:12px;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(173,70,255,0.18), transparent 70%),
+    linear-gradient(180deg, rgba(15,8,40,0.6), rgba(8,4,20,0.85));
+  border:1px solid rgba(173,70,255,0.18);
+  overflow:hidden;
+  image-rendering:pixelated;
+  cursor:pointer;
+}
+.csn-uhri-frame {
+  position:absolute;
+  bottom:12px; left:14px;
+  width:calc(var(--frame-w) * var(--scale));
+  height:calc(var(--frame-h) * var(--scale));
+  background-image:url('/portfolio/assets/case-studies/naibu/uhri-spritesheet.png');
+  background-size:calc(var(--frame-w) * 6 * var(--scale)) calc(var(--frame-h) * 6 * var(--scale));
+  background-repeat:no-repeat;
+  background-position:0 0;
+  image-rendering:pixelated;
+  /* Idle cycle: 6 frames of row 1, looping subtly */
+  animation:csn-uhri-idle 0.9s steps(6) infinite, csn-uhri-bob 1.8s ease-in-out infinite;
+}
+@keyframes csn-uhri-idle {
+  from { background-position-x:0; }
+  to   { background-position-x:calc(var(--frame-w) * -6 * var(--scale)); }
+}
+@keyframes csn-uhri-bob {
+  0%,100% { transform:translateY(0); }
+  50%     { transform:translateY(-3px); }
+}
+/* Hover: she walks across the stage, sweeping through all 6 rows so she
+   uses the full spritesheet (36 frames). */
+.csn-uhri-sprite:hover .csn-uhri-frame {
+  animation:
+    csn-uhri-idle 0.55s steps(6) infinite,
+    csn-uhri-row 3.3s steps(6) infinite,
+    csn-uhri-walk 4.5s linear infinite;
+}
+@keyframes csn-uhri-row {
+  from { background-position-y:0; }
+  to   { background-position-y:calc(var(--frame-h) * -6 * var(--scale)); }
+}
+@keyframes csn-uhri-walk {
+  0%   { left:14px; transform:scaleX(1); }
+  45%  { left:calc(100% - var(--frame-w) * var(--scale) - 14px); transform:scaleX(1); }
+  50%  { left:calc(100% - var(--frame-w) * var(--scale) - 14px); transform:scaleX(-1); }
+  95%  { left:14px; transform:scaleX(-1); }
+  100% { left:14px; transform:scaleX(1); }
+}
+.csn-uhri-hint {
+  position:absolute;
+  top:10px; right:14px;
+  font-size:10px; letter-spacing:0.22em;
+  color:rgba(255,255,255,0.45); font-weight:600;
+  text-transform:uppercase;
+  pointer-events:none;
+  transition:color 0.2s, opacity 0.2s;
+}
+.csn-uhri-sprite:hover .csn-uhri-hint {
+  color:rgba(173,70,255,0.9);
+  opacity:0.7;
+}
+@media (prefers-reduced-motion: reduce) {
+  .csn-uhri-frame { animation:none; background-position:0 0; }
+  .csn-uhri-sprite:hover .csn-uhri-frame { animation:none; }
+}
+
+/* ──────────────────────────────────────────────────────────
    FIX · Blooming title 'g' descender getting clipped at rest
    ────────────────────────────────────────────────────────── */
 .csb-title {

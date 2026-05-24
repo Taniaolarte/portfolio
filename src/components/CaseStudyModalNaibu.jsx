@@ -3,6 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const ASSETS = '/portfolio/assets/case-studies/naibu'
 
+// Small interactive widget — turns the 6×6 Uhri sprite sheet into a live
+// pixel character. Idle-bobs by default, walks across its plate on hover.
+function UhriSprite() {
+  return (
+    <div className="csn-uhri-sprite" role="img" aria-label="Uhri sprite — hover to walk">
+      <span className="csn-uhri-frame" />
+      <span className="csn-uhri-hint">hover · she walks ↺</span>
+    </div>
+  )
+}
+
 // Atmospheric dark-purple case-study layout — custom for NAIBU, replicated
 // from the Figma design at figma.com/design/ciWPRYix723zzP2qAvksiA.
 // Scoped under .csn-* so it doesn't clash with other modals.
@@ -188,12 +199,17 @@ export default function CaseStudyModalNaibu({ hero, onClose }) {
                       </div>
                       {mediaList.length > 0 && (
                         <div className={`csn-phase-media csn-phase-media-${mediaList.length}`}>
-                          {mediaList.map((m, j) => (
-                            <figure key={j}>
-                              <img src={m.src} alt={m.caption || ''} />
-                              {m.caption && <figcaption>{m.caption}</figcaption>}
-                            </figure>
-                          ))}
+                          {mediaList.map((m, j) => {
+                            const isUhriSheet = m.src?.endsWith('uhri-spritesheet.png')
+                            return (
+                              <figure key={j}>
+                                {isUhriSheet
+                                  ? <UhriSprite />
+                                  : <img src={m.src} alt={m.caption || ''} />}
+                                {m.caption && <figcaption>{m.caption}</figcaption>}
+                              </figure>
+                            )
+                          })}
                         </div>
                       )}
                     </div>
