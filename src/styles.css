@@ -2199,42 +2199,35 @@ nav {
 }
 
 .csn-phase-nav {
-  display:flex; gap:6px;
-  max-width:980px; margin:8px auto 0;
-  padding:6px 4px 10px;
-  overflow-x:auto;
-  scrollbar-width:thin;
-  scroll-snap-type:x proximity;
-  -webkit-mask-image:linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
-          mask-image:linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:6px;
+  max-width:980px; margin:16px auto 0;
+  padding:6px 4px;
 }
-.csn-phase-nav::-webkit-scrollbar { height:4px; }
-.csn-phase-nav::-webkit-scrollbar-thumb { background:rgba(173,70,255,0.35); border-radius:4px; }
 .csn-phase-chip {
   flex:0 0 auto;
-  display:inline-flex; align-items:center; gap:6px;
-  padding:5px 10px 5px 5px;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 14px;
   background:rgba(173,70,255,0.08);
   border:1px solid rgba(173,70,255,0.22);
   border-radius:999px;
   font-size:10px; letter-spacing:0.16em; font-weight:600;
   color:rgba(255,255,255,0.72);
   text-decoration:none;
-  scroll-snap-align:start;
   transition:background 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
 }
 .csn-phase-chip:hover {
   background:rgba(173,70,255,0.22);
-  border-color:rgba(31,204,255,0.5);
+  border-color:rgba(173,70,255,0.5);
   color:#fff;
+  transform:translateY(-1px);
 }
 .csn-phase-chip-num {
-  display:inline-flex; align-items:center; justify-content:center;
-  width:18px; height:18px; border-radius:50%;
-  background:linear-gradient(135deg, #ad46ff, #1fccff);
-  color:#0a061d;
-  font-size:9px; font-weight:800; letter-spacing:0;
+  font-size:10px; font-weight:600;
+  color:rgba(255,255,255,0.45);
+  letter-spacing:0.1em;
 }
+.csn-phase-chip:hover .csn-phase-chip-num { color:rgba(173,70,255,0.95); }
 
 .csn-phase {
   position:relative; z-index:2;
@@ -4172,85 +4165,51 @@ a.csb-tool-link:hover .csb-tool-arrow { transform:translate(3px,-3px); }
 }
 
 /* ──────────────────────────────────────────────────────────
-   NAIBU · interactive Uhri sprite (sheet = 510×528, 6×6 frames)
-   Each frame = 85×88. Idle-bobs by default, walks across plate
-   on hover. Stage is rendered at 3× so pixels stay crisp.
+   NAIBU · hidden glyph layer (flashlight cursor effect)
+   Faint scattered pixel symbols across the modal background;
+   a soft radial mask follows the cursor and reveals only the
+   glyphs inside its falloff. Ambient, no UI.
    ────────────────────────────────────────────────────────── */
-.csn-uhri-sprite {
-  --frame-w: 85px;
-  --frame-h: 88px;
-  --scale: 3;
-  --stage-w: 460px;
-  --stage-h: calc(var(--frame-h) * var(--scale) + 24px);
-  position:relative;
-  width:100%; max-width:var(--stage-w);
-  height:var(--stage-h);
-  margin:0 auto;
-  border-radius:12px;
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(173,70,255,0.18), transparent 70%),
-    linear-gradient(180deg, rgba(15,8,40,0.6), rgba(8,4,20,0.85));
-  border:1px solid rgba(173,70,255,0.18);
-  overflow:hidden;
-  image-rendering:pixelated;
-  cursor:pointer;
-}
-.csn-uhri-frame {
+.csn-hidden-layer {
+  --mx: 50%;
+  --my: 50%;
+  --on: 0;
   position:absolute;
-  bottom:12px; left:14px;
-  width:calc(var(--frame-w) * var(--scale));
-  height:calc(var(--frame-h) * var(--scale));
-  background-image:url('/portfolio/assets/case-studies/naibu/uhri-spritesheet.png');
-  background-size:calc(var(--frame-w) * 6 * var(--scale)) calc(var(--frame-h) * 6 * var(--scale));
-  background-repeat:no-repeat;
-  background-position:0 0;
-  image-rendering:pixelated;
-  /* Idle cycle: 6 frames of row 1, looping subtly */
-  animation:csn-uhri-idle 0.9s steps(6) infinite, csn-uhri-bob 1.8s ease-in-out infinite;
-}
-@keyframes csn-uhri-idle {
-  from { background-position-x:0; }
-  to   { background-position-x:calc(var(--frame-w) * -6 * var(--scale)); }
-}
-@keyframes csn-uhri-bob {
-  0%,100% { transform:translateY(0); }
-  50%     { transform:translateY(-3px); }
-}
-/* Hover: she walks across the stage, sweeping through all 6 rows so she
-   uses the full spritesheet (36 frames). */
-.csn-uhri-sprite:hover .csn-uhri-frame {
-  animation:
-    csn-uhri-idle 0.55s steps(6) infinite,
-    csn-uhri-row 3.3s steps(6) infinite,
-    csn-uhri-walk 4.5s linear infinite;
-}
-@keyframes csn-uhri-row {
-  from { background-position-y:0; }
-  to   { background-position-y:calc(var(--frame-h) * -6 * var(--scale)); }
-}
-@keyframes csn-uhri-walk {
-  0%   { left:14px; transform:scaleX(1); }
-  45%  { left:calc(100% - var(--frame-w) * var(--scale) - 14px); transform:scaleX(1); }
-  50%  { left:calc(100% - var(--frame-w) * var(--scale) - 14px); transform:scaleX(-1); }
-  95%  { left:14px; transform:scaleX(-1); }
-  100% { left:14px; transform:scaleX(1); }
-}
-.csn-uhri-hint {
-  position:absolute;
-  top:10px; right:14px;
-  font-size:10px; letter-spacing:0.22em;
-  color:rgba(255,255,255,0.45); font-weight:600;
-  text-transform:uppercase;
+  inset:0;
   pointer-events:none;
-  transition:color 0.2s, opacity 0.2s;
+  z-index:1;
+  color:#c4a8ff;
+  /* Spotlight mask — bright inside ~280px of cursor, dim ghost everywhere
+     else so the pattern is always faintly visible (you can tell something
+     is there), then pops into focus under the cursor. */
+  -webkit-mask-image: radial-gradient(circle 280px at var(--mx) var(--my),
+    rgba(0,0,0, calc(0.95 * var(--on) + 0.22)) 0%,
+    rgba(0,0,0, calc(0.55 * var(--on) + 0.18)) 40%,
+    rgba(0,0,0, 0.16) 75%,
+    rgba(0,0,0, 0.14) 100%);
+          mask-image: radial-gradient(circle 280px at var(--mx) var(--my),
+    rgba(0,0,0, calc(0.95 * var(--on) + 0.22)) 0%,
+    rgba(0,0,0, calc(0.55 * var(--on) + 0.18)) 40%,
+    rgba(0,0,0, 0.16) 75%,
+    rgba(0,0,0, 0.14) 100%);
 }
-.csn-uhri-sprite:hover .csn-uhri-hint {
-  color:rgba(173,70,255,0.9);
-  opacity:0.7;
+.csn-hidden-glyph {
+  position:absolute;
+  display:inline-flex;
+  transform-origin:center;
+  opacity:1;
+  filter:drop-shadow(0 0 10px rgba(173,70,255,0.75));
+  transition:filter 0.4s, opacity 0.4s;
 }
+.csn-hidden-glyph svg {
+  width:100%; height:100%;
+  display:block;
+}
+/* Modal content must sit above the hidden layer so reading isn't disrupted.
+   Do NOT override .csn-close — it's position:fixed and stays at z-index:60. */
+.csn-modal > section { position:relative; z-index:2; }
 @media (prefers-reduced-motion: reduce) {
-  .csn-uhri-frame { animation:none; background-position:0 0; }
-  .csn-uhri-sprite:hover .csn-uhri-frame { animation:none; }
+  .csn-hidden-layer { display:none; }
 }
 
 /* ──────────────────────────────────────────────────────────

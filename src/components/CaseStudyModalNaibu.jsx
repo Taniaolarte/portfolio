@@ -1,15 +1,143 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const ASSETS = '/portfolio/assets/case-studies/naibu'
 
-// Small interactive widget — turns the 6×6 Uhri sprite sheet into a live
-// pixel character. Idle-bobs by default, walks across its plate on hover.
-function UhriSprite() {
+// Hidden things in the dark — scattered pixel glyphs (eyes, stars, runes,
+// asterisks) embedded in the modal background at ~7% opacity. A soft
+// spotlight follows the cursor; only symbols inside the spotlight become
+// visible. Pure ambient interaction, no buttons, no copy required.
+const GLYPHS = [
+  // Open eye — almond outline + solid pupil
+  <svg viewBox="0 0 20 12" key="eye-open"><path d="M2 6 Q10 0 18 6 Q10 12 2 6 Z" fill="none" stroke="currentColor" strokeWidth="1.2"/><circle cx="10" cy="6" r="2.2" fill="currentColor"/></svg>,
+  // Closed eye — single curve like a sleeping line
+  <svg viewBox="0 0 20 6" key="eye-closed"><path d="M2 3 Q10 6 18 3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/></svg>,
+  // Star
+  <svg viewBox="0 0 14 14" key="star"><path d="M7 0 L8.5 5 L14 5 L9.5 8 L11 14 L7 10.5 L3 14 L4.5 8 L0 5 L5.5 5 Z" fill="currentColor"/></svg>,
+  // Asterisk
+  <svg viewBox="0 0 12 12" key="aster"><g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/><line x1="2.5" y1="2.5" x2="9.5" y2="9.5"/><line x1="9.5" y1="2.5" x2="2.5" y2="9.5"/></g></svg>,
+  // Rune / triangle
+  <svg viewBox="0 0 14 14" key="rune"><path d="M7 1 L13 12 L1 12 Z" fill="none" stroke="currentColor" strokeWidth="1.2"/><circle cx="7" cy="9" r="1.4" fill="currentColor"/></svg>,
+  // Wide-open watchful eye — bigger pupil, more iris detail
+  <svg viewBox="0 0 22 14" key="eye-wide"><path d="M1 7 Q11 0 21 7 Q11 14 1 7 Z" fill="none" stroke="currentColor" strokeWidth="1.2"/><circle cx="11" cy="7" r="3.4" fill="none" stroke="currentColor" strokeWidth="1"/><circle cx="11" cy="7" r="1.6" fill="currentColor"/></svg>,
+  // Crescent
+  <svg viewBox="0 0 14 14" key="moon"><path d="M11 2 A6 6 0 1 0 11 12 A4.5 4.5 0 1 1 11 2 Z" fill="currentColor"/></svg>,
+  // Triple-eye — three small eyes stacked, folkloric
+  <svg viewBox="0 0 20 20" key="eye-triple"><g fill="currentColor"><circle cx="10" cy="4" r="1.6"/><circle cx="5"  cy="14" r="1.6"/><circle cx="15" cy="14" r="1.6"/></g><g fill="none" stroke="currentColor" strokeWidth="0.9"><circle cx="10" cy="4" r="3"/><circle cx="5"  cy="14" r="3"/><circle cx="15" cy="14" r="3"/></g></svg>,
+]
+
+// Pre-baked scatter — fixed positions so they don't reshuffle on re-render
+// (would defeat the "hidden things you find" feel). 32 glyphs across the
+// modal's vertical span, picked to avoid clustering on hero/closing bands.
+const SCATTER = [
+  // DENSE HERO BAND — 0%–22% (behind title / subtitle / lede)
+  { top:'2%',   left:'5%',  size:28, glyph:4, rot:-12 },
+  { top:'3%',   left:'18%', size:22, glyph:1, rot:8   },
+  { top:'4%',   left:'32%', size:36, glyph:0, rot:-4  },
+  { top:'2%',   left:'48%', size:26, glyph:5, rot:18  },
+  { top:'5%',   left:'62%', size:30, glyph:3, rot:-22 },
+  { top:'3%',   left:'78%', size:24, glyph:7, rot:14  },
+  { top:'2%',   left:'92%', size:32, glyph:2, rot:-8  },
+  { top:'7%',   left:'10%', size:34, glyph:6, rot:24  },
+  { top:'8%',   left:'24%', size:24, glyph:1, rot:-6  },
+  { top:'9%',   left:'40%', size:28, glyph:4, rot:16  },
+  { top:'7%',   left:'56%', size:38, glyph:0, rot:-18 },
+  { top:'9%',   left:'70%', size:22, glyph:5, rot:10  },
+  { top:'8%',   left:'84%', size:30, glyph:3, rot:-26 },
+  { top:'8%',   left:'96%', size:26, glyph:6, rot:6   },
+  { top:'12%',  left:'4%',  size:32, glyph:0, rot:-8  },
+  { top:'13%',  left:'16%', size:24, glyph:2, rot:14  },
+  { top:'12%',  left:'30%', size:28, glyph:4, rot:-14 },
+  { top:'14%',  left:'44%', size:22, glyph:7, rot:22  },
+  { top:'12%',  left:'58%', size:34, glyph:1, rot:-4  },
+  { top:'13%',  left:'72%', size:30, glyph:5, rot:18  },
+  { top:'12%',  left:'88%', size:26, glyph:3, rot:-20 },
+  { top:'17%',  left:'8%',  size:24, glyph:6, rot:10  },
+  { top:'18%',  left:'22%', size:36, glyph:4, rot:-22 },
+  { top:'17%',  left:'36%', size:22, glyph:1, rot:8   },
+  { top:'19%',  left:'50%', size:30, glyph:3, rot:-12 },
+  { top:'17%',  left:'64%', size:28, glyph:0, rot:16  },
+  { top:'18%',  left:'80%', size:26, glyph:7, rot:-6  },
+  { top:'19%',  left:'94%', size:32, glyph:2, rot:24  },
+  { top:'22%',  left:'12%', size:26, glyph:5, rot:-16 },
+  { top:'22%',  left:'30%', size:30, glyph:6, rot:8   },
+  { top:'22%',  left:'48%', size:24, glyph:4, rot:-24 },
+  { top:'22%',  left:'66%', size:28, glyph:1, rot:12  },
+  { top:'22%',  left:'82%', size:34, glyph:0, rot:-10 },
+
+  // REST OF MODAL — sparser ambient cover
+  { top:'27%',  left:'72%', size:28, glyph:3, rot:0   },
+  { top:'33%',  left:'4%',  size:26, glyph:7, rot:18  },
+  { top:'36%',  left:'92%', size:40, glyph:0, rot:10  },
+  { top:'41%',  left:'38%', size:22, glyph:1, rot:-4  },
+  { top:'44%',  left:'62%', size:30, glyph:5, rot:24  },
+  { top:'48%',  left:'9%',  size:34, glyph:6, rot:-12 },
+  { top:'52%',  left:'80%', size:24, glyph:2, rot:-18 },
+  { top:'56%',  left:'25%', size:28, glyph:4, rot:8   },
+  { top:'59%',  left:'68%', size:32, glyph:3, rot:-6  },
+  { top:'63%',  left:'6%',  size:24, glyph:7, rot:30  },
+  { top:'67%',  left:'94%', size:30, glyph:5, rot:-14 },
+  { top:'71%',  left:'18%', size:22, glyph:1, rot:6   },
+  { top:'74%',  left:'85%', size:36, glyph:0, rot:22  },
+  { top:'78%',  left:'48%', size:26, glyph:6, rot:-20 },
+  { top:'82%',  left:'12%', size:32, glyph:4, rot:14  },
+  { top:'86%',  left:'76%', size:24, glyph:2, rot:-10 },
+  { top:'90%',  left:'30%', size:28, glyph:7, rot:18  },
+  { top:'30%',  left:'58%', size:26, glyph:5, rot:12  },
+  { top:'45%',  left:'45%', size:30, glyph:3, rot:-8  },
+  { top:'61%',  left:'40%', size:24, glyph:2, rot:20  },
+  { top:'77%',  left:'63%', size:28, glyph:4, rot:-16 },
+  { top:'38%',  left:'82%', size:34, glyph:0, rot:-4  },
+  { top:'54%',  left:'95%', size:22, glyph:7, rot:26  },
+  { top:'70%',  left:'52%', size:32, glyph:3, rot:-10 },
+  { top:'88%',  left:'88%', size:28, glyph:5, rot:16  },
+  { top:'94%',  left:'18%', size:30, glyph:4, rot:24  },
+]
+
+function NaibuHiddenLayer({ scope }) {
+  const layerRef = useRef(null)
+  useEffect(() => {
+    const el = scope.current
+    const layer = layerRef.current
+    if (!el || !layer) return
+    let raf = 0
+    const onMove = (e) => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const rect = el.getBoundingClientRect()
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top + el.scrollTop
+        layer.style.setProperty('--mx', `${x}px`)
+        layer.style.setProperty('--my', `${y}px`)
+        layer.style.setProperty('--on', '1')
+      })
+    }
+    const onLeave = () => { layer.style.setProperty('--on', '0') }
+    el.addEventListener('mousemove', onMove)
+    el.addEventListener('mouseleave', onLeave)
+    return () => {
+      cancelAnimationFrame(raf)
+      el.removeEventListener('mousemove', onMove)
+      el.removeEventListener('mouseleave', onLeave)
+    }
+  }, [scope])
   return (
-    <div className="csn-uhri-sprite" role="img" aria-label="Uhri sprite — hover to walk">
-      <span className="csn-uhri-frame" />
-      <span className="csn-uhri-hint">hover · she walks ↺</span>
+    <div className="csn-hidden-layer" ref={layerRef} aria-hidden="true">
+      {SCATTER.map((p, i) => (
+        <span
+          key={i}
+          className="csn-hidden-glyph"
+          style={{
+            top: p.top,
+            left: p.left,
+            width: p.size,
+            height: p.size,
+            transform: `rotate(${p.rot}deg)`,
+          }}
+        >
+          {GLYPHS[p.glyph]}
+        </span>
+      ))}
     </div>
   )
 }
@@ -18,6 +146,7 @@ function UhriSprite() {
 // from the Figma design at figma.com/design/ciWPRYix723zzP2qAvksiA.
 // Scoped under .csn-* so it doesn't clash with other modals.
 export default function CaseStudyModalNaibu({ hero, onClose }) {
+  const modalRef = useRef(null)
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', onKey)
@@ -45,6 +174,7 @@ export default function CaseStudyModalNaibu({ hero, onClose }) {
       >
         <motion.article
           className="csn-modal"
+          ref={modalRef}
           onClick={(e) => e.stopPropagation()}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -56,6 +186,9 @@ export default function CaseStudyModalNaibu({ hero, onClose }) {
           {/* Ambient glow blobs */}
           <div className="csn-bg-glow csn-bg-glow-purple" aria-hidden="true" />
           <div className="csn-bg-glow csn-bg-glow-cyan" aria-hidden="true" />
+
+          {/* Hidden glyph layer — flashlight cursor reveals scattered symbols */}
+          <NaibuHiddenLayer scope={modalRef} />
 
           {/* HERO */}
           <section className="csn-hero">
@@ -99,20 +232,6 @@ export default function CaseStudyModalNaibu({ hero, onClose }) {
               </div>
             </div>
 
-            {/* STATS */}
-            <div className="csn-stats">
-              {[
-                { n: '1',    l: 'Solo Developer' },
-                { n: '6',    l: 'Months' },
-                { n: '12+',  l: 'Animations' },
-                { n: '168',  l: 'Thesis Pages' },
-              ].map((s) => (
-                <div className="csn-stat" key={s.l}>
-                  <div className="csn-stat-n">{s.n}</div>
-                  <div className="csn-stat-l">{s.l}</div>
-                </div>
-              ))}
-            </div>
           </section>
 
           {/* CORE MECHANICS */}
@@ -199,17 +318,12 @@ export default function CaseStudyModalNaibu({ hero, onClose }) {
                       </div>
                       {mediaList.length > 0 && (
                         <div className={`csn-phase-media csn-phase-media-${mediaList.length}`}>
-                          {mediaList.map((m, j) => {
-                            const isUhriSheet = m.src?.endsWith('uhri-spritesheet.png')
-                            return (
-                              <figure key={j}>
-                                {isUhriSheet
-                                  ? <UhriSprite />
-                                  : <img src={m.src} alt={m.caption || ''} />}
-                                {m.caption && <figcaption>{m.caption}</figcaption>}
-                              </figure>
-                            )
-                          })}
+                          {mediaList.map((m, j) => (
+                            <figure key={j}>
+                              <img src={m.src} alt={m.caption || ''} />
+                              {m.caption && <figcaption>{m.caption}</figcaption>}
+                            </figure>
+                          ))}
                         </div>
                       )}
                     </div>

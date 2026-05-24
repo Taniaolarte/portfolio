@@ -214,7 +214,7 @@ export default function Work() {
           className="work-cat-pill"
           onClick={() => scrollToCategory('all')}
         >
-          ALL CATEGORIES
+          All Categories
         </button>
         {categories.map((c) => (
           <button

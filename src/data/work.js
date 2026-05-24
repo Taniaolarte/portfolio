@@ -3,9 +3,9 @@
 // Rows with Case Study = TRUE become heroes (carousel) AND get the neon star in the gallery.
 
 export const categories = [
-  { id: 'cat-motion',  label: '3D AND MOTION',         short: '3D & Motion' },
-  { id: 'cat-digital', label: 'DIGITAL ART',           short: 'Digital Art & UX' },
-  { id: 'cat-games',   label: 'GAMES AND INTERACTIVE', short: 'Games & Interactive' },
+  { id: 'cat-motion',  label: 'Animation & VFX',       short: '3D & Motion' },
+  { id: 'cat-digital', label: 'Design & Digital Art',  short: 'Digital Art & UX' },
+  { id: 'cat-games',   label: 'Games & Interactive',   short: 'Games & Interactive' },
 ]
 
 export const types = [
@@ -1053,7 +1053,7 @@ export const work = {
 
   // ── Digital Art & UX ────────────────────────
   'cat-digital': {
-    header: { label: 'Digital Art · UX/UI', title: 'Design & Branding' },
+    header: { label: 'Digital Art · UX/UI', title: 'Design & Digital Art' },
     heroes: [extraCheckpointCase, sub40Case],
     shortCards: true,
     gallery: [
@@ -1068,7 +1068,7 @@ export const work = {
 
   // ── Games & Interactive ─────────────────────
   'cat-games': {
-    header: { label: 'Games · Interactive', title: 'Game Design & Experiences' },
+    header: { label: 'Games · Interactive', title: 'Games & Interactive' },
     heroes: [bloomingCase, naibuCase],
     shortCards: true,
     gallery: [
