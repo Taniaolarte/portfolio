@@ -133,7 +133,7 @@ export default function About() {
               <SparkPlus color="#22d3ee" size={30} />
             </PolaroidSticker>
             <PolaroidSticker className="sticker-star" initialRotate={-25}>
-              <img src="/portfolio/assets/images/star-vector.svg" alt="" draggable="false" style={{ width: 56, height: 56, opacity: 0.85, pointerEvents: 'none' }} />
+              <img src="/assets/images/star-vector.svg" alt="" draggable="false" style={{ width: 56, height: 56, opacity: 0.85, pointerEvents: 'none' }} />
             </PolaroidSticker>
             <PolaroidSticker className="sticker-plus" initialRotate={12}>
               <SparkPlus color="#f0abfc" size={22} />
@@ -141,14 +141,14 @@ export default function About() {
 
             <div className="polaroid" data-polaroid-target>
               <div className="polaroid-photo">
-                <img src="/portfolio/assets/images/profile.png" alt="Tania Olarte" />
+                <img src="/assets/images/profile.png" alt="Tania Olarte" />
               </div>
               <div className="polaroid-strip">
                 <span className="polaroid-me">Me! ✨</span>
                 <span className="polaroid-year">2026</span>
               </div>
               <div className="photo-badge">
-                <img src="/portfolio/assets/images/badge-star.svg" alt="" />
+                <img src="/assets/images/badge-star.svg" alt="" />
               </div>
             </div>
             <div className="about-stats">

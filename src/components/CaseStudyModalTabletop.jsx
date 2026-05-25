@@ -129,7 +129,7 @@ export default function CaseStudyModalTabletop({ hero, onClose }) {
                 {Array.from({ length: 15 }).map((_, i) => <span key={`t${i}`} />)}
               </div>
               <div className="cst-filmframe">
-                <img src="/portfolio/assets/case-studies/escape-room-anim/poster.jpg" alt="Storyboard scene" />
+                <img src="/assets/case-studies/escape-room-anim/poster.jpg" alt="Storyboard scene" />
               </div>
               <div className="cst-filmholes cst-filmholes-bot" aria-hidden="true">
                 {Array.from({ length: 15 }).map((_, i) => <span key={`b${i}`} />)}
@@ -197,21 +197,21 @@ export default function CaseStudyModalTabletop({ hero, onClose }) {
             </header>
             <div className="cst-assets">
               <figure className="cst-asset cst-asset-1">
-                <img src="/portfolio/assets/case-studies/escape-room-anim/box-01.jpg" alt="Game box" />
+                <img src="/assets/case-studies/escape-room-anim/box-01.jpg" alt="Game box" />
                 <figcaption>
                   <strong style={{ color: '#E8744F' }}>BRANDING &amp; BOX</strong>
                   <span>Thick-lined, bouncy aesthetic for the box art and physical product.</span>
                 </figcaption>
               </figure>
               <figure className="cst-asset cst-asset-2">
-                <img src="/portfolio/assets/case-studies/escape-room-anim/card-01.jpg" alt="Game cards" />
+                <img src="/assets/case-studies/escape-room-anim/card-01.jpg" alt="Game cards" />
                 <figcaption>
                   <strong style={{ color: '#7DCAC5' }}>GAME CARDS</strong>
                   <span>Reformatted text and visuals to match a 1950s TV game show interface.</span>
                 </figcaption>
               </figure>
               <figure className="cst-asset cst-asset-3">
-                <img src="/portfolio/assets/case-studies/escape-room-anim/poster.jpg" alt="Game board scene" />
+                <img src="/assets/case-studies/escape-room-anim/poster.jpg" alt="Game board scene" />
                 <figcaption>
                   <strong style={{ color: '#F4D03F' }}>THE GAME BOARD</strong>
                   <span>Isometric layouts animated to show players exactly where pieces go.</span>

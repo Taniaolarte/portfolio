@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const ASSETS = '/portfolio/assets/case-studies/naibu'
+const ASSETS = '/assets/case-studies/naibu'
 
 // Hidden things in the dark — scattered pixel glyphs (eyes, stars, runes,
 // asterisks) embedded in the modal background at ~7% opacity. A soft

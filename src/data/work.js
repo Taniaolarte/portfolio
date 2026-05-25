@@ -30,7 +30,7 @@ const escapeRoomCase = {
   cta: 'View Case Study',
   meta: 'AE · ANIMATION',
   duration: '02:30',
-  bgImage: '/portfolio/assets/case-studies/escape-room-anim/poster.jpg',
+  bgImage: '/assets/case-studies/escape-room-anim/poster.jpg',
   bgGradient: 'linear-gradient(135deg,#1a0f3d 0%,#5a4fcf 45%,#382466 100%)',
   overlay: 'dark',
   theme: 'tabletop',
@@ -66,8 +66,8 @@ const escapeRoomCase = {
         body:
           "Storyboarded the opening, animated each character pose in After Effects with shape-layer rigs, then exported lightweight WebM loops for the game's display screens. Final pass scrubbed every loop for sub-frame seams.",
         media: [
-          { src: '/portfolio/assets/case-studies/escape-room-anim/box-01.jpg', caption: 'Game box · physical product' },
-          { src: '/portfolio/assets/case-studies/escape-room-anim/card-01.jpg', caption: 'Card art · in-game prompts' },
+          { src: '/assets/case-studies/escape-room-anim/box-01.jpg', caption: 'Game box · physical product' },
+          { src: '/assets/case-studies/escape-room-anim/card-01.jpg', caption: 'Card art · in-game prompts' },
         ],
       },
       {
@@ -95,11 +95,11 @@ const vaultEyeCase = {
   cta: 'Open the Vault',
   meta: 'AE · LOOP',
   duration: '00:12',
-  bgImage: '/portfolio/assets/case-studies/the-vault/polaroid-03.png',
+  bgImage: '/assets/case-studies/the-vault/polaroid-03.png',
   overlay: 'dark',
   theme: 'vault',
   caseStudy: {
-    eyeVideo: '/portfolio/assets/case-studies/tiktok-ar/Eye.mp4',
+    eyeVideo: '/assets/case-studies/tiktok-ar/Eye.mp4',
     client: 'The Vault | Escape Rooms · Canberra',
     year: '2024',
     role: 'Animator',
@@ -132,10 +132,10 @@ const vaultEyeCase = {
     },
     // Drop photos into /assets/case-studies/the-vault/ to populate.
     polaroids: [
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-01.jpg', caption: 'The Vault Bar · Canberra' },
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-02.png', caption: 'Escape room puzzle', objectPosition: '50% 0%' },
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-03.png', caption: 'Me with my animation' },
-      { src: '/portfolio/assets/case-studies/the-vault/polaroid-05.png', caption: 'The Vault' },
+      { src: '/assets/case-studies/the-vault/polaroid-01.jpg', caption: 'The Vault Bar · Canberra' },
+      { src: '/assets/case-studies/the-vault/polaroid-02.png', caption: 'Escape room puzzle', objectPosition: '50% 0%' },
+      { src: '/assets/case-studies/the-vault/polaroid-03.png', caption: 'Me with my animation' },
+      { src: '/assets/case-studies/the-vault/polaroid-05.png', caption: 'The Vault' },
     ],
     bigger: {
       eyebrow: 'AFTER THE VAULT',
@@ -175,18 +175,18 @@ const extraCheckpointCase = {
   cta: 'View Case Study',
   metaTop: 'YEAR : 2021',
   metaSub: 'Brand project',
-  bgImage: '/portfolio/assets/case-studies/extra-checkpoint/hero.jpg',
+  bgImage: '/assets/case-studies/extra-checkpoint/hero.jpg',
   theme: 'xtracheckpoint',
   mockups: [
-    { class: 'ph1', label: 'Logo Mark',   img: '/portfolio/assets/case-studies/extra-checkpoint/01.jpg' },
-    { class: 'ph2', label: 'App Icon',    img: '/portfolio/assets/case-studies/extra-checkpoint/02.jpg' },
-    { class: 'ph3', label: 'Merch',       img: '/portfolio/assets/case-studies/extra-checkpoint/03.jpg' },
-    { class: 'lp',  label: 'Brand Sheet', img: '/portfolio/assets/case-studies/extra-checkpoint/04.jpg' },
-    { class: 'pt',  label: 'Pattern',     img: '/portfolio/assets/case-studies/extra-checkpoint/05.jpg' },
+    { class: 'ph1', label: 'Logo Mark',   img: '/assets/case-studies/extra-checkpoint/01.jpg' },
+    { class: 'ph2', label: 'App Icon',    img: '/assets/case-studies/extra-checkpoint/02.jpg' },
+    { class: 'ph3', label: 'Merch',       img: '/assets/case-studies/extra-checkpoint/03.jpg' },
+    { class: 'lp',  label: 'Brand Sheet', img: '/assets/case-studies/extra-checkpoint/04.jpg' },
+    { class: 'pt',  label: 'Pattern',     img: '/assets/case-studies/extra-checkpoint/05.jpg' },
   ],
   caseStudy: {
-    coverImage: '/portfolio/assets/case-studies/extra-checkpoint/cover.jpg',
-    heroGif:    '/portfolio/assets/case-studies/extra-checkpoint/intro.gif',
+    coverImage: '/assets/case-studies/extra-checkpoint/cover.jpg',
+    heroGif:    '/assets/case-studies/extra-checkpoint/intro.gif',
     behanceUrl: 'https://www.behance.net/gallery/131654567/XtraCheckpointCreacion-de-Marca',
     behanceProjectId: '131654567',
 
@@ -217,7 +217,7 @@ const extraCheckpointCase = {
       title: 'Imagotype',
       body:
         "A pixel-grid mark inspired by save points and energy bars — three rows of three squares, the centre column lit in the brand purple. The wordmark sits below in a hand-drawn display weight, keeping the system warm even at small sizes.",
-      image: '/portfolio/assets/case-studies/extra-checkpoint/logo.jpg',
+      image: '/assets/case-studies/extra-checkpoint/logo.jpg',
       rules: [
         { label: 'Clear space',   note: 'One full grid-square padding on every side.' },
         { label: 'Minimum size',  note: 'Imagotype: 100 px wide. Below that, drop the wordmark and keep the grid mark only.' },
@@ -256,11 +256,11 @@ const extraCheckpointCase = {
 
     // APPLICATIONS / BRAND IN USE
     applications: [
-      { title: 'Tags & merch',     body: 'Pin badges, hang tags, and stamp — the mark survives at any scale.', image: '/portfolio/assets/case-studies/extra-checkpoint/01.jpg' },
-      { title: 'Packaging',         body: 'Cosmic packaging system for limited-run drops.',                      image: '/portfolio/assets/case-studies/extra-checkpoint/02.jpg' },
-      { title: 'Editorial content', body: 'The newsletter — illustrated stories, structured for short attention.', image: '/portfolio/assets/case-studies/extra-checkpoint/03.jpg' },
-      { title: 'Social channels',   body: 'A consistent grid across Instagram, Twitter, Discord and Facebook.',   image: '/portfolio/assets/case-studies/extra-checkpoint/social.jpg' },
-      { title: 'Brand sheet',       body: 'Full system reference for partners.',                                  image: '/portfolio/assets/case-studies/extra-checkpoint/brand-system.jpg' },
+      { title: 'Tags & merch',     body: 'Pin badges, hang tags, and stamp — the mark survives at any scale.', image: '/assets/case-studies/extra-checkpoint/01.jpg' },
+      { title: 'Packaging',         body: 'Cosmic packaging system for limited-run drops.',                      image: '/assets/case-studies/extra-checkpoint/02.jpg' },
+      { title: 'Editorial content', body: 'The newsletter — illustrated stories, structured for short attention.', image: '/assets/case-studies/extra-checkpoint/03.jpg' },
+      { title: 'Social channels',   body: 'A consistent grid across Instagram, Twitter, Discord and Facebook.',   image: '/assets/case-studies/extra-checkpoint/social.jpg' },
+      { title: 'Brand sheet',       body: 'Full system reference for partners.',                                  image: '/assets/case-studies/extra-checkpoint/brand-system.jpg' },
     ],
 
     // MOODBOARD — illustration directions that informed the system
@@ -363,11 +363,11 @@ const naibuCase = {
   cta: 'View Case Study',
   meta: 'UNITY · C# · ASEPRITE',
   duration: '01:47',
-  bgImage: '/portfolio/assets/case-studies/naibu/hero.jpg',
+  bgImage: '/assets/case-studies/naibu/hero.jpg',
   overlay: 'warm',
   theme: 'naibu',
   caseStudy: {
-    coverImage: '/portfolio/assets/case-studies/naibu/hero.jpg',
+    coverImage: '/assets/case-studies/naibu/hero.jpg',
     youtubeUrl: 'https://youtu.be/oJUyfrc1kpc',
     client: 'Bachelor Thesis · La Sabana University',
     year: '2020',
@@ -407,7 +407,7 @@ const naibuCase = {
           'Character selection · protagonist + antagonists',
           'Visual style direction · pixel art + warm/cool duality',
         ],
-        media: { src: '/portfolio/assets/case-studies/naibu/portada.png', caption: 'Naibu · title artwork' },
+        media: { src: '/assets/case-studies/naibu/portada.png', caption: 'Naibu · title artwork' },
       },
       {
         id: 'narrative',
@@ -424,9 +424,9 @@ const naibuCase = {
           'Beats · the points where mechanics shift',
         ],
         media: [
-          { src: '/portfolio/assets/case-studies/naibu/uhri-character.png', caption: 'Uhri · character reference' },
-          { src: '/portfolio/assets/case-studies/naibu/fobos.png',          caption: 'Fobos · antagonist' },
-          { src: '/portfolio/assets/case-studies/naibu/wendigo.png',        caption: 'Wendigo · antagonist' },
+          { src: '/assets/case-studies/naibu/uhri-character.png', caption: 'Uhri · character reference' },
+          { src: '/assets/case-studies/naibu/fobos.png',          caption: 'Fobos · antagonist' },
+          { src: '/assets/case-studies/naibu/wendigo.png',        caption: 'Wendigo · antagonist' },
         ],
       },
       {
@@ -443,7 +443,7 @@ const naibuCase = {
           'Mechanics study · what the genre allows',
           'Strategy · how to differentiate',
         ],
-        media: { src: '/portfolio/assets/case-studies/naibu/levels.png', caption: 'Level palettes derived from research' },
+        media: { src: '/assets/case-studies/naibu/levels.png', caption: 'Level palettes derived from research' },
       },
       {
         id: 'design',
@@ -460,9 +460,9 @@ const naibuCase = {
           'UI design · minimal HUD',
         ],
         media: [
-          { src: '/portfolio/assets/case-studies/naibu/uhri-poses.png',         caption: 'Uhri · pose studies' },
-          { src: '/portfolio/assets/case-studies/naibu/interactive-assets.png', caption: 'Interactive props · lamps + collectibles' },
-          { src: '/portfolio/assets/case-studies/naibu/icon.png',               caption: 'In-game icon' },
+          { src: '/assets/case-studies/naibu/uhri-poses.png',         caption: 'Uhri · pose studies' },
+          { src: '/assets/case-studies/naibu/interactive-assets.png', caption: 'Interactive props · lamps + collectibles' },
+          { src: '/assets/case-studies/naibu/icon.png',               caption: 'In-game icon' },
         ],
       },
       {
@@ -480,7 +480,7 @@ const naibuCase = {
           'Level 1 finished art pass',
           'Props · lamps, collectibles, set dressing',
         ],
-        media: { src: '/portfolio/assets/case-studies/naibu/uhri-spritesheet.png', caption: 'Uhri animation sprite sheet' },
+        media: { src: '/assets/case-studies/naibu/uhri-spritesheet.png', caption: 'Uhri animation sprite sheet' },
       },
       {
         id: 'animation',
@@ -496,7 +496,7 @@ const naibuCase = {
           'Prop animation · ambient world motion',
           'UI animation · transitions + feedback',
         ],
-        media: { src: '/portfolio/assets/case-studies/naibu/fobos-storyboard.png', caption: 'Fobos · appearance storyboard' },
+        media: { src: '/assets/case-studies/naibu/fobos-storyboard.png', caption: 'Fobos · appearance storyboard' },
       },
       {
         id: 'documentation',
@@ -554,9 +554,9 @@ const naibuCase = {
         body:
           "Paper-prototyped 20+ mechanics, narrowed to 6 that mapped to emotional beats. Pixel-art frames were hand-animated in Aseprite, then implemented as Unity sprite-based state machines. Each puzzle was iterated through 3–5 playtest cycles before being signed off.",
         media: [
-          { src: '/portfolio/assets/case-studies/naibu/01.jpg', caption: 'Opening — denial' },
-          { src: '/portfolio/assets/case-studies/naibu/02.jpg', caption: 'Mid-game — anger' },
-          { src: '/portfolio/assets/case-studies/naibu/03.jpg', caption: 'Late — acceptance' },
+          { src: '/assets/case-studies/naibu/01.jpg', caption: 'Opening — denial' },
+          { src: '/assets/case-studies/naibu/02.jpg', caption: 'Mid-game — anger' },
+          { src: '/assets/case-studies/naibu/03.jpg', caption: 'Late — acceptance' },
         ],
       },
       {
@@ -588,14 +588,14 @@ const bloomingCase = {
   cta: 'View Case Study',
   meta: 'TOUCHDESIGNER · BIOTRON · HOLOGRAPHIC DOME',
   duration: '03:00',
-  bgImage: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
+  bgImage: '/assets/case-studies/blooming/apd-poster.jpg',
   overlay: 'default',
   theme: 'blooming',
   caseStudy: {
-    coverImage: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
+    coverImage: '/assets/case-studies/blooming/apd-poster.jpg',
     youtubeUrl: 'https://youtu.be/4vzbM2uL0tM',
-    heroVideo: '/portfolio/assets/case-studies/blooming/BloomingInteractionMain.mp4',
-    heroPoster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
+    heroVideo: '/assets/case-studies/blooming/BloomingInteractionMain.mp4',
+    heroPoster: '/assets/case-studies/blooming/apd-poster.jpg',
     eyebrow: 'INTERACTIVE INSTALLATION · CASE STUDY',
     placeLine: 'SCAN → BIOTRON → TOUCHDESIGNER → DOME → BUNJIL PLACE',
     intro: {
@@ -639,8 +639,8 @@ const bloomingCase = {
         body:
           "Built the reactive system in TouchDesigner: 3D-scan geometry → particle emitters → biosignal modulators → render. Every frame, audience proximity rewrites the modulators, which feed the emitters, which redraw the flower.",
         media: {
-          video: '/portfolio/assets/case-studies/blooming/Play_Force_Experiments_web.mp4',
-          poster: '/portfolio/assets/case-studies/blooming/interactive-trailer-poster.jpg',
+          video: '/assets/case-studies/blooming/Play_Force_Experiments_web.mp4',
+          poster: '/assets/case-studies/blooming/interactive-trailer-poster.jpg',
           caption: 'Play + force experiments · R&D session',
         },
       },
@@ -672,8 +672,8 @@ const bloomingCase = {
         body:
           "Re-graded the patch for Bunjil Place's outdoor screen against ambient daylight, scaled the particle counts for the bigger canvas, and locked the loop to a 3-minute cycle so it could slot into the 3pm and 7pm daily screenings.",
         media: {
-          video: '/portfolio/assets/case-studies/blooming/reel.mp4',
-          poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
+          video: '/assets/case-studies/blooming/reel.mp4',
+          poster: '/assets/case-studies/blooming/apd-poster.jpg',
           caption: 'Trailer · full reel',
         },
       },
@@ -709,10 +709,10 @@ const bloomingCase = {
       caption: "Four blooms ran through the linear cut — same engine, different geometry, different decay.",
     },
     flowers: [
-      { video: '/portfolio/assets/case-studies/blooming/blooming-final.mp4', poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 01 · animation version · final dome composition' },
-      { video: '/portfolio/assets/case-studies/blooming/flower-02.mp4',     poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 02 · 0:07 → 0:50' },
-      { video: '/portfolio/assets/case-studies/blooming/flower-03.mp4',     poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 03 · 0:56 → 1:15' },
-      { video: '/portfolio/assets/case-studies/blooming/flower-04.mp4',     poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 04 · 1:19 → 1:50' },
+      { video: '/assets/case-studies/blooming/blooming-final.mp4', poster: '/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 01 · animation version · final dome composition' },
+      { video: '/assets/case-studies/blooming/flower-02.mp4',     poster: '/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 02 · 0:07 → 0:50' },
+      { video: '/assets/case-studies/blooming/flower-03.mp4',     poster: '/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 03 · 0:56 → 1:15' },
+      { video: '/assets/case-studies/blooming/flower-04.mp4',     poster: '/assets/case-studies/blooming/apd-poster.jpg', caption: 'Flower 04 · 1:19 → 1:50' },
     ],
     // Big call-out video at the bottom.
     experience: {
@@ -741,14 +741,14 @@ const bloomingCase = {
       outcomeTitle: 'From scan to outdoor screen',
       vision:
         "The original ask was poetic: a flower with a digital ghost, something that could breathe and dissolve and respond. The outcome was concrete — Second Blooming was selected for the MAGI Floral Animations response to Bunjil Place's Floribunda exhibition and played daily on the outdoor screen for the run.",
-      outcomeVideo: '/portfolio/assets/case-studies/blooming/blooming-x.mp4',
-      outcomePoster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg',
+      outcomeVideo: '/assets/case-studies/blooming/blooming-x.mp4',
+      outcomePoster: '/assets/case-studies/blooming/apd-poster.jpg',
       // Instax-style polaroid wall from opening night at Bunjil Place.
       instax: [
-        { src: '/portfolio/assets/case-studies/blooming/1752551433716.jpeg', caption: 'Bunjil · opening night' },
-        { src: '/portfolio/assets/case-studies/blooming/1752551434746.jpeg', caption: 'Audience · 7pm screening' },
-        { src: '/portfolio/assets/case-studies/blooming/1752551435933.jpeg', caption: 'Bloom on the big screen' },
-        { src: '/portfolio/assets/case-studies/blooming/1752551434626.jpeg', caption: 'Outdoor screen · dusk' },
+        { src: '/assets/case-studies/blooming/1752551433716.jpeg', caption: 'Bunjil · opening night' },
+        { src: '/assets/case-studies/blooming/1752551434746.jpeg', caption: 'Audience · 7pm screening' },
+        { src: '/assets/case-studies/blooming/1752551435933.jpeg', caption: 'Bloom on the big screen' },
+        { src: '/assets/case-studies/blooming/1752551434626.jpeg', caption: 'Outdoor screen · dusk' },
       ],
       tag: 'Featured · Bunjil Place',
       title: 'MAGI Floral Animations · Bunjil Place',
@@ -775,10 +775,10 @@ const pubflightCase = {
   title: 'Pubflift · Ad Tech',
   subtitle: 'Ad Animation · 2023',
   badges: ['AD ANIMATION'],
-  bgImage: '/portfolio/assets/work/pubflift-ad.jpg',
+  bgImage: '/assets/work/pubflift-ad.jpg',
   caseStudy: {
-    coverImage: '/portfolio/assets/work/pubflift-ad.jpg',
-    reelUrl: '/portfolio/assets/case-studies/pubflift-ad/reel.mp4',
+    coverImage: '/assets/work/pubflift-ad.jpg',
+    reelUrl: '/assets/case-studies/pubflift-ad/reel.mp4',
     client: 'Pubflift',
     year: '2023',
     role: 'Motion Designer',
@@ -796,7 +796,7 @@ const socialMediaCase = {
   badges: ['VIDEO EDIT', 'SOCIAL'],
   bgGradient: 'linear-gradient(149deg,#bf1f59,#e5598c 36%,#801440 71%)',
   caseStudy: {
-    reelUrl: '/portfolio/assets/case-studies/victor-mourad/reel2.mp4',
+    reelUrl: '/assets/case-studies/victor-mourad/reel2.mp4',
     client: 'Various',
     year: '2023–24',
     role: 'Editor · Motion Designer',
@@ -812,9 +812,9 @@ const lucidLogoCase = {
   title: 'Logo Animations',
   subtitle: 'Motion Design · Brand',
   badges: ['MOTION DESIGN', 'BRAND'],
-  bgImage: '/portfolio/assets/work/lucid-logo-anim.jpg',
+  bgImage: '/assets/work/lucid-logo-anim.jpg',
   caseStudy: {
-    coverImage: '/portfolio/assets/work/lucid-logo-anim.jpg',
+    coverImage: '/assets/work/lucid-logo-anim.jpg',
     figmaEmbedUrl: 'https://embed.figma.com/proto/y2JZWoymudyLSPZyHTXzrX/Lucid-Creatives?node-id=87-219&starting-point-node-id=87%3A219&scaling=min-zoom&content-scaling=fixed&embed-host=share',
     client: 'Lucid Creatives',
     year: '2023',
@@ -831,17 +831,17 @@ const hypeEduCase = {
   title: 'Hype Educational Animations',
   subtitle: 'Animation · Educational',
   badges: ['ANIMATION', 'EDUCATION'],
-  bgImage: '/portfolio/assets/work/hype-edu-anim.jpg',
+  bgImage: '/assets/work/hype-edu-anim.jpg',
   caseStudy: {
-    coverImage: '/portfolio/assets/work/hype-edu-anim.jpg',
-    reelUrl: '/portfolio/assets/case-studies/hype-edu-anim/reel.mp4',
+    coverImage: '/assets/work/hype-edu-anim.jpg',
+    reelUrl: '/assets/case-studies/hype-edu-anim/reel.mp4',
     gallery: [
-      '/portfolio/assets/case-studies/hype-edu-anim/01.jpg',
-      '/portfolio/assets/case-studies/hype-edu-anim/02.jpg',
-      '/portfolio/assets/case-studies/hype-edu-anim/03.jpg',
-      '/portfolio/assets/case-studies/hype-edu-anim/04.jpg',
-      '/portfolio/assets/case-studies/hype-edu-anim/05.jpg',
-      '/portfolio/assets/case-studies/hype-edu-anim/06.jpg',
+      '/assets/case-studies/hype-edu-anim/01.jpg',
+      '/assets/case-studies/hype-edu-anim/02.jpg',
+      '/assets/case-studies/hype-edu-anim/03.jpg',
+      '/assets/case-studies/hype-edu-anim/04.jpg',
+      '/assets/case-studies/hype-edu-anim/05.jpg',
+      '/assets/case-studies/hype-edu-anim/06.jpg',
     ],
     client: 'Hype',
     year: '2023',
@@ -858,10 +858,10 @@ const videoEditionCase = {
   title: 'Video Edition',
   subtitle: 'Video Editing · Client Work',
   badges: ['VIDEO EDIT'],
-  bgImage: '/portfolio/assets/work/lucid-construction.jpg',
+  bgImage: '/assets/work/lucid-construction.jpg',
   caseStudy: {
-    coverImage: '/portfolio/assets/work/lucid-construction.jpg',
-    reelUrl: '/portfolio/assets/case-studies/lucid-construction/reel.mp4',
+    coverImage: '/assets/work/lucid-construction.jpg',
+    reelUrl: '/assets/case-studies/lucid-construction/reel.mp4',
     client: 'Various',
     year: '2023',
     role: 'Video Editor',
@@ -877,12 +877,12 @@ const amazonicasCase = {
   title: 'Amazonicas Logo',
   subtitle: 'Logo Design · 2023',
   badges: ['LOGO'],
-  bgImage: '/portfolio/assets/work/amazonicas-logo.jpg',
+  bgImage: '/assets/work/amazonicas-logo.jpg',
   caseStudy: {
-    coverImage: '/portfolio/assets/work/amazonicas-logo.jpg',
-    reelUrl: '/portfolio/assets/case-studies/amazonicas-logo/reel.mp4',
+    coverImage: '/assets/work/amazonicas-logo.jpg',
+    reelUrl: '/assets/case-studies/amazonicas-logo/reel.mp4',
     gallery: [
-      '/portfolio/assets/case-studies/amazonicas-logo/01.jpg',
+      '/assets/case-studies/amazonicas-logo/01.jpg',
     ],
     client: 'Amazonicas',
     year: '2023',
@@ -899,15 +899,15 @@ const interactivePoemCase = {
   title: 'Interactive Web Poem',
   subtitle: 'Interactive · Web',
   badges: ['INTERACTIVE'],
-  bgImage: '/portfolio/assets/work/interactive-poem.jpg',
+  bgImage: '/assets/work/interactive-poem.jpg',
   caseStudy: {
-    coverImage: '/portfolio/assets/work/interactive-poem.jpg',
-    reelUrl: '/portfolio/assets/case-studies/interactive-poem/reel.mp4',
+    coverImage: '/assets/work/interactive-poem.jpg',
+    reelUrl: '/assets/case-studies/interactive-poem/reel.mp4',
     gallery: [
-      '/portfolio/assets/case-studies/interactive-poem/01.jpg',
-      '/portfolio/assets/case-studies/interactive-poem/02.jpg',
-      '/portfolio/assets/case-studies/interactive-poem/03.jpg',
-      '/portfolio/assets/case-studies/interactive-poem/04.jpg',
+      '/assets/case-studies/interactive-poem/01.jpg',
+      '/assets/case-studies/interactive-poem/02.jpg',
+      '/assets/case-studies/interactive-poem/03.jpg',
+      '/assets/case-studies/interactive-poem/04.jpg',
     ],
     client: 'Personal project',
     year: '2023',
@@ -924,14 +924,14 @@ const suprafreshCase = {
   title: 'SupaFresh Market',
   subtitle: 'E-commerce Website · 2024',
   badges: ['WEB DESIGN', 'E-COMMERCE'],
-  bgImage: '/portfolio/assets/case-studies/suprafresh/hero.jpg',
+  bgImage: '/assets/case-studies/suprafresh/hero.jpg',
   caseStudy: {
-    coverImage: '/portfolio/assets/case-studies/suprafresh/hero.jpg',
+    coverImage: '/assets/case-studies/suprafresh/hero.jpg',
     liveUrl: 'https://supafreshmarket.com.au/',
     gallery: [
-      '/portfolio/assets/case-studies/suprafresh/01.jpg',
-      '/portfolio/assets/case-studies/suprafresh/02.jpg',
-      '/portfolio/assets/case-studies/suprafresh/03.jpg',
+      '/assets/case-studies/suprafresh/01.jpg',
+      '/assets/case-studies/suprafresh/02.jpg',
+      '/assets/case-studies/suprafresh/03.jpg',
     ],
     client: 'Supa Fresh Market',
     year: '2024',
@@ -948,11 +948,11 @@ const libraryEmotionsCase = {
   title: 'Library of Emotions',
   subtitle: 'PhD Research Project',
   badges: ['PHD PROJECT', 'RESEARCH'],
-  bgImage: '/portfolio/assets/work/library-of-emotions.jpg',
+  bgImage: '/assets/work/library-of-emotions.jpg',
   caseStudy: {
-    coverImage: '/portfolio/assets/work/library-of-emotions.jpg',
+    coverImage: '/assets/work/library-of-emotions.jpg',
     gallery: [
-      '/portfolio/assets/case-studies/library-of-emotions/01.jpg',
+      '/assets/case-studies/library-of-emotions/01.jpg',
     ],
     client: 'PhD Research',
     year: '2024',
@@ -969,14 +969,14 @@ const arFiltersCase = {
   title: 'AR Filters',
   subtitle: 'AR · Social Filters',
   badges: ['AR', 'FILTERS'],
-  bgImage: '/portfolio/assets/work/tiktok-ar.jpg',
+  bgImage: '/assets/work/tiktok-ar.jpg',
   caseStudy: {
-    coverImage: '/portfolio/assets/work/tiktok-ar.jpg',
-    reelUrl: '/portfolio/assets/case-studies/tiktok-ar/reel.mp4',
+    coverImage: '/assets/work/tiktok-ar.jpg',
+    reelUrl: '/assets/case-studies/tiktok-ar/reel.mp4',
     gallery: [
-      '/portfolio/assets/case-studies/tiktok-ar/01.jpg',
-      '/portfolio/assets/case-studies/tiktok-ar/02.jpg',
-      '/portfolio/assets/case-studies/tiktok-ar/03.jpg',
+      '/assets/case-studies/tiktok-ar/01.jpg',
+      '/assets/case-studies/tiktok-ar/02.jpg',
+      '/assets/case-studies/tiktok-ar/03.jpg',
     ],
     client: 'Various',
     year: '2023',
@@ -1003,7 +1003,7 @@ const pubflightHero = {
     "Short-form animated ads designed to communicate complex ad-tech value props in seconds. Looping, modular, and easy to localise.",
   meta: 'AE · MOTION',
   duration: '00:30',
-  bgImage: '/portfolio/assets/work/pubflift-ad.jpg',
+  bgImage: '/assets/work/pubflift-ad.jpg',
   overlay: 'dark',
   hideCaseButton: true,
   caseStudy: { youtubeUrl: 'https://youtu.be/ZlDXYpzYDKQ' },
@@ -1020,10 +1020,10 @@ const mywayHero = {
     "A kinetic-typography lyric edit synced to Calvin Harris' 'My Way' — every beat triggers a type-driven scene change.",
   meta: 'PR · AE',
   duration: '03:38',
-  bgImage: '/portfolio/assets/case-studies/myway/poster.jpg',
+  bgImage: '/assets/case-studies/myway/poster.jpg',
   overlay: 'dark',
   hideCaseButton: true,
-  caseStudy: { reelUrl: '/portfolio/assets/case-studies/myway/reel.mp4' },
+  caseStudy: { reelUrl: '/assets/case-studies/myway/reel.mp4' },
 }
 
 // ──────────────────────────────────────────────────────────
@@ -1038,31 +1038,33 @@ export const work = {
     shortCards: true,
     gallery: [
       // First 3 visible by default
-      { name: 'Tabletop Game Animation',    caseStudyId: 'escape-room-anim', kind: 'corporate', tag: 'ANIMATION',     tagColor: 'rgba(156,77,255,.9)', img: '/portfolio/assets/case-studies/escape-room-anim/poster.jpg' },
-      { name: 'THE VAULT · Eye',            caseStudyId: 'the-vault-eye',    kind: 'corporate', tag: 'ESCAPE ROOM',   tagColor: 'rgba(212,175,55,.9)', tagText: '#0a0a0a', video: '/portfolio/assets/case-studies/tiktok-ar/Eye.mp4' },
-      { name: 'Pubflift · Ad Tech',                                          kind: 'corporate', tag: 'AD ANIMATION',  tagColor: 'rgba(0,194,212,.9)',  video: '/portfolio/assets/case-studies/pubflift-ad/reel.mp4' },
-      { name: 'MyWay · Kinetic Typography',                                  kind: 'creative',  tag: 'VIDEO EDIT',    tagColor: 'rgba(255,46,107,.9)', video: '/portfolio/assets/case-studies/myway/reel.mp4' },
+      { name: 'Tabletop Game Animation',    caseStudyId: 'escape-room-anim', kind: 'corporate', tag: 'ANIMATION',     tagColor: 'rgba(156,77,255,.9)', img: '/assets/case-studies/escape-room-anim/poster.jpg' },
+      { name: 'THE VAULT · Eye',            caseStudyId: 'the-vault-eye',    kind: 'corporate', tag: 'ESCAPE ROOM',   tagColor: 'rgba(212,175,55,.9)', tagText: '#0a0a0a', video: '/assets/case-studies/tiktok-ar/Eye.mp4' },
+      { name: 'Pubflift · Ad Tech',                                          kind: 'corporate', tag: 'AD ANIMATION',  tagColor: 'rgba(0,194,212,.9)',  video: '/assets/case-studies/pubflift-ad/reel.mp4' },
+      { name: 'MyWay · Kinetic Typography',                                  kind: 'creative',  tag: 'VIDEO EDIT',    tagColor: 'rgba(255,46,107,.9)', video: '/assets/case-studies/myway/reel.mp4' },
       // Hidden behind "See more"
-      { name: 'Logo Animations',                                             kind: 'corporate', tag: 'MOTION DESIGN', tagColor: 'rgba(255,46,107,.9)', img: '/portfolio/assets/work/lucid-logo-anim.jpg' },
-      { name: 'Hype Educational Animations',                                 kind: 'creative',  tag: 'ANIMATION',     tagColor: 'rgba(0,194,212,.9)',  img: '/portfolio/assets/work/hype-edu-anim.jpg' },
-      { name: 'Video Edition',                                               kind: 'corporate', tag: 'VIDEO EDIT',    tagColor: 'rgba(156,77,255,.9)', img: '/portfolio/assets/work/lucid-construction.jpg' },
-      { name: 'Social Media Videos',                                         kind: 'corporate', tag: 'VIDEO EDIT',    tagColor: 'rgba(255,46,107,.9)', video: '/portfolio/assets/case-studies/victor-mourad/reel2.mp4' },
       { name: 'Documentary Animation',                                       kind: 'creative',  tag: 'ANIMATION',     tagColor: 'rgba(0,194,212,.9)',  img: 'https://i.ytimg.com/vi/rou_9x4KpxU/maxresdefault.jpg', youtubeId: 'rou_9x4KpxU' },
+      // Temporarily hidden (also flip Choosen=FALSE in Notion when ready):
+      // { name: 'Logo Animations',           kind: 'corporate', tag: 'MOTION DESIGN', tagColor: 'rgba(255,46,107,.9)', img: '/assets/work/lucid-logo-anim.jpg' },
+      // { name: 'Hype Educational Animations', kind: 'creative',  tag: 'ANIMATION',   tagColor: 'rgba(0,194,212,.9)',  img: '/assets/work/hype-edu-anim.jpg' },
+      // { name: 'Video Edition',             kind: 'corporate', tag: 'VIDEO EDIT',    tagColor: 'rgba(156,77,255,.9)', img: '/assets/work/lucid-construction.jpg' },
+      // { name: 'Social Media Videos',       kind: 'corporate', tag: 'VIDEO EDIT',    tagColor: 'rgba(255,46,107,.9)', video: '/assets/case-studies/victor-mourad/reel2.mp4' },
     ],
   },
 
   // ── Digital Art & UX ────────────────────────
   'cat-digital': {
     header: { label: 'Digital Art · UX/UI', title: 'Design & Digital Art' },
-    heroes: [extraCheckpointCase, sub40Case],
+    heroes: [extraCheckpointCase],
     shortCards: true,
     gallery: [
       // First 3 visible
-      { name: 'XtraCheckpoint',              caseStudyId: 'extra-checkpoint', kind: 'corporate', tag: 'BRAND DESIGN', tagColor: 'rgba(255,46,107,.9)', img: '/portfolio/assets/case-studies/extra-checkpoint/thumbnail.gif' },
-      { name: 'SupaFresh Market',                                             kind: 'corporate', tag: 'WEB DESIGN',   tagColor: 'rgba(0,194,212,.9)',  img: '/portfolio/assets/case-studies/suprafresh/hero.jpg', liveUrl: 'https://supafreshmarket.com.au/' },
-      { name: 'Amazonicas Logo',                                              kind: 'corporate', tag: 'LOGO',         tagColor: 'rgba(255,217,61,.9)', tagText: '#222', img: '/portfolio/assets/work/amazonicas-logo.jpg' },
-      // Hidden behind "See more"
-      { name: 'Digital Agency Website',                                       kind: 'corporate', tag: 'WEB DESIGN',   tagColor: 'rgba(156,77,255,.9)', img: '/portfolio/assets/work/digital-agency.jpg' },
+      { name: 'XtraCheckpoint',              caseStudyId: 'extra-checkpoint', kind: 'corporate', tag: 'BRAND DESIGN', tagColor: 'rgba(255,46,107,.9)', img: '/assets/case-studies/extra-checkpoint/thumbnail.gif' },
+      { name: 'Amazonicas Logo',                                              kind: 'corporate', tag: 'LOGO',         tagColor: 'rgba(255,217,61,.9)', tagText: '#222', img: '/assets/work/amazonicas-logo.jpg' },
+      // Temporarily hidden (also flip Choosen=FALSE in Notion when ready):
+      // { name: 'Digital Agency Website',    kind: 'corporate', tag: 'WEB DESIGN',   tagColor: 'rgba(156,77,255,.9)', img: '/assets/work/digital-agency.jpg' },
+      // { name: 'SupaFresh Market',          kind: 'corporate', tag: 'WEB DESIGN',   tagColor: 'rgba(0,194,212,.9)',  img: '/assets/case-studies/suprafresh/hero.jpg', liveUrl: 'https://supafreshmarket.com.au/' },
+      // sub40 hero also pulled out of heroes[] above
     ],
   },
 
@@ -1073,15 +1075,15 @@ export const work = {
     shortCards: true,
     gallery: [
       // First 3 visible
-      { name: 'NAIBU',                       caseStudyId: 'naibu',    kind: 'creative', tag: 'GAME DESIGN',          tagColor: 'rgba(156,77,255,.9)', img: '/portfolio/assets/case-studies/naibu/hero.jpg' },
-      { name: 'Second Blooming',             caseStudyId: 'blooming', kind: 'creative', tag: 'INTERACTIVE',          tagColor: 'rgba(255,46,118,.9)', video: '/portfolio/assets/case-studies/blooming/blooming-final.mp4', poster: '/portfolio/assets/case-studies/blooming/apd-poster.jpg' },
-      { name: 'Break',                                                kind: 'creative', tag: 'VIDEOGAME',    tagColor: 'rgba(0,194,212,.9)',  img: '/portfolio/assets/case-studies/break-game/cover.gif', itchUrl: 'https://taniaolarte.itch.io/break' },
-      { name: 'Chasqui',                                              kind: 'creative', tag: 'GAME JAM',     tagColor: 'rgba(255,46,107,.9)', video: '/portfolio/assets/case-studies/chasqui/reel.mp4', poster: '/portfolio/assets/case-studies/chasqui/poster.jpg', itchUrl: 'https://taniaolarte.itch.io/chasqui' },
-      // Hidden behind "See more"
-      { name: 'Library of Emotions',                                  kind: 'creative', tag: 'PHD PROJECT',  tagColor: 'rgba(173,70,255,.9)', img: '/portfolio/assets/work/library-of-emotions.jpg' },
-      { name: 'AR Filters',                                           kind: 'creative', tag: 'AR / FILTERS', tagColor: 'rgba(255,217,61,.9)', tagText: '#222', img: '/portfolio/assets/work/tiktok-ar.jpg' },
-      { name: 'Interactive Web Poem',                                 kind: 'creative', tag: 'INTERACTIVE',  tagColor: 'rgba(0,194,212,.9)',  img: '/portfolio/assets/work/interactive-poem.jpg' },
-      { name: 'Nocturno · Projection Mapping',                        kind: 'creative', tag: 'INSTALLATION', tagColor: 'rgba(173,70,255,.9)', img: 'https://i.ytimg.com/vi/ruqGxBoCyb0/maxresdefault.jpg', youtubeId: 'ruqGxBoCyb0' },
+      { name: 'NAIBU',                       caseStudyId: 'naibu',    kind: 'creative', tag: 'GAME DESIGN',          tagColor: 'rgba(156,77,255,.9)', img: '/assets/case-studies/naibu/hero.jpg' },
+      { name: 'Second Blooming',             caseStudyId: 'blooming', kind: 'creative', tag: 'INTERACTIVE',          tagColor: 'rgba(255,46,118,.9)', video: '/assets/case-studies/blooming/blooming-final.mp4', poster: '/assets/case-studies/blooming/apd-poster.jpg' },
+      { name: 'Break',                                                kind: 'creative', tag: 'VIDEOGAME',    tagColor: 'rgba(0,194,212,.9)',  img: '/assets/case-studies/break-game/cover.gif', itchUrl: 'https://taniaolarte.itch.io/break' },
+      { name: 'Chasqui',                                              kind: 'creative', tag: 'GAME JAM',     tagColor: 'rgba(255,46,107,.9)', video: '/assets/case-studies/chasqui/reel.mp4', poster: '/assets/case-studies/chasqui/poster.jpg', itchUrl: 'https://taniaolarte.itch.io/chasqui' },
+      // Temporarily hidden (also flip Choosen=FALSE in Notion when ready):
+      // { name: 'Library of Emotions',          kind: 'creative', tag: 'PHD PROJECT',  tagColor: 'rgba(173,70,255,.9)', img: '/assets/work/library-of-emotions.jpg' },
+      // { name: 'AR Filters',                   kind: 'creative', tag: 'AR / FILTERS', tagColor: 'rgba(255,217,61,.9)', tagText: '#222', img: '/assets/work/tiktok-ar.jpg' },
+      // { name: 'Interactive Web Poem',         kind: 'creative', tag: 'INTERACTIVE',  tagColor: 'rgba(0,194,212,.9)',  img: '/assets/work/interactive-poem.jpg' },
+      // { name: 'Nocturno · Projection Mapping', kind: 'creative', tag: 'INSTALLATION', tagColor: 'rgba(173,70,255,.9)', img: 'https://i.ytimg.com/vi/ruqGxBoCyb0/maxresdefault.jpg', youtubeId: 'ruqGxBoCyb0' },
     ],
   },
 }

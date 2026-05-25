@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-const JELLYFISH_SRC = '/portfolio/assets/images/jellyfish.svg'
+const JELLYFISH_SRC = '/assets/images/jellyfish.svg'
 
 const container = {
   hidden: {},

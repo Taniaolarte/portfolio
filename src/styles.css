@@ -4,27 +4,27 @@
    Until then, the next fallback in the stack is used (Lilita One for TAN, Outfit for Garet). */
 @font-face {
   font-family: 'TAN St. Canard';
-  src: url('/portfolio/fonts/TAN-STCANARD.woff2') format('woff2'),
-       url('/portfolio/fonts/TAN-STCANARD.woff')  format('woff'),
-       url('/portfolio/fonts/TAN-STCANARD.otf')   format('opentype');
+  src: url('/fonts/TAN-STCANARD.woff2') format('woff2'),
+       url('/fonts/TAN-STCANARD.woff')  format('woff'),
+       url('/fonts/TAN-STCANARD.otf')   format('opentype');
   font-weight: 400 700;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Garet';
-  src: url('/portfolio/fonts/Garet-Book.woff2')   format('woff2'),
-       url('/portfolio/fonts/Garet-Book.woff')    format('woff'),
-       url('/portfolio/fonts/Garet-Book.otf')     format('opentype');
+  src: url('/fonts/Garet-Book.woff2')   format('woff2'),
+       url('/fonts/Garet-Book.woff')    format('woff'),
+       url('/fonts/Garet-Book.otf')     format('opentype');
   font-weight: 400 500;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Garet';
-  src: url('/portfolio/fonts/Garet-Heavy.woff2')  format('woff2'),
-       url('/portfolio/fonts/Garet-Heavy.woff')   format('woff'),
-       url('/portfolio/fonts/Garet-Heavy.otf')    format('opentype');
+  src: url('/fonts/Garet-Heavy.woff2')  format('woff2'),
+       url('/fonts/Garet-Heavy.woff')   format('woff'),
+       url('/fonts/Garet-Heavy.otf')    format('opentype');
   font-weight: 600 900;
   font-display: swap;
   font-style: normal;
@@ -1166,7 +1166,7 @@ nav {
 .about-shader {
   position:absolute; inset:-15% 0; z-index:0; pointer-events:none;
   /* Image C hugging the LEFT side, very subtle (40%) */
-  background:url('/portfolio/assets/purple-grad-c-trans.png') no-repeat;
+  background:url('/assets/purple-grad-c-trans.png') no-repeat;
   background-position: left center;
   background-size: 55% auto;
   /* Heavy blur to dissolve the PNG's hard cut-out edges into a soft glow */
