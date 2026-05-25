@@ -209,7 +209,7 @@ const stickers = [
     id: 'about-thats-me',
     anchor: { selector: '[data-polaroid-target]', from: 'left', offsetX: -110, offsetY: -70 },
     anim: sway,
-    node: <ArrowLabel text="that's me!" arrowDir="down" rotate={-6} color="#ffd166" />,
+    node: <ArrowLabel text={"professionally experimenting\nwith hextech"} arrowDir="down" rotate={-6} color="#ffd166" />,
     hideOnMobile: true,
   },
   { id: 'about-squig',    top: 1280, left: '46%', anim: wobble,  node: <Squiggle color="#c084fc" width={100} />, rotate: -8, hideOnMobile: true },
@@ -217,7 +217,14 @@ const stickers = [
   { id: 'about-circle',   top: 1700, right: '3%', anim: spinSlow, node: <DoodleCircle size={90} color="#a3e635" />, opacity: 0.45, hideOnMobile: true },
   { id: 'about-splat',    top: 1880, left: '4%',  anim: twinkle, node: <InkSplat size={32} color="#ffd166" /> },
 
-  // Around Skills (1953–2998) — light touch
+  // Around Skills (1953–2998) — light touch + section pointer
+  {
+    id: 'skills-label',
+    anchor: { selector: '.skills-kicker', from: 'left', offsetX: -240, offsetY: -8 },
+    anim: sway,
+    node: <ArrowLabel text={"things I can\nhelp you with"} arrowDir="right" rotate={-3} color="#a3e635" />,
+    hideOnMobile: true,
+  },
   { id: 'skills-aster', top: 2200, right: '4%', anim: twinkle, node: <TinyAsterisk size={18} color="#ffd166" />, hideOnMobile: true },
   { id: 'skills-star',  top: 2650, left: '4%',  anim: twinkle, node: <ScribbleStar size={24} color="#a3e635" />, rotate: -10, hideOnMobile: true },
 
@@ -227,7 +234,7 @@ const stickers = [
     id: 'work-label',
     anchor: { selector: '.project-card.is-case', from: 'right', offsetX: 8, offsetY: -38 },
     anim: sway,
-    node: <ArrowLabel text={"projects with ✦\nare case studies"} arrowDir="down-right" rotate={-3} color="#22d3ee" />,
+    node: <ArrowLabel text={"projects marked with ✦\ninclude process breakdowns"} arrowDir="down-right" rotate={-3} color="#22d3ee" />,
     hideOnMobile: true,
   },
   { id: 'work-star-1', top: 4400, left: '4%',  anim: twinkle, node: <ScribbleStar size={28} color="#ffd166" />, rotate: 18 },
@@ -237,7 +244,7 @@ const stickers = [
   { id: 'work-splat',  top: 7050, left: '4%',  anim: twinkle, node: <InkSplat size={38} color="#ad46ff" />, opacity: 0.7, hideOnMobile: true },
 
   // Around Contact / Footer — pointing at the email field
-  { id: 'contact-label', bottom: 565, left: '63%', anim: sway,    node: <ArrowLabel text="say hi!" arrowDir="right" rotate={4} color="#c084fc" />, hideOnMobile: true },
+  { id: 'contact-label', bottom: 565, left: '52%', anim: sway,    node: <ArrowLabel text={"currently accepting\nside quests"} arrowDir="right" rotate={4} color="#c084fc" />, hideOnMobile: true },
   { id: 'contact-heart', bottom: 220, right: '6%', anim: sway,    node: <Heart size={24} color="#ff5470" />, rotate: 8 },
   { id: 'contact-aster', bottom: 100, right: '3%', anim: twinkle, node: <TinyAsterisk size={16} color="#ffd166" /> },
   { id: 'contact-star',  bottom: 340, left: '4%',  anim: twinkle, node: <ScribbleStar size={26} color="#22d3ee" />, rotate: -8, hideOnMobile: true },
