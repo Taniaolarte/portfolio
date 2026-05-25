@@ -44,7 +44,7 @@ export default function Lightbox({ card, onClose }) {
                 />
               </div>
             ) : card.video ? (
-              <video src={card.video} poster={card.poster} controls autoPlay playsInline loop />
+              <video src={card.video} poster={card.poster} controls playsInline preload="metadata" />
             ) : card.img ? (
               <img src={card.img} alt={card.name} />
             ) : (

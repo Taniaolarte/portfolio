@@ -1041,7 +1041,7 @@ export const work = {
       { name: 'Tabletop Game Animation',    caseStudyId: 'escape-room-anim', kind: 'corporate', tag: 'ANIMATION',     tagColor: 'rgba(156,77,255,.9)', img: '/assets/case-studies/escape-room-anim/poster.jpg' },
       { name: 'THE VAULT · Eye',            caseStudyId: 'the-vault-eye',    kind: 'corporate', tag: 'ESCAPE ROOM',   tagColor: 'rgba(212,175,55,.9)', tagText: '#0a0a0a', video: '/assets/case-studies/tiktok-ar/Eye.mp4' },
       { name: 'Pubflift · Ad Tech',                                          kind: 'corporate', tag: 'AD ANIMATION',  tagColor: 'rgba(0,194,212,.9)',  video: '/assets/case-studies/pubflift-ad/reel.mp4' },
-      { name: 'MyWay · Kinetic Typography',                                  kind: 'creative',  tag: 'VIDEO EDIT',    tagColor: 'rgba(255,46,107,.9)', video: '/assets/case-studies/myway/reel.mp4' },
+      { name: 'MyWay · Kinetic Typography',                                  kind: 'creative',  tag: 'VIDEO EDIT',    tagColor: 'rgba(255,46,107,.9)', video: '/assets/case-studies/myway/reel.mp4', poster: '/assets/case-studies/myway/poster.jpg' },
       // Hidden behind "See more"
       { name: 'Documentary Animation',                                       kind: 'creative',  tag: 'ANIMATION',     tagColor: 'rgba(0,194,212,.9)',  img: 'https://i.ytimg.com/vi/rou_9x4KpxU/maxresdefault.jpg', youtubeId: 'rou_9x4KpxU' },
       // Temporarily hidden (also flip Choosen=FALSE in Notion when ready):
