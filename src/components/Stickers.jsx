@@ -119,7 +119,8 @@ const InkSplat = ({ size = 36, color = '#c084fc' }) => (
   </svg>
 )
 
-const ArrowLabel = ({ text, color = '#e9d5ff', arrowDir = 'right', rotate = 0 }) => {
+const ArrowLabel = ({ text, color = '#e9d5ff', arrowDir = 'right', rotate = 0, size = 'md' }) => {
+  const fontSize = size === 'sm' ? 18 : 22
   const arrowSize = { w: 70, h: 28 }
   const downArrow = (
     <svg viewBox="0 0 40 60" width={26} height={40} style={{ display: 'block' }}>
@@ -155,6 +156,8 @@ const ArrowLabel = ({ text, color = '#e9d5ff', arrowDir = 'right', rotate = 0 })
         flexDirection: isVertical ? 'column' : 'row',
         alignItems: arrowDir === 'down-right' ? 'flex-end' : (isVertical ? 'flex-start' : 'center'),
         gap: isVertical ? 2 : 6,
+        fontSize: `${fontSize}px`,
+        lineHeight: 1.15,
       }}
     >
       {arrowDir === 'left' && leftArrow}
@@ -207,26 +210,28 @@ const stickers = [
   // "that's me!" is anchored to the polaroid so it tracks regardless of viewport / page-height changes.
   {
     id: 'about-thats-me',
-    anchor: { selector: '[data-polaroid-target]', from: 'left', offsetX: -110, offsetY: -70 },
+    anchor: { selector: '[data-polaroid-target]', from: 'left', offsetX: -60, offsetY: -98 },
     anim: sway,
-    node: <ArrowLabel text={"professionally experimenting\nwith hextech"} arrowDir="down" rotate={-6} color="#ffd166" />,
+    node: <ArrowLabel size="sm" text={"Professionally experimenting\nwith hextech"} arrowDir="down" rotate={-6} color="#ffd166" />,
     hideOnMobile: true,
+    hideOnTablet: true,
   },
   { id: 'about-squig',    top: 1280, left: '46%', anim: wobble,  node: <Squiggle color="#c084fc" width={100} />, rotate: -8, hideOnMobile: true },
   { id: 'about-aster',    top: 1500, right: '4%', anim: twinkle, node: <TinyAsterisk size={20} color="#22d3ee" /> },
-  { id: 'about-circle',   top: 1700, right: '3%', anim: spinSlow, node: <DoodleCircle size={90} color="#a3e635" />, opacity: 0.45, hideOnMobile: true },
+  { id: 'about-circle',   top: 1700, right: '3%', anim: spinSlow, node: <DoodleCircle size={90} color="#22d3ee" />, opacity: 0.45, hideOnMobile: true },
   { id: 'about-splat',    top: 1880, left: '4%',  anim: twinkle, node: <InkSplat size={32} color="#ffd166" /> },
 
   // Around Skills (1953–2998) — light touch + section pointer
   {
     id: 'skills-label',
-    anchor: { selector: '.skills-kicker', from: 'left', offsetX: -240, offsetY: -8 },
+    anchor: { selector: '.skills-title', from: 'center', offsetX: -100, offsetY: -70 },
     anim: sway,
-    node: <ArrowLabel text={"things I can\nhelp you with"} arrowDir="right" rotate={-3} color="#a3e635" />,
+    node: <ArrowLabel size="sm" text={"Things I can\nhelp you with"} arrowDir="down" rotate={-3} color="#ffd166" />,
     hideOnMobile: true,
+    hideOnTablet: true,
   },
   { id: 'skills-aster', top: 2200, right: '4%', anim: twinkle, node: <TinyAsterisk size={18} color="#ffd166" />, hideOnMobile: true },
-  { id: 'skills-star',  top: 2650, left: '4%',  anim: twinkle, node: <ScribbleStar size={24} color="#a3e635" />, rotate: -10, hideOnMobile: true },
+  { id: 'skills-star',  top: 2650, left: '4%',  anim: twinkle, node: <ScribbleStar size={24} color="#ffd166" />, rotate: -10, hideOnMobile: true },
 
   // Around Work — anchored to the FIRST case-study card (the ✦ marker), so it
   // always points at a real case study even when the work order shifts.
@@ -234,7 +239,7 @@ const stickers = [
     id: 'work-label',
     anchor: { selector: '.project-card.is-case', from: 'right', offsetX: 8, offsetY: -38 },
     anim: sway,
-    node: <ArrowLabel text={"projects marked with ✦\ninclude process breakdowns"} arrowDir="down-right" rotate={-3} color="#22d3ee" />,
+    node: <ArrowLabel text={"Projects marked with ✦\ninclude process breakdowns"} arrowDir="down-right" rotate={-3} color="#22d3ee" />,
     hideOnMobile: true,
   },
   { id: 'work-star-1', top: 4400, left: '4%',  anim: twinkle, node: <ScribbleStar size={28} color="#ffd166" />, rotate: 18 },
@@ -244,7 +249,14 @@ const stickers = [
   { id: 'work-splat',  top: 7050, left: '4%',  anim: twinkle, node: <InkSplat size={38} color="#ad46ff" />, opacity: 0.7, hideOnMobile: true },
 
   // Around Contact / Footer — pointing at the email field
-  { id: 'contact-label', bottom: 565, left: '52%', anim: sway,    node: <ArrowLabel text={"currently accepting\nside quests"} arrowDir="right" rotate={4} color="#c084fc" />, hideOnMobile: true },
+  {
+    id: 'contact-label',
+    anchor: { selector: 'input[name="email"]', from: 'left', offsetX: -10, offsetY: -100 },
+    anim: sway,
+    node: <ArrowLabel size="sm" text={"Currently accepting\nside quests"} arrowDir="down" rotate={-3} color="#c084fc" />,
+    hideOnMobile: true,
+    hideOnTablet: true,
+  },
   { id: 'contact-heart', bottom: 220, right: '6%', anim: sway,    node: <Heart size={24} color="#ff5470" />, rotate: 8 },
   { id: 'contact-aster', bottom: 100, right: '3%', anim: twinkle, node: <TinyAsterisk size={16} color="#ffd166" /> },
   { id: 'contact-star',  bottom: 340, left: '4%',  anim: twinkle, node: <ScribbleStar size={26} color="#22d3ee" />, rotate: -8, hideOnMobile: true },
@@ -267,6 +279,9 @@ function useAnchoredPosition(anchor) {
       if (anchor.from === 'right') {
         const right = window.innerWidth - rect.right + (anchor.offsetX || 0)
         setPos({ top, right })
+      } else if (anchor.from === 'center') {
+        const left = rect.left + rect.width / 2 + window.scrollX + (anchor.offsetX || 0)
+        setPos({ top, left })
       } else {
         const left = rect.left + window.scrollX + (anchor.offsetX || 0)
         setPos({ top, left })
@@ -301,7 +316,7 @@ function DraggableSticker({ s }) {
   return (
     <motion.div
       ref={ref}
-      className={`sticker${s.hideOnMobile ? ' sticker-hide-mobile' : ''}`}
+      className={`sticker${s.hideOnMobile ? ' sticker-hide-mobile' : ''}${s.hideOnTablet ? ' sticker-hide-tablet' : ''}`}
       style={{
         ...base,
         opacity: s.opacity,

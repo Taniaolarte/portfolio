@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(curl -s -H \"Range: bytes=0-1023\" -o /dev/null -w \"Status: %{http_code}\\\\nSize: %{size_download}\\\\n\" http://localhost:5173/assets/case-studies/myway/reel.mp4)",
-      "Bash(curl -sI http://localhost:5173/assets/case-studies/myway/reel.mp4)"
+      "Bash(curl -sI http://localhost:5173/assets/case-studies/myway/reel.mp4)",
+      "Bash(grep -v \"true,$\")"
     ]
   }
 }

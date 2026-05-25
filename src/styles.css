@@ -1210,6 +1210,11 @@ nav {
 @media (max-width: 720px) {
   .sticker-hide-mobile { display:none; }
 }
+/* Hide labels that depend on a wide enough sidebar / centered title to render
+   without colliding with body copy. ≤1180px we just drop them entirely. */
+@media (max-width: 1180px) {
+  .sticker-hide-tablet { display:none; }
+}
 .sticker-arrow-label {
   display:flex; align-items:center; gap:2px;
   font-family:var(--font-hand);

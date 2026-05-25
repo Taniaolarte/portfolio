@@ -104,7 +104,6 @@ export default function Skills() {
     <section id="skills">
       <div className="skills-inner">
         <Reveal className="skills-header" delay={0}>
-          <span className="skills-kicker">What I do</span>
           <h2 className="skills-title">Skills <span className="amp">&amp;</span> Services</h2>
           <p className="skills-sub">Bringing ideas to life through movement and interaction.</p>
         </Reveal>
