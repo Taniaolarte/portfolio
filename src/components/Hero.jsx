@@ -18,11 +18,26 @@ const scrollTo = (e, id) => {
   if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
-export default function Hero() {
+export default function Hero({ onSecret }) {
   const heroRef = useRef(null)
   const titleRef = useRef(null)
   const orbRef = useRef(null)
   const jellyRef = useRef(null)
+
+  // Secret: tap/click the jellyfish 5× in quick succession to unlock the hidden
+  // Honours & Research page. framer-motion's onTap won't fire on a drag, so this
+  // coexists with dragging her around. Works on touch and mouse alike.
+  const tapCount = useRef(0)
+  const tapTimer = useRef(null)
+  const onJellyTap = () => {
+    tapCount.current += 1
+    clearTimeout(tapTimer.current)
+    tapTimer.current = setTimeout(() => { tapCount.current = 0 }, 1500)
+    if (tapCount.current >= 5) {
+      tapCount.current = 0
+      onSecret?.()
+    }
+  }
 
   // Continuously track the jellyfish position via rAF — this works whether the
   // orb is being dragged OR drifting autonomously (framer-motion's animate
@@ -99,6 +114,7 @@ export default function Hero() {
         dragConstraints={heroRef}
         dragElastic={0.18}
         dragMomentum={false}
+        onTap={onJellyTap}
         whileTap={{ scale: 1.05 }}
         whileHover={{ scale: 1.03 }}
         initial={{ opacity: 0, scale: 0.4 }}
