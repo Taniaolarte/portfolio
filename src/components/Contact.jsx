@@ -109,7 +109,10 @@ export default function Contact() {
       <div className="footer-divider" />
       <div className="footer-bottom">
         <span className="footer-logo">TANIA OLARTE<span>.</span></span>
-        <span className="footer-copy">© 2026 Tania Olarte. All rights reserved.</span>
+        <span className="footer-copy">
+          © 2026 Tania Olarte. All rights reserved. ·{' '}
+          <a className="footer-research" href="/research">Research</a>
+        </span>
         <div className="footer-social">
           {socialIcons.map(({ Icon, label, href }) => {
             const isExternal = href.startsWith('http')

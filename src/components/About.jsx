@@ -173,6 +173,13 @@ export default function About() {
             I'm particularly interested in how interactive design can support learning, emotional awareness, and socially impactful experiences, combining <MagicWord>creativity</MagicWord>, technology, and user experience to create work that is both <MagicWord>engaging</MagicWord> and meaningful.
           </Reveal>
 
+          {/* Discreet, crawlable entry point to the Research section — kept out
+              of the main nav so it doesn't compete with the portfolio. */}
+          <Reveal as="p" className="about-research-link" delay={0.25}>
+            That interest is also where my academic work sits —{' '}
+            <a href="/research">read the research</a>
+          </Reveal>
+
           <Reveal className="social-links" delay={0.2}>
             {socialIcons.map(({ Icon, label, href }) => {
               const isExternal = href.startsWith('http')

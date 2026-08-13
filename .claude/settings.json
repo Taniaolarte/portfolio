@@ -3,7 +3,23 @@
     "allow": [
       "Bash(curl -s -H \"Range: bytes=0-1023\" -o /dev/null -w \"Status: %{http_code}\\\\nSize: %{size_download}\\\\n\" http://localhost:5173/assets/case-studies/myway/reel.mp4)",
       "Bash(curl -sI http://localhost:5173/assets/case-studies/myway/reel.mp4)",
-      "Bash(grep -v \"true,$\")"
+      "Bash(grep -v \"true,$\")",
+      "Bash(node -e ' *)",
+      "Bash(node check.mjs)",
+      "Bash(sed -i '' \"s|localhost:4173|localhost:4292|; s|'/research'|'/research/'|; s|game-design'|game-design/'|; s|library-of-emotions'|library-of-emotions/'|; s|does-not-exist'|does-not-exist/'|\" check.mjs)",
+      "Bash(node fails.mjs)",
+      "Bash(awk '/^nav \\\\{/,/\\\\}/' src/styles.css)",
+      "Bash(grep -nE \"^[a-z][a-z0-9]*\\(, ?[a-z][a-z0-9]*\\)* *\\\\{\" src/styles.css)",
+      "Bash(python3 -)",
+      "Bash(node copy.mjs)",
+      "Bash(pkill -f \"vite --port 5199\")",
+      "Bash(pkill -f \"vite preview --port 4291\")",
+      "Bash(curl -s -o /dev/null -w \"4292 dist: %{http_code}\\\\n\" http://localhost:4292/research/)",
+      "Bash(curl -s -o /dev/null -w \"5199 dev:  %{http_code}\\\\n\" http://localhost:5199/research)",
+      "Bash(curl -s -o /dev/null -w \"dev 5173: %{http_code}\\\\n\" http://localhost:5173/research)",
+      "Bash(curl -s -o /dev/null -w \"dev naibu: %{http_code}\\\\n\" http://localhost:5173/research/naibu-social-anxiety-game-design)",
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/DOI:10.1145/3815598.3815672?fields=title,abstract,venue,year,openAccessPdf,tldr,publicationTypes\")",
+      "Bash(python3 -m json.tool)"
     ]
   }
 }
