@@ -7,7 +7,7 @@
 // crawlers that don't execute scripts. Motion is CSS-only.
 
 import { useState } from 'react'
-import { statusOf, researchSite, author, orcidUrl } from '../data/research.js'
+import { statusOf, researchSite, author, orcidUrl, profileLinks } from '../data/research.js'
 
 /* ── Chrome ──────────────────────────────────────────────────────────────── */
 
@@ -64,11 +64,11 @@ export function ResearchFooter() {
           <a href={researchSite.base}>Research index</a>
           <a href="/">Portfolio</a>
           <a href="/#contact">Contact</a>
-          {orcidUrl && (
-            <a href={orcidUrl} target="_blank" rel="noopener noreferrer me">
-              ORCID
+          {profileLinks.map((p) => (
+            <a key={p.id} href={p.href} target="_blank" rel="noopener noreferrer me">
+              {p.label}
             </a>
-          )}
+          ))}
         </nav>
       </div>
       <p className="rs-footer-copy">© 2026 {author.shortName}.</p>

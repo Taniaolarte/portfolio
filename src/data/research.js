@@ -40,10 +40,21 @@ export const author = {
   email: 'taniaolarteavila@gmail.com',
   orcid: '0009-0001-3913-3236', // as registered on the FDG '26 paper
   sameAs: [
+    'https://scholar.google.com/citations?user=xKhPPLQAAAAJ',
     'https://www.linkedin.com/in/tania-olarte-avila/',
     'https://behance.net/taniaolarte',
   ],
+  // Public research profiles. An entry with an empty `href` is skipped, so a
+  // profile can be reserved here and switched on by pasting the URL.
+  profiles: [
+    { id: 'scholar',      label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=xKhPPLQAAAAJ' },
+    { id: 'orcid',        label: 'ORCID',          href: 'https://orcid.org/0009-0001-3913-3236' },
+    { id: 'researchgate', label: 'ResearchGate',   href: '' }, // TODO: paste the profile URL
+    { id: 'linkedin',     label: 'LinkedIn',       href: 'https://www.linkedin.com/in/tania-olarte-avila/' },
+  ],
 }
+
+export const profileLinks = author.profiles.filter((p) => p.href)
 
 export const orcidUrl = author.orcid ? `https://orcid.org/${author.orcid}` : null
 
@@ -394,7 +405,7 @@ const fdgEmotionalGranularity = {
   datePublished: '2026-08-09',
   venue: 'FDG ’26 · Foundations of Digital Games',
   venueNote:
-    'Proceedings of the 21st International Conference on the Foundations of Digital Games · ACM · Copenhagen, Denmark · pp. 1–4',
+    'Proceedings of the 21st International Conference on the Foundations of Digital Games · ACM · Copenhagen, Denmark, 10–13 August 2026 · pp. 1–4 · late-breaking paper, 33 accepted of 88',
   status: 'published',
   authors: [author.name],
   doi: '10.1145/3815598.3815672',
@@ -520,19 +531,19 @@ const libraryOfEmotions = {
   themes: ['emotional-play', 'metaphor-rtd'],
   title: 'Library of Emotions: Interactive Media for Emotional Literacy',
   shortTitle: 'Library of Emotions',
-  type: 'Practice-Based Research Project',
-  typeShort: 'Research Project',
-  year: 2024,
-  yearLabel: '2024 — ongoing',
-  datePublished: '2024',
+  type: 'Master’s Project · Practice-Based Game Design Research',
+  typeShort: 'Master’s Project',
+  year: 2025,
+  yearLabel: '2025 — ongoing',
+  datePublished: '2025',
   venue: 'RMIT University',
-  venueNote: 'PhD research project · School of Design',
+  venueNote: 'Master of Animation, Games & Interactivity (MAGI) · Studio 3 · now the pilot case of the PhD',
   status: 'project',
   authors: [author.name],
   image: '/assets/work/library-of-emotions.jpg',
   imageAlt: 'Library of Emotions — interface studies for an interactive emotional-literacy prototype.',
   summary:
-    'An ongoing practice-based project exploring how interactive media can support emotional literacy and mental health literacy. It investigates interfaces, mechanics and narrative structures that help people recognise, name and reflect on emotional states, with emotional granularity as the central design concern. The mobile prototype was first published at FDG ’26.',
+    'A mobile wellness game developed in the Master of Animation, Games & Interactivity at RMIT and continued since: players choose a feeling and embody it through a phone-sensor ritual, and every session adds a book to a growing library. Emotional granularity is the central design concern. First published at FDG ’26, and now the pilot case of the doctoral research.',
   keywords: [
     'Emotional Literacy',
     'Emotional Granularity',
@@ -543,18 +554,20 @@ const libraryOfEmotions = {
   ],
   links: [
     { kind: 'internal', label: 'Read the FDG ’26 paper', href: '/research/emotional-granularity-reflective-play' },
-    { kind: 'project', label: 'View the project', href: '/#work' },
+    { kind: 'project', label: 'Open the case study', href: '/#work' },
+    { kind: 'external', label: 'Play the demo', href: 'https://libraryofemotions.netlify.app/onboarding' },
   ],
   metaDescription:
-    'Library of Emotions — practice-based research at RMIT University into how interactive media can support emotional literacy, emotional granularity and mental health literacy. First published at FDG ’26 (DOI 10.1145/3815598.3815672).',
+    'Library of Emotions — a mobile wellness game from the Master of Animation, Games & Interactivity at RMIT University, exploring emotional literacy and emotional granularity through symbolic phone-sensor rituals. First published at FDG ’26 (DOI 10.1145/3815598.3815672).',
 
   page: {
     lede:
       'If naming a feeling more precisely changes how it is experienced, what would an interactive system designed to support that naming look like?',
     abstract: [
-      'Library of Emotions is an ongoing practice-based research project examining how interactive media can support emotional literacy — the capacity to recognise, differentiate, name and reflect on emotional states. The project takes emotional granularity as its central design concern: the observation that people differ in how finely they distinguish between feeling states, and that finer distinctions are associated with different ways of responding to them.',
+      'Library of Emotions began in MAGI Studio 3 (2025) as a practice-based project examining how a mobile game can support emotional literacy — the capacity to recognise, differentiate, name and reflect on emotional states. The project takes emotional granularity as its central design concern: the observation that people differ in how finely they distinguish between feeling states, and that finer distinctions are associated with different ways of responding to them.',
       'The enquiry is conducted through the design and iteration of interfaces, narrative structures and interaction patterns, treating prototypes as instruments for examining what an emotional vocabulary can be made to feel like when it is navigable rather than listed. The project is not a clinical instrument and does not assess or diagnose emotional states.',
-      'The project’s first peer-reviewed output was published at the 21st International Conference on the Foundations of Digital Games (FDG ’26), where the mobile prototype is presented as a design approach for supporting mental health literacy through emotional granularity and reflective play. That paper is open access and is the citable record for the prototype; this page tracks the wider project around it.',
+      'The game was rebuilt in 2026 as an Expo / React Native app (web, iOS and Android) with six phone-sensor rituals, a progression system and a personal archive — the live demo is at libraryofemotions.netlify.app. The project’s first peer-reviewed output was published at the 21st International Conference on the Foundations of Digital Games (FDG ’26), where the mobile prototype is presented as a design approach for supporting mental health literacy through emotional granularity and reflective play. That paper is open access and is the citable record for the prototype; this page tracks the wider project around it.',
+      'Since then the game has anchored a wider programme of outputs across games research venues in 2026: a full paper accepted for oral presentation at the IEEE Conference on Games (nominated for best paper), a scientific paper and a live reflective-playtest workshop at ISAGA, poster papers at the Joint Conference on Serious Games and at Meaningful Play, and, with Daniel Zarate, a psychology-oriented study protocol on emotional naming at PsyGames. Each is listed on the research landing page with its format and status.',
     ],
     glance: [
       {
@@ -609,13 +622,13 @@ const libraryOfEmotions = {
     ],
     citation: {
       apa:
-        'Olarte Ávila, T. C. (2024). Library of Emotions: Interactive media for emotional literacy [Practice-based research project, RMIT University]. https://taniaolarte.com/research/library-of-emotions',
-      bibtex: `@misc{olarteavila2024library,
+        'Olarte Ávila, T. C. (2025). Library of Emotions: Interactive media for emotional literacy [Master’s practice-based project, Master of Animation, Games & Interactivity, RMIT University]. https://taniaolarte.com/research/library-of-emotions',
+      bibtex: `@misc{olarteavila2025library,
   author = {Olarte {\\'A}vila, Tania Catherine},
   title  = {Library of Emotions: Interactive Media for Emotional Literacy},
   school = {RMIT University},
-  year   = {2024},
-  note   = {Practice-based research project, in progress},
+  year   = {2025},
+  note   = {Master's practice-based project, Master of Animation, Games \& Interactivity; in progress},
   url    = {https://taniaolarte.com/research/library-of-emotions}
 }`,
       note: 'To cite the prototype itself, please cite the FDG ’26 paper (DOI 10.1145/3815598.3815672) rather than this project page.',
@@ -623,8 +636,266 @@ const libraryOfEmotions = {
   },
 }
 
+// ── 2026 conference outputs around Library of Emotions ──────────────────────
+// Statuses follow the acceptance recap (Oct 2026). Entries without a `page`
+// render as cards on the landing; DOIs are added as proceedings appear.
+const ieeeCog2026 = {
+  slug: 'ieee-cog-2026-library-of-emotions',
+  category: 'peer-reviewed',
+  themes: ['emotional-play', 'metaphor-rtd'],
+  title: 'Designing Reflective Mobile Game Systems for Mental Health Literacy Through Emotional Granularity',
+  shortTitle: 'IEEE CoG 2026',
+  type: 'Conference Paper · Full Paper · Oral Presentation',
+  typeShort: 'Full Paper',
+  year: 2026,
+  venue: 'IEEE Conference on Games (CoG) 2026',
+  venueNote: 'IEEE proceedings · 8 pages · oral presentation · Madrid, Spain, 1–4 September 2026 · 89 accepted of 239 regular papers · nominated for Best Paper',
+  status: 'accepted',
+  authors: [author.name],
+  summary:
+    'Full paper on Library of Emotions accepted for oral presentation and IEEE proceedings at CoG 2026. Reviews: Accept, Strong Accept, and Strong Accept with a nomination for the Best Paper Award. The paper reports the design of the six symbolic mechanics and the Library system as a practice-based contribution to reflective mobile game systems for mental health literacy.',
+  keywords: ['Emotional Granularity', 'Reflective Play', 'Game Design', 'Mental Health Literacy'],
+  links: [{ kind: 'internal', label: 'Project record', href: '/research/library-of-emotions' }],
+}
+
+const isaga2026Paper = {
+  slug: 'isaga-2026-scientific-paper',
+  category: 'peer-reviewed',
+  themes: ['emotional-play', 'mental-health'],
+  title: 'Library of Emotions at ISAGA 2026 — Scientific Paper (LNCS)',
+  shortTitle: 'ISAGA 2026 · paper',
+  type: 'Conference Paper · Scientific Track',
+  typeShort: 'LNCS Paper',
+  year: 2026,
+  venue: 'ISAGA 2026 · International Simulation and Gaming Association',
+  venueNote: 'Springer LNCS · 9 pages · KTH Royal Institute of Technology, Stockholm, 22–25 June 2026 · submission ID 149',
+  status: 'accepted',
+  authors: [author.name],
+  summary:
+    'Scientific-track paper accepted at ISAGA 2026 (reviewer outcomes: weak accept / accept, and accept). Positions the mobile prototype within simulation and gaming research as a reflective play instrument for emotional literacy.',
+  keywords: ['Simulation & Gaming', 'Reflective Play', 'Emotional Literacy'],
+  links: [{ kind: 'internal', label: 'Project record', href: '/research/library-of-emotions' }],
+}
+
+const isaga2026Workshop = {
+  slug: 'isaga-2026-outside-the-box-workshop',
+  category: 'posters',
+  themes: ['emotional-play', 'metaphor-rtd'],
+  title: 'Outside the Box — Live Reflective Playtest Workshop at ISAGA 2026',
+  shortTitle: 'ISAGA 2026 · workshop',
+  type: 'Workshop · Live Playtest',
+  typeShort: 'Workshop',
+  year: 2026,
+  venue: 'ISAGA 2026 · Outside the Box track',
+  venueNote: 'Outside the Box track · live playtest workshop · Stockholm, 22–25 June 2026 · submission ID 150 · reviewer: strong acceptance / clear accept',
+  status: 'accepted',
+  authors: [author.name],
+  summary:
+    'A live playtest workshop in which participants play the Library of Emotions mechanics and reflect on the naming process together — the practice-based counterpart to the scientific paper.',
+  keywords: ['Playtest', 'Workshop', 'Reflective Play'],
+}
+
+const jcsg2026Poster = {
+  slug: 'jcsg-2026-poster',
+  category: 'posters',
+  themes: ['mental-health', 'emotional-play'],
+  title: 'Library of Emotions — Poster Paper at JCSG 2026',
+  shortTitle: 'JCSG 2026',
+  type: 'Poster Paper',
+  typeShort: 'Poster',
+  year: 2026,
+  venue: 'Joint Conference on Serious Games (JCSG) 2026',
+  venueNote: 'Springer · 6 pages, single column · Valletta, Malta, 3–4 December 2026 · reviews: Accept, Accept',
+  status: 'accepted',
+  authors: [author.name],
+  summary:
+    'Poster paper accepted at the Joint Conference on Serious Games, presenting the prototype to the serious-games community as a worked design case for emotional literacy through symbolic mechanics.',
+  keywords: ['Serious Games', 'Emotional Literacy', 'Poster'],
+}
+
+const meaningfulPlay2026Poster = {
+  slug: 'meaningful-play-2026-poster',
+  category: 'posters',
+  themes: ['mental-health', 'emotional-play'],
+  title: 'Library of Emotions — Poster at Meaningful Play 2026',
+  shortTitle: 'Meaningful Play 2026',
+  type: 'Poster',
+  typeShort: 'Poster',
+  year: 2026,
+  venue: 'Meaningful Play 2026',
+  venueNote: '5 pages · reviewer scores 4 / 4 · Posters & Games track',
+  status: 'accepted',
+  authors: [author.name],
+  summary:
+    'Poster accepted at Meaningful Play, the conference on games that matter, presenting the six core-emotion mechanics and the Library system.',
+  keywords: ['Meaningful Play', 'Games for Wellbeing', 'Poster'],
+}
+
+const psyGames2026 = {
+  slug: 'psygames-2026-emotional-naming-protocol',
+  category: 'peer-reviewed',
+  themes: ['mental-health', 'emotional-play'],
+  title: 'A Study Protocol for Game-Based Emotional Naming: Supporting Emotional Literacy Through Reflective Play',
+  shortTitle: 'PsyGames 2026',
+  type: 'Conference Paper · Full Paper',
+  typeShort: 'Full Paper',
+  year: 2026,
+  venue: 'PsyGames 2026 · Conference Proceedings',
+  venueNote: 'With Daniel Zarate (RMIT University) · Kempten University of Applied Sciences · English edition, pp. 93–104 · invited full paper after abstract approval',
+  status: 'published',
+  authors: [author.name, 'Daniel Zarate'],
+  pages: '93-104',
+  summary:
+    'A psychology-oriented study protocol that turns the Library of Emotions prototype into a research instrument. Rather than asking whether a game can tell people what they feel, it makes the emotional naming process observable: participants select a label, complete either a static check-in or a symbolic game-based interaction with the same vocabulary, then keep, revise, replace or reject the label and rate its fit. Alexithymia, emotional awareness, mood, openness, gaming experience and language background are treated as moderators, and the game-design decisions themselves as research factors. Proposed pathway: pilot (8–12 adults) → exploratory study (48–60) → confirmatory study.',
+  keywords: ['Emotional Naming', 'Study Protocol', 'Alexithymia', 'Reflective Play', 'Psychology'],
+  links: [
+    { kind: 'external', label: 'Google Scholar record', href: 'https://scholar.google.com/citations?user=xKhPPLQAAAAJ' },
+    { kind: 'internal', label: 'Project record', href: '/research/library-of-emotions' },
+  ],
+}
+
+const sotl2026Poster = {
+  slug: 'rmit-sotl-2026-dissemination-digest-poster',
+  category: 'posters',
+  themes: [],
+  title: 'Dissemination Digest — Poster at the RMIT SoTL Conference 2026',
+  shortTitle: 'RMIT SoTL 2026',
+  type: 'Poster',
+  typeShort: 'Poster',
+  year: 2026,
+  venue: 'RMIT Scholarship of Teaching and Learning (SoTL) Conference 2026',
+  venueNote: 'Poster presentation · a tool for how research students find and track dissemination opportunities',
+  status: 'accepted',
+  authors: [author.name],
+  summary:
+    'Poster presenting Dissemination Digest, the web app that grew out of the Notion dissemination tracker built during the PhD: the problem of finding and tracking opportunities, the curated database behind the free tier, and the logged-in workspace for applications.',
+  keywords: ['Scholarship of Teaching and Learning', 'Research Students', 'Dissemination', 'Tools'],
+  links: [
+    { kind: 'internal', label: 'Read about the tool', href: '/research/dissemination-digest' },
+    { kind: 'external', label: 'Open the tool', href: 'https://dissemination.eggn.io/' },
+  ],
+}
+
+const igdaFoundation = {
+  slug: 'igda-foundation-mentorship',
+  category: 'programs',
+  themes: [],
+  title: 'IGDA Foundation — Mentorship Program',
+  shortTitle: 'IGDA Foundation',
+  type: 'Professional Development Program',
+  typeShort: 'Program',
+  year: 2026,
+  venue: 'International Game Developers Association Foundation',
+  venueNote: 'Accepted on profile and CV',
+  status: 'accepted',
+  authors: [author.name],
+  summary:
+    'Accepted into the IGDA Foundation mentorship program, pairing the practice-based PhD work with games-industry mentorship.',
+  keywords: ['Games Industry', 'Mentorship'],
+}
+
+// ── Dissemination Digest — the tool, as a research project ──────────────────
+const disseminationDigest = {
+  slug: 'dissemination-digest',
+  category: 'projects',
+  themes: [],
+  title: 'Dissemination Digest: A Tool for Finding and Tracking Research Dissemination Opportunities',
+  shortTitle: 'Dissemination Digest',
+  type: 'Research Tool · Web Application',
+  typeShort: 'Research Tool',
+  year: 2026,
+  yearLabel: '2026 — live',
+  datePublished: '2026',
+  venue: 'dissemination.eggn.io',
+  venueNote: 'Built from the PhD dissemination tracker · presented as a poster at RMIT SoTL 2026',
+  status: 'project',
+  authors: [author.name],
+  image: '/assets/case-studies/dissemination-digest/poster.svg',
+  imageAlt: 'Dissemination Digest — landing page of the web app.',
+  summary:
+    'A web application that turns a Notion dissemination tracker, built during the PhD, into a reusable tool: a three-step form produces a matched digest of conferences, festivals, grants and residencies, and a logged-in workspace tracks applications, deadlines and outcomes. The free snapshot is matched deterministically against a curated catalog; recurring tiers use Claude with live web search.',
+  keywords: ['Research Tools', 'Dissemination', 'Scholarship of Teaching and Learning', 'Web Application', 'Curated Database'],
+  links: [
+    { kind: 'external', label: 'Open the tool', href: 'https://dissemination.eggn.io/' },
+    { kind: 'project', label: 'Open the case study', href: '/#work' },
+  ],
+  metaDescription:
+    'Dissemination Digest — a web app by Tania Olarte that matches research and creative projects to dissemination opportunities and tracks applications. Built from a PhD Notion tracker; presented at RMIT SoTL 2026.',
+  page: {
+    lede:
+      'Research students lose weeks to finding where their work could go. What if the tracker one student built for herself became a tool for everyone?',
+    abstract: [
+      'Dissemination Digest began as a Notion system kept during the MAGI studios and the first year of the PhD: a master table of every conference, festival, grant and residency relevant to Library of Emotions, with deadlines, formats, costs and outcomes, and a cheat sheet of everything that had to be learned the hard way — what a poster actually is, what camera-ready means, how Anywhere-on-Earth deadlines work. Other students kept asking for it.',
+      'The web application makes that system usable by someone who is not its author. A three-step form captures the project, the person (including country of citizenship, for eligibility) and the formats they want. The free snapshot is matched deterministically against a curated catalog normalised from the Notion tables: discipline, format, career stage, eligibility and deadline window, with a match percentage and the reason for it. Recurring tiers turn the same profile into a parameterised prompt for Claude with live web search, capped at ten searches, and deliver a digest on page and by email.',
+      'A logged-in workspace covers what happens after: reusable project profiles, a scored opportunity feed with dismissal reasons, an applications tracker with milestone dates and outcomes, a subscribable calendar of deadlines, a portfolio export and the cheat sheet as contextual help. No model is called anywhere in the workspace, so the dashboard is reproducible and cannot invent a deadline. The tool was presented as a poster at the RMIT Scholarship of Teaching and Learning conference in 2026, and is the system through which the Library of Emotions submissions listed on this site were tracked.',
+    ],
+    glance: [
+      { id: 'question', label: 'Question', body: 'How can the tacit knowledge research students accumulate about dissemination — venues, formats, eligibility, timing — be captured in a tool that other students can use from day one?' },
+      { id: 'problem', label: 'Problem', body: 'Opportunities are scattered across hundreds of sites, region- and eligibility-locked in ways only the fine print reveals, and always changing. Aggregators are never filtered to a specific project, location or stage.' },
+      { id: 'approach', label: 'Approach', body: 'Research through design, applied to the researcher’s own practice: a Notion tracker and cheat sheet, iterated over two semesters, then rebuilt as a single-file web app with a curated catalog, deterministic matching, and model-assisted live search reserved for recurring use.' },
+      { id: 'contribution', label: 'Contribution', body: 'A working, public tool and a documented set of design decisions: free tier without a model call, mode as persona, deterministic scoring with dismissal reasons as the key signal, and a workspace that separates finding from tracking.' },
+      { id: 'findings', label: 'Outcomes', body: 'Live at dissemination.eggn.io (V3.4.7). Poster at RMIT SoTL 2026. Used to track the 2026 submissions of Library of Emotions across six venues.' },
+      { id: 'limitations', label: 'Limitations', body: 'The curated catalog is maintained by hand and dates can move; the tool says so on every dashboard. No formal evaluation with other students has been run yet.' },
+    ],
+    questions: [
+      'How do research students actually find dissemination opportunities, and where does that process break?',
+      'What should a tool keep deterministic, and what is worth a model call?',
+      'What signal does a dismissal carry, and how should a tool ask for it?',
+    ],
+    limitationsHeading: 'Limitations & status',
+    limitations: [
+      'The opportunity catalog is curated by hand and refreshed periodically; deadlines may have moved and users are told to check the source.',
+      'No controlled evaluation with other research students has been conducted; the SoTL poster reports the design and the author’s own use.',
+      'Recurring tiers depend on live web search and are therefore not fully reproducible.',
+    ],
+    citation: {
+      apa:
+        'Olarte Ávila, T. C. (2026). Dissemination Digest: A tool for finding and tracking research dissemination opportunities [Web application and poster, RMIT SoTL Conference 2026]. https://dissemination.eggn.io/',
+      bibtex: `@misc{olarteavila2026digest,
+  author = {Olarte {\\'A}vila, Tania Catherine},
+  title  = {Dissemination Digest: A Tool for Finding and Tracking Research Dissemination Opportunities},
+  year   = {2026},
+  note   = {Web application; poster at the RMIT Scholarship of Teaching and Learning Conference 2026},
+  url    = {https://dissemination.eggn.io/}
+}`,
+      note: 'Cite the tool by URL; there is no proceedings record for the SoTL poster.',
+    },
+  },
+}
+
 // ── Recognition (rendered as compact cards, no individual pages) ─────────────
 const recognition = [
+  {
+    slug: 'rmit-phd-scholarship',
+    category: 'recognition',
+    themes: ['mental-health', 'emotional-play', 'metaphor-rtd'],
+    title: 'PhD in Design — Admitted with Scholarship',
+    type: 'Doctoral Scholarship',
+    typeShort: 'PhD Scholarship',
+    year: 2026,
+    yearLabel: '2026 – 2030',
+    venue: 'RMIT University · School of Design',
+    status: 'awarded',
+    summary:
+      'The proposal “Designing Games for Mental Health Literacy: A Practice-Based Research” was accepted into the PhD in Design at RMIT University and awarded two research scholarships. Candidature began in July 2026 with an interdisciplinary supervision team across design, games, technology and psychology. Swinburne University and the University of Tasmania also offered supervision for the same direction.',
+    keywords: ['Scholarship', 'Doctoral Research', 'Mental Health Literacy'],
+    links: [{ kind: 'internal', label: 'Pilot case: Library of Emotions', href: '/research/library-of-emotions' }],
+  },
+  {
+    slug: 'ieee-cog-2026-best-paper-nomination',
+    category: 'recognition',
+    themes: ['emotional-play'],
+    title: 'IEEE CoG 2026 — Best Paper Award Nomination',
+    type: 'Award Nomination',
+    typeShort: 'Nomination',
+    year: 2026,
+    venue: 'IEEE Conference on Games (CoG) 2026',
+    status: 'awarded',
+    summary:
+      'The Library of Emotions full paper was nominated for the Best Paper Award by its reviewers (Accept · Strong Accept · Strong Accept, nominated).',
+    keywords: ['Game Design', 'Mental Health Literacy'],
+    links: [{ kind: 'internal', label: 'Project record', href: '/research/library-of-emotions' }],
+  },
   {
     slug: 'meritorious-thesis-la-sabana',
     category: 'recognition',
@@ -674,80 +945,34 @@ const recognition = [
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  DRAFTS — not rendered, not crawled, not in the sitemap.
-//
-//  These are scaffolded so the categories exist and nothing needs rebuilding
-//  later. To publish one: confirm the venue and status, fill in `summary`,
-//  `keywords` and (where relevant) a `page` block, then delete `draft: true`.
-//  Do NOT flip these on before the outcome is officially confirmed — a public
-//  page implies a claim about acceptance.
+//  Submitted but not yet decided. Flip when the outcome is official.
 // ─────────────────────────────────────────────────────────────────────────────
 const drafts = [
-  // FDG '26 is no longer a draft — it published as `fdgEmotionalGranularity`
-  // above (DOI 10.1145/3815598.3815672).
   {
     draft: true,
-    slug: 'ieee-cog-2026',
+    slug: 'chi-play-2026',
     category: 'peer-reviewed',
     themes: ['emotional-play', 'metaphor-rtd'],
-    title: 'IEEE CoG 2026 submission',
+    title: 'CHI PLAY 2026 submission',
     type: 'Conference Paper',
     year: 2026,
-    venue: 'IEEE Conference on Games (CoG) 2026',
+    venue: 'ACM CHI PLAY 2026',
     status: 'under-review',
     summary: '',
-    keywords: ['Emotional Granularity', 'Reflective Play', 'Game Design'],
+    keywords: ['Reflective Play', 'Game Design'],
   },
   {
     draft: true,
-    slug: 'psygames-2026',
-    category: 'peer-reviewed',
-    themes: ['mental-health'],
-    title: 'PsyGames 2026 submission',
-    type: 'Conference Paper',
-    year: 2026,
-    venue: 'PsyGames 2026',
-    status: 'under-review',
-    summary: '',
-    keywords: ['Games', 'Mental Health'],
-  },
-  {
-    draft: true,
-    slug: 'meaningful-play-2026',
-    category: 'peer-reviewed',
-    themes: ['mental-health'],
-    title: 'Meaningful Play 2026 submission',
-    type: 'Conference Paper or Poster',
-    year: 2026,
-    venue: 'Meaningful Play 2026',
-    status: 'under-review',
-    summary: '',
-    keywords: ['Meaningful Play', 'Games'],
-  },
-  {
-    draft: true,
-    slug: 'rmit-sotl-2026-poster',
+    slug: 'siggraph-asia-2026',
     category: 'posters',
-    themes: ['emotional-play'],
-    title: 'RMIT SoTL 2026 poster',
+    themes: ['metaphor-rtd'],
+    title: 'SIGGRAPH Asia 2026 submission',
     type: 'Poster',
     year: 2026,
-    venue: 'RMIT Scholarship of Teaching and Learning Conference 2026',
+    venue: 'SIGGRAPH Asia 2026 · Hong Kong · Posters track',
     status: 'under-review',
     summary: '',
-    keywords: ['Teaching and Learning', 'Games'],
-  },
-  {
-    draft: true,
-    slug: 'igda-foundation-questline',
-    category: 'programs',
-    themes: [],
-    title: 'IGDA Foundation Questline',
-    type: 'Professional Development Program',
-    year: 2026,
-    venue: 'IGDA Foundation',
-    status: 'project',
-    summary: '',
-    keywords: ['Games Industry', 'Mentorship'],
+    keywords: ['Posters', 'Interactive'],
   },
   {
     draft: true,
@@ -764,7 +989,13 @@ const drafts = [
   },
 ]
 
-export const allOutputs = [fdgEmotionalGranularity, naibu, libraryOfEmotions, ...recognition, ...drafts]
+export const allOutputs = [
+  fdgEmotionalGranularity, ieeeCog2026, isaga2026Paper, psyGames2026,
+  naibu, libraryOfEmotions, disseminationDigest,
+  jcsg2026Poster, meaningfulPlay2026Poster, isaga2026Workshop, sotl2026Poster,
+  igdaFoundation,
+  ...recognition, ...drafts,
+]
 
 /** Everything publicly rendered — drafts excluded everywhere by construction. */
 export const outputs = allOutputs.filter((o) => !o.draft)

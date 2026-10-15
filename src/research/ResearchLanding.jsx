@@ -6,6 +6,7 @@ import {
   outputs,
   author,
   orcidUrl,
+  profileLinks,
   researchSite,
 } from '../data/research.js'
 
@@ -41,6 +42,18 @@ export default function ResearchLanding({ trail }) {
             </>
           )}
         </p>
+
+        {!!profileLinks.length && (
+          <ul className="rs-profiles" aria-label="Research profiles">
+            {profileLinks.map((p) => (
+              <li key={p.id}>
+                <a href={p.href} target="_blank" rel="noopener noreferrer me" className={`is-${p.id}`}>
+                  {p.label}<span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </header>
 
       <section className="rs-section rs-themes" aria-labelledby="research-areas">

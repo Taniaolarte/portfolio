@@ -945,22 +945,534 @@ const suprafreshCase = {
 
 const libraryEmotionsCase = {
   id: 'library-of-emotions',
+  layout: 'cinema',
+  kind: 'creative',
+  badges: ['MAGI MASTER’S PROJECT', 'CASE STUDY', 'MOBILE GAME'],
   title: 'Library of Emotions',
-  subtitle: 'PhD Research Project',
-  badges: ['PHD PROJECT', 'RESEARCH'],
-  bgImage: '/assets/work/library-of-emotions.jpg',
+  subtitle: 'Master of Animation, Games & Interactivity · RMIT · 2025 — ongoing',
+  description:
+    "A mobile wellness game set inside a magical paper library. Choose a feeling, embody it through a small ritual — fold, breathe, tear, unstitch — and the library grows. Started in MAGI Studio 3, rebuilt as a live app, and now travelling through six conferences.",
+  cta: 'View Case Study',
+  meta: 'UNITY → EXPO · REACT NATIVE',
+  duration: '03:12',
+  bgImage: '/assets/case-studies/library-of-emotions/cover.jpg',
+  overlay: 'dark',
+  theme: 'library',
   caseStudy: {
-    coverImage: '/assets/work/library-of-emotions.jpg',
-    gallery: [
-      '/assets/case-studies/library-of-emotions/01.jpg',
-    ],
-    client: 'PhD Research',
-    year: '2024',
-    role: 'Researcher · Interactive Designer',
-    tools: ['Research', 'Interactive Design', 'Prototyping'],
-    tags: ['Research', 'Emotional Awareness', 'Interactive', 'PhD'],
+    coverImage: '/assets/case-studies/library-of-emotions/cover.jpg',
+    liveUrl: 'https://libraryofemotions.netlify.app/onboarding',
+    client: 'Master of Animation, Games & Interactivity (MAGI) · RMIT University',
+    year: '2025 — ongoing',
+    role: 'Game Designer · Developer · Illustrator',
+    tools: ['Unity', 'C#', 'Expo', 'React Native', 'Procreate', 'Photoshop'],
+    tags: ['Mobile Game', 'Emotional Literacy', 'Mental Health Literacy', 'Reflective Play', 'MAGI'],
     overview:
-      "A research project exploring how interactive media can support emotional literacy. Investigates interfaces, narrative structures, and design patterns that help users recognise, name, and reflect on emotional states.",
+      "A mobile wellness game set inside a magical paper library. Players choose an emotional state and physically embody it through phone sensors — folding, shaking, breathing, tilting — and every session adds a coloured book to the shelf. Emotional naming is the entry point into play, not a separate logging task.",
+
+    eyebrow: 'MASTER’S PROJECT · MAGI STUDIO 3 · RMIT UNIVERSITY',
+    placeLine: 'MELBOURNE · MAGI STUDIO 3 · 2025 — ONGOING · LIVE AT LIBRARYOFEMOTIONS.NETLIFY.APP',
+    inquiry:
+      "In what ways can game design foster mental health literacy by transforming tools such as mood tracking, reflection and mindfulness into symbolic, interactive mechanics that help players recognise emotions, build vocabulary and develop empathy?",
+
+    // The Core Book — the game's mascot, exactly as drawn in the app.
+    // Lines are the current onboarding script (content/coreBook.ts, V5.2.1).
+    coreBook: {
+      image: '/assets/case-studies/library-of-emotions/corebook-character.png',
+      name: 'The Core Book',
+      lines: [
+        'Welcome, traveler.',
+        'I am the Core Book, and I have been assigned to this Library planet.',
+        'My mission is to fill these shelves with everything there is to know about human emotions.',
+        'The truth is, I do not understand them very well yet. But I believe you can help me.',
+        'I have the data, but I need your human perspective to bring it to life.',
+        'Visit me each day, share your thoughts and feelings through small quests, and together we will grow this library page by page.',
+      ],
+      screens: [
+        { src: '/assets/case-studies/library-of-emotions/app-welcome.jpg',      caption: 'Onboarding · tap through the Core Book’s intro' },
+        { src: '/assets/case-studies/library-of-emotions/app-first-choice.jpg', caption: 'Day one · “How do you feel today?”' },
+        { src: '/assets/case-studies/library-of-emotions/app-hub-day1.jpg',     caption: 'The hub · Happy and Sad unlock first' },
+      ],
+    },
+
+    // The six core emotions and their rituals, as implemented. Copy is lifted
+    // from the app's content layer so the case study never drifts from the game.
+    emotions: [
+      {
+        id: 'happy',
+        label: 'Happy',
+        colour: '#f2d33a',
+        ink: '#2a2200',
+        stamp: '/assets/case-studies/library-of-emotions/stamp-joy.png',
+        sensor: 'Touch · drag',
+        technique: 'Gratitude journaling',
+        mechanic: 'Gratitude Origami',
+        tagline: 'Joy deserves to be witnessed.',
+        body:
+          "Write a small thought of gratitude — “a small thing that made you smile…” — then tap to fold the paper, crease by crease, until it pops into a star. The star flies to the Jar of Gratitude, where every one you have ever folded lives.",
+        subs: ['Content', 'Excited', 'Grateful', 'Playful', 'Proud', 'Hopeful', 'In awe'],
+        screens: [
+          { src: '/assets/case-studies/library-of-emotions/app-happy-write.jpg', caption: 'Write it down, then fold it into a star to keep' },
+          { src: '/assets/case-studies/library-of-emotions/screen-happy-note.jpg', caption: 'Unity prototype · the note mid-fold' },
+        ],
+      },
+      {
+        id: 'relaxed',
+        label: 'Relaxed',
+        colour: '#9be28e',
+        ink: '#0d2b0a',
+        stamp: '/assets/case-studies/library-of-emotions/stamp-calm.png',
+        sensor: 'Vibration · slow drag',
+        technique: 'Mindfulness',
+        mechanic: 'Mindful Unstitching',
+        tagline: 'Stillness is its own kind of wisdom.',
+        body:
+          "Tap to zoom into a knitted blanket, choose one thread and follow it slowly until the knot comes loose. There is no hurry here. “A thread pulled loose. The library remembers this softness.”",
+        subs: ['Calm', 'Peaceful', 'Rested', 'Serene', 'At ease', 'Still', 'Safe in my body'],
+        screens: [
+          { src: '/assets/case-studies/library-of-emotions/relaxed-blanket.jpg', caption: 'The knitted blanket' },
+          { src: '/assets/case-studies/library-of-emotions/relaxed-threads.jpg', caption: 'Zoomed in · follow one thread' },
+          { src: '/assets/case-studies/library-of-emotions/screen-love-yarn.jpg', caption: 'Unity prototype · the yarn' },
+        ],
+      },
+      {
+        id: 'love',
+        label: 'Love & Trust',
+        colour: '#9a4dff',
+        ink: '#ffffff',
+        stamp: '/assets/case-studies/library-of-emotions/stamp-love.png',
+        sensor: 'Tilt · gyroscope',
+        technique: 'Connection & self-compassion',
+        mechanic: 'Paper Plane',
+        tagline: 'What you feel is real and it matters.',
+        body:
+          "Write a message to someone, or to yourself. Draw a little spell to ride inside it. Fold it into a plane, tilt the phone and let it fly. “Someone may need exactly those words.”",
+        subs: ['Tender', 'Connected', 'Caring', 'Warm', 'Affectionate'],
+        screens: [
+          { src: '/assets/case-studies/library-of-emotions/screen-happy-plane.jpg', caption: 'The plane, released into the stars' },
+        ],
+      },
+      {
+        id: 'sad',
+        label: 'Sad',
+        colour: '#5ee3d8',
+        ink: '#032a28',
+        stamp: '/assets/case-studies/library-of-emotions/stamp-sadness.png',
+        sensor: 'Shake · accelerometer',
+        technique: 'Expressive writing',
+        mechanic: 'Expressive Writing & Release',
+        tagline: 'Sadness is not weakness. It is a sign you care.',
+        body:
+          "Write what is hurting, freely, at least a few lines. When you are ready, drag to tear the page, shake the phone to crumple it, then shake or tap again to burn it away. “The fire does not erase the feeling. It only helps carry part of its weight.”",
+        subs: ['Lonely', 'Hurt', 'Disappointed', 'Heavy', 'Regretful', 'Grieving', 'Tender'],
+        screens: [
+          { src: '/assets/case-studies/library-of-emotions/app-sad-write.jpg',    caption: 'Write what hurt today' },
+          { src: '/assets/case-studies/library-of-emotions/screen-angry-shred.jpg', caption: 'Drag to shred the paper' },
+          { src: '/assets/case-studies/library-of-emotions/screen-angry-pieces.jpg', caption: 'What is left' },
+        ],
+      },
+      {
+        id: 'angry',
+        label: 'Angry',
+        colour: '#e23b3b',
+        ink: '#ffffff',
+        stamp: '/assets/case-studies/library-of-emotions/stamp-anger.png',
+        sensor: 'Microphone · breath',
+        technique: '4-7-8 breathing',
+        mechanic: 'Breathing Lanterns',
+        tagline: 'Anger is information. Let it speak without burning you.',
+        body:
+          "Breathe in for four to fill the lantern with light, hold for seven while it glows, breathe out for eight and let it float away. Four cycles, about eighty-four seconds. “It has lifted. Not gone, but changed.”",
+        subs: ['Frustrated', 'Irritated', 'Jealous', 'Resentful', 'Defensive', 'Outraged', 'Bitter'],
+        screens: [
+          { src: '/assets/case-studies/library-of-emotions/app-angry-intro.jpg',   caption: '“Breathe with me”' },
+          { src: '/assets/case-studies/library-of-emotions/app-angry-breathe.jpg', caption: 'Breathe in · 4s' },
+          { src: '/assets/case-studies/library-of-emotions/screen-relaxed-lantern.jpg', caption: 'Unity prototype · the lantern' },
+        ],
+      },
+      {
+        id: 'fear',
+        label: 'Fear',
+        colour: '#e8a04a',
+        ink: '#2b1600',
+        stamp: '/assets/case-studies/library-of-emotions/stamp-fear.png',
+        sensor: 'Camera · AR',
+        technique: 'Grounding (5-4-3-2-1)',
+        mechanic: '5-4-3-2-1 Bingo',
+        tagline: 'Fear is real. You are safe here, right now.',
+        body:
+          "A sensory treasure hunt: five things you can see, four you can touch, three you can hear, two you can smell, one you can taste. Tap a square, draw what you notice, and the card lights up cell by cell. “The room is clearer now.”",
+        subs: ['Anxious', 'Nervous', 'Overwhelmed', 'Insecure', 'Worried'],
+        screens: [
+          { src: '/assets/case-studies/library-of-emotions/screen-fear-card.jpg',  caption: 'The Fear card opens' },
+          { src: '/assets/case-studies/library-of-emotions/screen-fear-bingo.jpg', caption: '5-4-3-2-1 Bingo' },
+        ],
+      },
+    ],
+
+    // Screens from the live Expo build (V5.2.1) and the Unity prototype.
+    screens: [
+      { src: '/assets/case-studies/library-of-emotions/app-welcome.jpg',       caption: 'Onboarding · the Core Book' },
+      { src: '/assets/case-studies/library-of-emotions/app-hub-day1.jpg',      caption: 'Day 1 hub · Happy and Sad open first' },
+      { src: '/assets/case-studies/library-of-emotions/app-happy-write.jpg',   caption: 'Happy · Gratitude Origami' },
+      { src: '/assets/case-studies/library-of-emotions/app-sad-write.jpg',     caption: 'Sad · Expressive Writing' },
+      { src: '/assets/case-studies/library-of-emotions/app-angry-breathe.jpg', caption: 'Angry · Breathing Lanterns' },
+      { src: '/assets/case-studies/library-of-emotions/app-rewards.jpg',       caption: 'Rewards · the candle fills with each log' },
+      { src: '/assets/case-studies/library-of-emotions/app-shelf.jpg',         caption: 'Your Library · each book is a day' },
+      { src: '/assets/case-studies/library-of-emotions/app-stickers.jpg',      caption: 'Sticker sheet · milestones' },
+      { src: '/assets/case-studies/library-of-emotions/app-sky.jpg',           caption: 'Constellations · a star per ritual' },
+      { src: '/assets/case-studies/library-of-emotions/screen-picker.jpg',     caption: 'Unity prototype · the six stamps' },
+      { src: '/assets/case-studies/library-of-emotions/screen-fear-bingo.jpg', caption: 'Unity prototype · Fear bingo' },
+      { src: '/assets/case-studies/library-of-emotions/app-support.jpg',       caption: 'Support · always one tap away' },
+    ],
+
+    // From prototype to app — how the game is built now.
+    app: {
+      eyebrow: 'THE APP · V5.2.1',
+      title: 'From a Unity studio prototype to a live Expo app',
+      body:
+        "Studio 3 ended with a Unity prototype of the six rituals. In 2026 the game was rebuilt from scratch as an Expo / React Native app so it could ship to the web, iOS and Android from one codebase, with the whole script in a content layer and the state in small stores. The demo build at libraryofemotions.netlify.app is what reviewers and playtesters hold.",
+      sensors: [
+        { label: 'Happy',        sensor: 'Touch / drag',    ritual: 'Origami folding' },
+        { label: 'Relaxed',      sensor: 'Vibration',       ritual: 'Mindful unstitching' },
+        { label: 'Love & Trust', sensor: 'Tilt / gyro',     ritual: 'Paper plane folding' },
+        { label: 'Sad',          sensor: 'Shake',           ritual: 'Paper crumpling and burning' },
+        { label: 'Angry',        sensor: 'Mic / breath',    ritual: 'Breath detection' },
+        { label: 'Fear',         sensor: 'Camera / AR',     ritual: 'Scavenger hunt' },
+      ],
+      progression: [
+        { day: 'Day 1',  body: 'Happy and Sad unlock. First book on the shelf, first wax in the candle.' },
+        { day: 'Day 2',  body: 'Angry and Relaxed open. Four feelings.' },
+        { day: 'Day 5',  body: 'Love & Trust and Fear. All six core feelings within reach.' },
+        { day: 'Day 10', body: 'First sub-emotion tier: Content, Excited, Grateful, Lonely, Hurt…' },
+        { day: 'Day 15', body: 'Second tier. A wider palette.' },
+        { day: 'Day 30', body: 'Full vocabulary: seven shades per core feeling.' },
+      ],
+      rewards: [
+        { label: 'Candle → wax seal',  body: 'Every log adds wax. Ten rituals fill a candle and seal a chapter; the seal remembers which feelings filled it.' },
+        { label: 'Jar of Gratitude',   body: 'Every folded star stays, with the thought that made it.' },
+        { label: 'Your Library',       body: 'A Year-in-Pixels shelf: each book is a day, its colour the feeling that filled it. Tap a book to re-read that day.' },
+        { label: 'Constellations',     body: 'Each ritual places a star in your sky, coloured by emotion; same-feeling runs are joined by faint lines.' },
+        { label: 'Stickers',           body: 'First Day, 5 Days Strike, 10 Days Strike, Full Spectrum: you sat with every feeling at least once.' },
+        { label: 'Support, always',    body: 'A support screen with emergency and counselling lines is one tap away on every screen.' },
+      ],
+      stack: ['Expo 54 · React Native 0.81', 'expo-router · file-based routes', 'Reanimated 4 · gesture-handler', 'expo-haptics · expo-sensors · expo-audio', 'zustand stores · AsyncStorage', 'Web on Netlify · iOS/Android via EAS'],
+    },
+
+    loop: [
+      { num: '01', title: 'Prompt', body: 'The mascot asks: “How do you feel today?” There is no wrong answer here.' },
+      { num: '02', title: 'Emotion choice', body: 'Select from the feelings unlocked so far. Naming is the entry point into play.' },
+      { num: '03', title: 'Symbolic interaction', body: 'A phone-sensor ritual embodies the feeling: fold, unstitch, tilt, tear, breathe, notice.' },
+      { num: '04', title: 'Reflection', body: 'A line from the Core Book, a book on the shelf, a little wax in the candle.' },
+    ],
+    loopImage: { src: '/assets/case-studies/library-of-emotions/slide-loop.jpg', caption: 'Core interaction loop · Unity prototype, Studio 3 folio' },
+
+    foldFrames: [
+      '/assets/case-studies/library-of-emotions/fold-01.png', '/assets/case-studies/library-of-emotions/fold-02.png', '/assets/case-studies/library-of-emotions/fold-03.png', '/assets/case-studies/library-of-emotions/fold-04.png', '/assets/case-studies/library-of-emotions/fold-05.png',
+      '/assets/case-studies/library-of-emotions/fold-06.png', '/assets/case-studies/library-of-emotions/fold-07.png', '/assets/case-studies/library-of-emotions/fold-08.png', '/assets/case-studies/library-of-emotions/fold-09.png', '/assets/case-studies/library-of-emotions/fold-10.png',
+    ],
+
+    phases: [
+      {
+        num: '01',
+        category: 'INQUIRY · MAGI STUDIO 3 · 2025',
+        title: 'From therapy to literacy',
+        body:
+          "The project started in the Master of Animation, Games & Interactivity as a wellbeing game and deliberately moved away from a therapeutic framing. The refined question is about literacy: can players learn the language of emotions through repeated symbolic encounters, so that playing becomes a way of learning?",
+        items: [
+          'Mental health literacy, not treatment',
+          'Emotional granularity as the central design concern',
+          'Grounded in Russell’s circumplex, Ekman, Plutchik and Barrett’s constructed emotion',
+        ],
+        media: { src: '/assets/case-studies/library-of-emotions/slide-first-iteration.jpg', caption: 'First inquiry and first iteration · references from SuperBetter to Florence' },
+      },
+      {
+        num: '02',
+        category: 'CONTEXT',
+        title: 'Games as reflective spaces',
+        body:
+          "Sits in games for wellbeing and serious games, next to practitioners who use play for reflection rather than competition. Kind Words shows anonymous sharing can build empathy; Florence shows minimal symbolic mechanics can carry complex feeling; Kinder World shows low-effort rituals can support self-reflection.",
+        items: ['Kind Words · Popcannibal', 'Florence · Mountains', 'Kinder World · Pixelfairy', 'Games for Health Journal · evidence base'],
+      },
+      {
+        num: '03',
+        category: 'METHOD',
+        title: 'Identify, translate, prototype, evaluate',
+        body:
+          "Each mechanic follows a four-step pipeline: identify a wellbeing practice grounded in evidence, translate it into a symbolic mobile interaction, prototype and revise for clarity, tone and fit, then evaluate whether the interaction feels right. One mechanic per core emotion; sub-emotions branch from the same mechanic as tiers unlock.",
+        items: ['Mental health tools → symbolic mechanics', 'Emotion granularity · gamification · iteration', 'Mobile-based interaction: tap, hold, drag, shake, tilt, breathe', 'All mechanics reviewed with a psychologist'],
+        media: [
+          { src: '/assets/case-studies/library-of-emotions/slide-unity-early.jpg', caption: 'Early Unity passes · constellation, shredder, bingo' },
+          { src: '/assets/case-studies/library-of-emotions/sticker-sheet.png',     caption: 'Stamp silhouettes · the sticker sheet' },
+        ],
+      },
+      {
+        num: '04',
+        category: 'PRODUCTION · UNITY · STUDIO 3',
+        title: 'The studio prototype',
+        body:
+          "Built in Unity (C#) with hand-painted assets from Procreate, Photoshop and Illustrator. Eight weeks from reframed inquiry to a polished vertical slice: two mini-games first, four more core mechanics, then the Library system that accumulates stamps, then naming, sub-emotion variants and the feedback loop, then playtests and polish for the MAGI Expo.",
+        items: ['Wk 6–7 · reframe + rebuild two rituals', 'Wk 8 · the other four', 'Wk 9 · Library / mural system', 'Wk 10 · naming, sub-emotions, feedback loop', 'Wk 11–12 · playtests, UI polish, sound, intro, credits'],
+        media: [
+          { src: '/assets/case-studies/library-of-emotions/sky.jpg',          caption: 'Library planet · painted sky backdrop' },
+          { src: '/assets/case-studies/library-of-emotions/library-grid.jpg', caption: 'The shelf · slots fill with stamps over time' },
+        ],
+      },
+      {
+        num: '05',
+        category: 'PRODUCTION · EXPO · 2026',
+        title: 'Rebuilt as a shippable app',
+        body:
+          "Rebuilt from scratch as an Expo / React Native app: the whole script in a content layer, the six rituals as feature folders, state in small stores, haptics and sensors where the phone can embody the feeling. Progression, rewards, archives and a support screen were added build by build, each one a numbered demo the testers could name.",
+        items: ['V1 → V5.2.1 demo builds', 'Progression: Day 1 / 2 / 5, sub-emotion tiers at 10 / 15 / 30', 'Candle → wax seal, jar, shelf, constellation, stickers', 'Web on Netlify; iOS and Android through EAS'],
+        media: [
+          { src: '/assets/case-studies/library-of-emotions/app-shelf.jpg', caption: 'Your Library · the Year-in-Pixels shelf' },
+          { src: '/assets/case-studies/library-of-emotions/app-sky.jpg',   caption: 'Constellations · a star per ritual' },
+        ],
+      },
+      {
+        num: '06',
+        category: 'OUTCOMES',
+        title: 'A playable game, a paper, a programme',
+        body:
+          "A repeat-playable game with six symbolic rituals and a growing library. The design approach was peer-reviewed at FDG ’26 (Copenhagen), and the project now anchors a wider programme: a full paper at IEEE CoG, an LNCS paper and live playtest workshop at ISAGA, posters at JCSG and Meaningful Play, a SIGGRAPH Asia poster submission, and a psychology-oriented study protocol with Daniel Zarate at PsyGames. It is also the pilot case the PhD builds on.",
+        items: ['Six rituals + Library system, live on the web', 'FDG ’26 short paper · ACM · open access', 'Pilot / precedent case for the doctoral research'],
+        media: { src: '/assets/case-studies/library-of-emotions/quilt.jpg', caption: 'The knitted blanket · the project’s key art' },
+      },
+    ],
+
+    conferences: [
+      { venue: 'FDG ’26',          where: 'Copenhagen',    format: 'Late-breaking work · poster · ACM proceedings', status: 'Published' },
+      { venue: 'IEEE CoG 2026',    where: 'IEEE',          format: 'Full paper · oral · IEEE proceedings',          status: 'Accepted · best-paper nomination' },
+      { venue: 'JCSG 2026',        where: 'Serious Games', format: 'Poster paper',                                   status: 'Accepted' },
+      { venue: 'ISAGA 2026',       where: 'LNCS',          format: 'Scientific paper + Outside-the-Box live playtest workshop', status: 'Accepted' },
+      { venue: 'Meaningful Play',  where: '2026',          format: 'Poster',                                         status: 'Accepted' },
+      { venue: 'PsyGames 2026',    where: 'with D. Zarate', format: 'Full paper · study protocol on emotional naming', status: 'Accepted with revisions' },
+    ],
+
+    paper: {
+      eyebrow: 'PEER-REVIEWED · FDG ’26',
+      title: 'Designing a Practice-Based Mobile Prototype for Mental Health Literacy through Emotional Granularity and Reflective Play',
+      venue: 'Proceedings of the 21st International Conference on the Foundations of Digital Games · ACM · Copenhagen, Denmark · pp. 1–4',
+      doi: '10.1145/3815598.3815672',
+      doiUrl: 'https://doi.org/10.1145/3815598.3815672',
+      researchUrl: '/research/emotional-granularity-reflective-play',
+      projectUrl: '/research/library-of-emotions',
+      note:
+        'The game is intentionally modest: not a validated intervention, not therapy or diagnosis. It demonstrates how emotional awareness may be supported through affective, interactive mobile design without clinical framing.',
+    },
+
+    credits: [
+      { label: 'Year',        value: '2025 — ongoing' },
+      { label: 'Context',     value: 'Master of Animation, Games & Interactivity (MAGI) · Studio 3 · School of Design · RMIT University' },
+      { label: 'Role',        value: 'Game Designer · Developer · Illustrator' },
+      { label: 'Tools',       value: 'Unity · C# → Expo · React Native · Reanimated · Procreate · Photoshop' },
+      { label: 'Supervision', value: 'Sam Hains · Uyen Nguyen · Andy Buchanan · Jadd Zayed' },
+      { label: 'Published',   value: 'FDG ’26 · ACM · DOI 10.1145/3815598.3815672' },
+    ],
+
+    closing: {
+      title: 'The library is never finished.',
+      tagline: 'Every visit adds a book. Every book is a word the player did not have before.',
+    },
+  },
+}
+
+const disseminationDigestCase = {
+  id: 'dissemination-digest',
+  layout: 'cinema',
+  kind: 'creative',
+  badges: ['WEB APP', 'CASE STUDY', 'RESEARCH TOOL'],
+  title: 'Dissemination Digest',
+  subtitle: 'Web app · built, shipped and presented · 2026',
+  description:
+    "A tool I built out of my own PhD dissemination tracker: a three-step form becomes a tailored list of festivals, grants, residencies and conferences, and a logged-in workspace tracks every application after. Presented as a poster at the RMIT SoTL conference.",
+  cta: 'View Case Study',
+  meta: 'HTML · CLOUDFLARE · NODE',
+  duration: '01:30',
+  bgImage: '/assets/case-studies/dissemination-digest/poster.svg',
+  overlay: 'dark',
+  theme: 'digest',
+  caseStudy: {
+    coverImage: '/assets/case-studies/dissemination-digest/poster.svg',
+    liveUrl: 'https://dissemination.eggn.io/',
+    client: 'Own tool · eggn.io',
+    year: '2026',
+    role: 'Designer · Developer · Researcher',
+    tools: ['HTML/CSS/JS', 'Cloudflare Pages', 'Node.js', 'Claude API', 'Notion', 'Docker'],
+    tags: ['Web App', 'Research Tool', 'Dissemination', 'PhD'],
+    overview:
+      "Research students and creative practitioners spend a disproportionate amount of time hunting for dissemination opportunities that are scattered, eligibility-locked and always changing. I had already built a Notion system to track mine. Dissemination Digest turns that system into a web app: describe the work once, get a matched list, then track what you apply to.",
+
+    logo: '/assets/case-studies/dissemination-digest/logo.png',
+    version: 'V3.4.7',
+
+    origin: {
+      eyebrow: 'WHERE IT CAME FROM',
+      title: 'It started as my own Notion dissemination tracker',
+      body:
+        "During the MAGI studios and the first year of the PhD I kept a Dissemination Master Table in Notion: every conference, festival, grant and residency relevant to Library of Emotions, with deadlines, formats, costs and outcomes. Then a cheat sheet of everything I had to learn the hard way — what a poster actually is, what camera-ready means, how AoE deadlines work. Other students kept asking for it. The web app is that database and that cheat sheet, made usable by someone who is not me.",
+      items: [
+        'Dissemination Master Table · Notion database of venues and calls',
+        'Games and Animation Dissemination Hubs · templates other students duplicate',
+        'Dissemination Cheat Sheet · the bits that trip everyone up the first time',
+      ],
+    },
+
+    // Everything that differs between the two personas lives here — the same
+    // idea as the product's single MODES object.
+    modes: {
+      creative: {
+        label: 'Creative',
+        emoji: '🎨',
+        phrase: 'festivals, grants & residencies',
+        suffix: 'for your creative project.',
+        cards: [
+          { tag: 'Festival',  name: 'Ars Electronica',                 meta: 'Linz · digital art · closes Mar 6' },
+          { tag: 'Grant',     name: 'Australia Council Creative Fund', meta: 'AU · up to $30k · opens Apr 2' },
+          { tag: 'Residency', name: 'Rupert',                          meta: 'Vilnius, Lithuania · 3 months · rolling' },
+        ],
+        step1: 'What are you making?',
+        example: { name: 'Library of Emotions', desc: 'A mobile game where naming a feeling precisely is the mechanic. Six symbolic micro-games, one per core emotion.' },
+        chips1Label: 'Disciplines',
+        chips1: ['Games', 'Animation', 'XR / VR', 'Sound', 'Film', 'Illustration'],
+        chips2Label: 'Submission formats',
+        chips2: ['Festivals', 'Residencies', 'Grants', 'Awards', 'Showcases', 'Conferences'],
+        stages: ['Student', 'Emerging', 'Mid-career', 'Established', 'Hobbyist'],
+        tips: ['Searching for festivals…', 'Looking up grant deadlines…', 'Checking residency eligibility…', 'Filtering by your country…', 'Writing your digest…'],
+        subject: '🔍 Dissemination Digest',
+        result: [
+          { tag: 'Festival',   name: 'Freeplay Independent Games Festival', meta: 'Melbourne · expressive & experimental games · Oct', why: 'Matches: games · Australia · emerging' },
+          { tag: 'Conference', name: 'CHI PLAY · Work-in-Progress',         meta: 'International · playable research prototypes',   why: 'Matches: research · mental health · prototype' },
+          { tag: 'Grant',      name: 'VicScreen · Digital Games',           meta: 'Victoria · open year-round · up to AU$300k',   why: 'Matches: Victorian resident · pre-production' },
+        ],
+      },
+      startup: {
+        label: 'Startup',
+        emoji: '🚀',
+        phrase: 'accelerators, grants & pitch comps',
+        suffix: 'for your startup.',
+        cards: [
+          { tag: 'Accelerator', name: 'On Deck Founders',                        meta: 'Remote · 10 weeks · apps open' },
+          { tag: 'Grant',       name: 'Climate Tech R&D (Breakthrough)',          meta: 'Global · up to $250k · closes May 15' },
+          { tag: 'Pitch comp',  name: 'TechCrunch Disrupt Startup Battlefield',  meta: 'SF · $100k prize · rolling' },
+        ],
+        step1: 'What are you building?',
+        example: { name: 'Eggn.io', desc: 'AI for social impact: accessible, multilingual, customisable digital assistants for education, communities and research.' },
+        chips1Label: 'Verticals',
+        chips1: ['SaaS', 'Hardware', 'Climate', 'Health', 'AI / ML', 'Creator tools'],
+        chips2Label: 'Opportunity types',
+        chips2: ['Accelerators', 'Pitch comps', 'Demo days', 'Grants', 'Fellowships', 'R&D programs'],
+        stages: ['Idea', 'Pre-product', 'Beta', 'Revenue', 'Funded'],
+        tips: ['Searching open accelerators…', 'Looking up pitch comps with cash prizes…', 'Checking founder fellowships…', 'Excluding series-A-and-later programs…', 'Writing your digest…'],
+        subject: '🚀 Opportunity Digest',
+        result: [
+          { tag: 'Competition', name: 'World Summit Awards 2026',          meta: 'Global · UN/UNESCO member states · free', why: 'Matches: digital, social, impact · open to international applicants' },
+          { tag: 'Accelerator', name: 'HAX (SOSV) · Hard Tech',            meta: 'Newark, NJ · rolling · equity',           why: 'Matches: tech, health · one of your formats' },
+          { tag: 'Competition', name: 'She Loves Tech Global 2026',        meta: '70+ countries incl. Australia · free',    why: 'Matches: tech, startup · open to international applicants' },
+        ],
+      },
+    },
+
+    // Two engines. The free snapshot never calls a model.
+    tiers: [
+      {
+        tier: 'FREE · ONE SNAPSHOT',
+        engine: 'Curated database · deterministic matching',
+        body:
+          "The free digest is drawn from the curated opportunity database I maintain — the Notion dissemination tables, exported and normalised into the app’s own catalog. Matching is a scored, deterministic function of the profile: discipline, format, career stage, country eligibility and deadline window. No model call, so it costs nothing, is reproducible, and cannot invent a deadline.",
+        points: ['Catalog refreshed by hand from the Notion tables', 'Match % against a fixed ceiling, with the reason spelled out', 'Opportunity ids from category + type + name + url, because urls collide'],
+      },
+      {
+        tier: 'RECURRING TIERS',
+        engine: 'Claude + live web search',
+        body:
+          "For the recurring tiers the same profile becomes a long, parameterised prompt. Claude runs up to ten live web searches, filters by eligibility and date, and writes the digest as HTML — the curated catalog plus whatever is open on the web that week. Delivered on page and by email, weekly to monthly, for six months.",
+        points: ['buildPrompt() is parameterised by mode and exported', 'Search capped at ten per digest to cap the bill', 'Password-gated preview before a plan is granted by hand'],
+      },
+    ],
+
+    // Architecture — one request end to end.
+    flow: [
+      { id: 'form',   label: '3-step form',        sub: 'single index.html · no build step' },
+      { id: 'match',  label: 'Match or prompt',    sub: 'free: scored catalog · paid: buildPrompt()' },
+      { id: 'claude', label: 'Claude + web search', sub: 'paid tiers only · ≤10 live searches' },
+      { id: 'digest', label: 'HTML digest',         sub: 'filtered by eligibility + date' },
+      { id: 'out',    label: 'On page · email',     sub: 'copy rich / HTML / text · print · Resend' },
+    ],
+
+    // Build timeline, from the repo history.
+    timeline: [
+      { date: 'Jul 2026',     title: 'One file, one function',            body: 'A single index.html form and one Cloudflare Pages Function that calls Claude with the web_search tool and emails the result through Resend.' },
+      { date: 'Jul 2026',     title: 'Creative ↔ Startup modes',          body: 'Everything that differs between the two personas moved into one MODES object on both ends: labels, chips, stages, loading tips, hero copy and the prompt itself.' },
+      { date: 'Aug 2026',     title: 'The workspace',                     body: 'Magic-link accounts, a six-method store interface over JSON files, the applications CRM, the scored opportunity feed, the ICS calendar and the cheat sheet. Node + Express in Docker on Coolify, with a mounted volume.' },
+      { date: 'Aug 2026',     title: 'Free tier from the curated catalog', body: 'The anonymous digest stopped calling the model. Deterministic matching against the catalog, password-gated preview of the advanced tier, and a fix for a reasoning leak in the prompt.' },
+      { date: 'Aug–Sep 2026', title: 'V3.4.7 · pricing, analytics, polish', body: 'Six-month recurring tiers, optional Umami analytics behind /api/config, friendlier send-failure messages, favicon and version badge in the topbar.' },
+      { date: '2026',         title: 'SoTL RMIT · poster',                 body: 'Presented as a poster at the RMIT Scholarship of Teaching and Learning conference, as a response to how research students actually find and track dissemination opportunities.' },
+    ],
+
+    stack: [
+      { group: 'FRONTEND', name: 'Vanilla HTML · CSS · JS',    role: 'Landing, wizard and result in one file; the workspace in app.html + app.js with a strict no-innerHTML rule.' },
+      { group: 'HOSTING',  name: 'Cloudflare Pages',          role: 'The anonymous digest. Free, fast, one-command deploy.' },
+      { group: 'BACKEND',  name: 'Pages Function',             role: 'Validation, honeypot, buildPrompt(), the Claude call and Resend email in one JS file.' },
+      { group: 'DATA',     name: 'Curated catalog from Notion', role: 'The dissemination tables normalised into the app’s catalog; deterministic scoring for the free tier and the workspace feed.' },
+      { group: 'LLM',      name: 'Claude API',                 role: 'claude-sonnet-4-6 with the web_search tool for the recurring tiers only.' },
+      { group: 'ACCOUNTS', name: 'Node · Express · Docker',    role: 'The workspace on Coolify. Stateless sessions, bearer token, JSON-file store behind a six-method interface so SQLite is a one-file swap.' },
+      { group: 'QUALITY',  name: 'node --test',                role: 'Matcher and API test suites. The dashboard cannot hallucinate a deadline because nothing in it calls a model.' },
+    ],
+
+    workspace: {
+      eyebrow: 'THE OTHER HALF · LOGGED IN',
+      title: 'Projects → Opportunities → Applications → Outcomes',
+      body:
+        "The one-shot digest stops being useful the moment you actually apply to something. The workspace is where I live during a semester: describe a project once, get a scored feed of opportunities with the reason each one matches, save or dismiss, track every submission with its milestones, and read the cheat sheet when a reviewer asks for a rebuttal.",
+      shots: [
+        { src: '/assets/case-studies/dissemination-digest/app-dashboard.jpg',     caption: 'Dashboard · what needs you, ordered by how soon it matters' },
+        { src: '/assets/case-studies/dissemination-digest/app-projects.jpg',      caption: 'Projects · describe it once, everything hangs off it' },
+        { src: '/assets/case-studies/dissemination-digest/app-opportunities.jpg', caption: 'Opportunities · match % with “why it matches”, save / applying / not interested' },
+        { src: '/assets/case-studies/dissemination-digest/app-applications.jpg',  caption: 'Applications · every submission, where it is up to, what came of it' },
+        { src: '/assets/case-studies/dissemination-digest/app-cheatsheet.jpg',    caption: 'Cheat sheet · the Notion guide, wired in as contextual help' },
+      ],
+      features: [
+        { label: 'Scored feed',        body: 'Deterministic match % against a fixed ceiling so a number means the same thing next month.' },
+        { label: 'Dismissals ask why', body: '“Too expensive” and “can’t travel” are filter bugs; “not relevant” is a matching bug. The most useful signal the tool collects.' },
+        { label: 'Applications CRM',   body: 'Milestone dates and links per application. Deleting a project never erases an accepted paper.' },
+        { label: 'ICS calendar',       body: 'Every tracked deadline, subscribable from any calendar app.' },
+        { label: 'Portfolio export',   body: 'Accepted outputs exported as a CV section.' },
+        { label: 'Cheat sheet',        body: 'Posters, paper types, AoE deadlines, camera-ready, rebuttals, self-plagiarism, metrics.' },
+      ],
+      plan: 'Free plan: 1 project · 10 applications · 25 saved. Recurring tiers are unlocked by access password or by hand until a payment integration is worth building.',
+    },
+
+    presented: {
+      eyebrow: 'PRESENTED',
+      title: 'RMIT Scholarship of Teaching and Learning conference · poster',
+      body:
+        "The tool was presented as a poster at RMIT’s SoTL conference: the problem (how research students find and track dissemination), the Notion system that grew around it, and the web app that makes it reusable by others. It is also the system I run my own PhD dissemination through — the Library of Emotions submissions on this site were tracked in it.",
+    },
+
+    decisions: [
+      { q: 'The free tier never calls the model',                    a: 'A snapshot from the curated catalog is free to serve, reproducible, and cannot invent a deadline. The model and live search are reserved for the recurring tiers that pay for them.' },
+      { q: 'A mode toggle that changes palette, vocabulary and prompt', a: 'A single mental switch should affect everything the user sees. Startup gets dark mode because mode is persona, not preference.' },
+      { q: 'No LLM anywhere in the workspace',                       a: 'The dashboard is loaded constantly. Deterministic scoring is free to render, reproducible, and the dismissal reasons are a cleaner signal than any model summary.' },
+      { q: 'JSON files behind a six-method store interface',         a: 'The database choice was deliberately deferred. The product ships today and the SQLite swap is a one-file change.' },
+      { q: 'Accounts disabled, loudly, on Cloudflare Pages',         a: 'No filesystem there. A clear 503 beats accepting writes that silently evaporate on the next deploy.' },
+      { q: 'Bearer token in localStorage, not a cookie',             a: 'The Node server dropped every header but content-type, so cookies worked on Pages and failed on Coolify. Bearer works on both and has no CSRF surface, at the cost of a strict no-innerHTML rule.' },
+      { q: 'Deleting a project keeps its applications',              a: 'The tracking record is what people care most about. An accepted paper should never disappear because a project was tidied up.' },
+    ],
+
+    credits: [
+      { label: 'Year',      value: '2026' },
+      { label: 'Role',      value: 'Designer · Developer · Researcher' },
+      { label: 'Stack',     value: 'HTML/CSS/JS · Cloudflare Pages · Node/Express · Docker · Claude API' },
+      { label: 'Data',      value: 'Curated catalog from my Notion dissemination tables' },
+      { label: 'Presented', value: 'RMIT SoTL conference · poster' },
+      { label: 'Live',      value: 'dissemination.eggn.io · V3.4.7' },
+    ],
+
+    closing: {
+      title: 'Describe the work once. Track everything after.',
+      tagline: 'The tool I wished I had in first semester, built in the second.',
+    },
   },
 }
 
@@ -1071,16 +1583,17 @@ export const work = {
   // ── Games & Interactive ─────────────────────
   'cat-games': {
     header: { label: 'Games · Interactive', title: 'Games & Interactive' },
-    heroes: [bloomingCase, naibuCase],
+    heroes: [bloomingCase, naibuCase, libraryEmotionsCase, disseminationDigestCase],
     shortCards: true,
     gallery: [
       // First 3 visible
-      { name: 'NAIBU',                       caseStudyId: 'naibu',    kind: 'creative', tag: 'GAME DESIGN',          tagColor: 'rgba(156,77,255,.9)', img: '/assets/case-studies/naibu/hero.jpg' },
+      { name: 'Library of Emotions',         caseStudyId: 'library-of-emotions', kind: 'creative', tag: 'GAME DESIGN', tagColor: 'rgba(173,70,255,.9)', img: '/assets/case-studies/library-of-emotions/cover.jpg' },
+      { name: 'Dissemination Digest',        caseStudyId: 'dissemination-digest', kind: 'creative', tag: 'WEB APP',     tagColor: 'rgba(194,65,12,.92)', img: '/assets/case-studies/dissemination-digest/poster.svg' },
       { name: 'Second Blooming',             caseStudyId: 'blooming', kind: 'creative', tag: 'INTERACTIVE',          tagColor: 'rgba(255,46,118,.9)', video: '/assets/case-studies/blooming/blooming-final.mp4', poster: '/assets/case-studies/blooming/apd-poster.jpg' },
+      { name: 'NAIBU',                       caseStudyId: 'naibu',    kind: 'creative', tag: 'GAME DESIGN',          tagColor: 'rgba(156,77,255,.9)', img: '/assets/case-studies/naibu/hero.jpg' },
       { name: 'Break',                                                kind: 'creative', tag: 'VIDEOGAME',    tagColor: 'rgba(0,194,212,.9)',  img: '/assets/case-studies/break-game/cover.gif', itchUrl: 'https://taniaolarte.itch.io/break' },
       { name: 'Chasqui',                                              kind: 'creative', tag: 'GAME JAM',     tagColor: 'rgba(255,46,107,.9)', video: '/assets/case-studies/chasqui/reel.mp4', poster: '/assets/case-studies/chasqui/poster.jpg', itchUrl: 'https://taniaolarte.itch.io/chasqui' },
       // Temporarily hidden (also flip Choosen=FALSE in Notion when ready):
-      // { name: 'Library of Emotions',          kind: 'creative', tag: 'PHD PROJECT',  tagColor: 'rgba(173,70,255,.9)', img: '/assets/work/library-of-emotions.jpg' },
       // { name: 'AR Filters',                   kind: 'creative', tag: 'AR / FILTERS', tagColor: 'rgba(255,217,61,.9)', tagText: '#222', img: '/assets/work/tiktok-ar.jpg' },
       // { name: 'Interactive Web Poem',         kind: 'creative', tag: 'INTERACTIVE',  tagColor: 'rgba(0,194,212,.9)',  img: '/assets/work/interactive-poem.jpg' },
       // { name: 'Nocturno · Projection Mapping', kind: 'creative', tag: 'INSTALLATION', tagColor: 'rgba(173,70,255,.9)', img: 'https://i.ytimg.com/vi/ruqGxBoCyb0/maxresdefault.jpg', youtubeId: 'ruqGxBoCyb0' },

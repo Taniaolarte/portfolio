@@ -174,6 +174,16 @@ export default function HiddenAwards({ open, onClose }) {
                       </div>
                       {it.org && <p className="ha-org">{it.org}</p>}
                       {it.note && <p className="ha-note">{it.note}</p>}
+                      {it.links?.length > 0 && (
+                        <div className="ha-links">
+                          {it.links.map((l) => (
+                            <a key={l.href} href={l.href}
+                              {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+                              {l.label}<span aria-hidden="true"> ↗</span>
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </li>
                   ))}
                 </ul>

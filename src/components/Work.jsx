@@ -9,6 +9,8 @@ import CaseStudyModalNaibu from './CaseStudyModalNaibu.jsx'
 import CaseStudyModalBlooming from './CaseStudyModalBlooming.jsx'
 import CaseStudyModalXtraCheckpoint from './CaseStudyModalXtraCheckpoint.jsx'
 import CaseStudyModalTheVault from './CaseStudyModalTheVault.jsx'
+import CaseStudyModalLibrary from './CaseStudyModalLibrary.jsx'
+import CaseStudyModalDigest from './CaseStudyModalDigest.jsx'
 import Lightbox from './Lightbox.jsx'
 import FairyTrail from './FairyTrail.jsx'
 
@@ -253,9 +255,13 @@ export default function Work() {
                   ? <CaseStudyModalXtraCheckpoint hero={openCase} onClose={() => setOpenCase(null)} />
                   : openCase.theme === 'vault'
                     ? <CaseStudyModalTheVault hero={openCase} onClose={() => setOpenCase(null)} onOpenCase={setOpenCase} />
-                    : openCase.theme === 'light'
-                      ? <CaseStudyModalLight hero={openCase} onClose={() => setOpenCase(null)} />
-                      : <CaseStudyModal hero={openCase} onClose={() => setOpenCase(null)} />
+                    : openCase.theme === 'library'
+                      ? <CaseStudyModalLibrary hero={openCase} onClose={() => setOpenCase(null)} />
+                      : openCase.theme === 'digest'
+                        ? <CaseStudyModalDigest hero={openCase} onClose={() => setOpenCase(null)} />
+                        : openCase.theme === 'light'
+                          ? <CaseStudyModalLight hero={openCase} onClose={() => setOpenCase(null)} />
+                          : <CaseStudyModal hero={openCase} onClose={() => setOpenCase(null)} />
         )}
       </AnimatePresence>
 
